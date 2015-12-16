@@ -2,7 +2,10 @@
 
 ## Munin vs Nginx
 
-Configuration Nginx 
+Recette de cuisine 
+Nous allons faire communiquer 
+
+###Configuration Nginx 
 
 Configurer fastcgi pour attaquer le socket Unix du process spawn-fcgi
 
@@ -22,3 +25,7 @@ Configurer fastcgi pour attaquer le socket Unix du process spawn-fcgi
                 fastcgi_pass unix:/var/run/munin/spawn-fcgi-munin-graph.sock;
                 include fastcgi_params;
         }
+        
+débugger spawn-fcgi :
+
+        spawn-fcgi -n -s /var/run/munin/spawn-fcgi-munin-graph.sock -U www-data -u munin -g munin /usr/lib/munin/cgi/munin-cgi-graph
