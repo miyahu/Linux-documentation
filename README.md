@@ -45,7 +45,7 @@ cat  /etc/systemd/system/fastcgi-munin.service
         Restart=on-abort
         SyslogIdentifier=fastcgi-munin
         ExecStartPre=/bin/rm -f /var/run/fastcgi-munin.pid
-        ExecStart=/usr/bin/spawn-fcgi -s /var/run/munin/fcgi-munin-graph.sock -U www-data -u munin -g munin         /usr/lib/munin/cgi/munin-cgi-graph 
+        ExecStart=/usr/bin/spawn-fcgi -s /var/run/munin/fcgi-munin-graph.sock -U www-data -u munin -g munin /usr/lib/munin/cgi/munin-cgi-graph 
 
         [Install]
         WantedBy=multi-user.target
