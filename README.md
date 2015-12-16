@@ -22,7 +22,7 @@ Configurer fastcgi pour attaquer le socket Unix du process spawn-fcgi
                 access_log off;
                 fastcgi_split_path_info ^(/munin-cgi/munin-cgi-graph)(.*);
                 fastcgi_param PATH_INFO $fastcgi_path_info;
-                fastcgi_pass unix:/var/run/munin/spawn-fcgi-munin-graph.sock;
+                fastcgi_pass unix:/var/run/munin/fcgi-munin-graph.sock;
                 include fastcgi_params;
         }
         
@@ -40,13 +40,14 @@ spawn-fcgi et systemd
 
         [Service]
         User=munin
-        Group=munin
+        Group=www-data
         StandardError=syslog
         Type=forking
         Restart=on-abort
         SyslogIdentifier=fastcgi-munin
         ExecStartPre=/bin/rm -f /var/run/fastcgi-munin.pid
-        ExecStart=/usr/bin/spawn-fcgi -s /var/run/munin/fcgi-munin-graph.sock -U www-data -u munin -g munin /usr/lib/munin/cgi/munin-cgi-graph 
+        ExecStartPre=/bin/rm -f /var/run/munin/fcgi-munin-graph.sock
+        ExecStart=/usr/bin/spawn-fcgi -s /var/run/munin/fcgi-munin-graph.sock -U www-data -u munin -g munin /usr/lib/munin/cgi/munin-cgi-graph -M 0770
 
         [Install]
         WantedBy=multi-user.target
