@@ -28,7 +28,8 @@ Configurer fastcgi pour attaquer le socket Unix du process spawn-fcgi
         
 débugger spawn-fcgi :
 
-        spawn-fcgi -n -s /var/run/munin/spawn-fcgi-munin-graph.sock -U www-data -u munin -g munin /usr/lib/munin/cgi/munin-cgi-graph
+        spawn-fcgi -n -s /var/run/munin/spawn-fcgi-munin-graph.sock \
+        -U www-data -u munin -g munin /usr/lib/munin/cgi/munin-cgi-graph
         
         
 spawn-fcgi et systemd
