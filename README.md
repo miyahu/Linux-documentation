@@ -34,19 +34,19 @@ débugger spawn-fcgi :
 spawn-fcgi et systemd
 
 cat  /etc/systemd/system/fastcgi-munin.service
-[Unit]
-Description=FastCGI spawner for Munin cgi
+        [Unit]
+        Description=FastCGI spawner for Munin cgi
 
-[Service]
-User=munin
-Group=munin
-StandardError=syslog
-Type=forking
-Restart=on-abort
-SyslogIdentifier=fastcgi-munin
-ExecStartPre=/bin/rm -f /var/run/fastcgi-munin.pid
-ExecStart=/usr/bin/spawn-fcgi -s /var/run/munin/fcgi-munin-graph.sock -U www-data -u munin -g munin /usr/lib/munin/cgi/munin-cgi-graph 
+        [Service]
+        User=munin
+        Group=munin
+        StandardError=syslog
+        Type=forking
+        Restart=on-abort
+        SyslogIdentifier=fastcgi-munin
+        ExecStartPre=/bin/rm -f /var/run/fastcgi-munin.pid
+        ExecStart=/usr/bin/spawn-fcgi -s /var/run/munin/fcgi-munin-graph.sock -U www-data -u munin -g munin         /usr/lib/munin/cgi/munin-cgi-graph 
 
-[Install]
-WantedBy=multi-user.target
+        [Install]
+        WantedBy=multi-user.target
 
