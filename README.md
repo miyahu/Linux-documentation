@@ -33,7 +33,7 @@ débugger spawn-fcgi :
         
 spawn-fcgi et systemd
 
-cat  /etc/systemd/system/fastcgi-munin.service
+        cat  /etc/systemd/system/fastcgi-munin.service
         [Unit]
         Description=FastCGI spawner for Munin cgi
 
