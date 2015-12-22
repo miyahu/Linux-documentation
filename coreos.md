@@ -9,4 +9,4 @@
 7. initialiser le mot de passe de core avec *passwd core* 
 
 ## FAQ
-Impossible de changer le clavier (keymap)
+Impossible de changer le clavier (keymap) lors d'une connexion console, pour avoir le clavier Francais, passez par **ssh**
