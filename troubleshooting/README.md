@@ -4,7 +4,7 @@
 
 *Si tu lui apprends à pêcher, il mangera toujours.*
                                           
-Il s'agit de méthodes d'analyse de comportement mise en oeuvre pour comprendre précisement le fonctionnement d'un programme, généralement utilisées dans dans le but de corriger une anomalie.
+Il s'agit de méthodes d'analyse mise en oeuvre généralement dans l'optique de comprendre le fonctionnement d'un programme ou d'en  déterminer une anomalie de fonctionnement.
 
 Le troubleshooting requiert de l'analyste une base technique correct ainsi qu'une bonne intuition, celle-çi lui permettra de prédire des comportements orthodoxes et à l'inverse, mettre en évidence ce qui ne l'est pas (orthodoxe hein, tu me suis ?). 
 
