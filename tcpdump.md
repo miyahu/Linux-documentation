@@ -2,10 +2,12 @@
 
 ## présentation
 Tcpdump permet de capturer le trafic réseau en vue de, par exemple, l'analyser.
+
 La lecture des RFC TCP, IPV4 et HTTP est généralement un bon pré-requis à la compréhension d'un dump.
 
 
 ## Analyse
+Exemple de petit =lab= d'analyse
 
 ```
 fg25:~# tcpdump -i lo tcp and port 1025 -s0 -w /tmp/out.pcap &
