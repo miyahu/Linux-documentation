@@ -10,7 +10,8 @@ La commande netstat permet, entre autre,  de connaitre l'état des sockets
 ## Utilisation typique
 * voir les services réseaux offerts
 * identifier des processus anormaux - analyse post-piratage
-* estimer la charge réseau - nb de connexion en ESTABLISH
+* estimer la charge réseau - nb de connexion en ESTABLISHED
+* voir si les tampons d'émission ou reception (Send-Q et Recv-Q) sont utilisés de manière importantes
 
 ## lab de démonstration 
 On monte le serveur de test
@@ -25,7 +26,7 @@ On envoi une string "pouet" sur le serveur
 ```
 fg25:~# echo "pouet" | netcat -w 1 localhost 1025
 ```
-Lecture du fichier
+Lecture du fichier (sortie tronquée et concatenée)
 ```
 fg25:~# cat  /tmp/pouet
 tcp        0      0 0.0.0.0:1025            0.0.0.0:*               LISTEN     3160/netcat         
@@ -39,7 +40,7 @@ tcp        0      0 127.0.0.1:57237         127.0.0.1:1025          TIME_WAIT  -
 tcp        0      0 127.0.0.1:57237         127.0.0.1:1025          TIME_WAIT  -                   
 tcp        0      0 127.0.0.1:57237         127.0.0.1:1025          TIME_WAIT  -
 ```
-### analyse
+### Post analyse
 * On peut suivre la modification du socket, passant de LISTEN à ESTABLISHED puis, une fois la connexion close, puis en TIME_WAIT. 
-* on pourra également suivre le changement de processus - client en 3217 - serveur en 3160
-* ainsi que la colonne des données émises et reçues sont à **0** car la string "pouet" est trop petite (6 octets) pour être capturée.  
+* on pourra également suivre le changement de PID du processus - client en 3217 et serveur en 3160
+* ainsi que les colonnes des données transmises et reçues sont à **0** car la string "pouet" est trop petite (6 octets) pour être capturée.  
