@@ -2,7 +2,7 @@
 
 La commande netstat permet, entre autre,  de connaitre l'état des sockets
 
-## démonstration 
+## lab de démonstration 
 On monte le serveur de test
 ```
 fg25:~# netcat -l -p 1025 &
