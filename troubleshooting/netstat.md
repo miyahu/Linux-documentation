@@ -1,5 +1,7 @@
 # netstat
 
+Niveau débutant
+
 La commande netstat permet, entre autre,  de connaitre l'état des sockets
 
 ## Utilisation typique
