@@ -42,6 +42,6 @@ tcp        0      0 127.0.0.1:57237         127.0.0.1:1025          TIME_WAIT  -
 tcp        0      0 127.0.0.1:57237         127.0.0.1:1025          TIME_WAIT  -
 ```
 
-* On peut suivre la modification du socket, passant de LISTEN à ESTABLISHED puis, une fois la connexion close, puis en TIME_WAIT. 
-* on pourra également suivre le changement de PID du processus - client en 3217 et serveur en 3160
+* On peut suivre la modification du socket, passant de **LISTEN** à **ESTABLISHED** puis, une fois la connexion close, puis en **TIME_WAIT** avant de passer en FIN_WAIT (non visible). 
+* on pourra également suivre le changement de PID du processus - client en **3217** et serveur en **3160**
 * ainsi que les colonnes des données transmises et reçues sont à **0** car la string "pouet" est trop petite (6 octets) pour être capturée.  
