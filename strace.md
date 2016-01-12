@@ -25,7 +25,7 @@ et j'envoi des données bidon
 francegalop25:~# echo "pouet" | netcat -w 1 localhost 1025
 pouet
 
-### Analyse ###
+### Analyse
 
 ```
 Et enfin, on regarde la trace et on essaye de l'interpreter
