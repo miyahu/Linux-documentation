@@ -5,7 +5,7 @@ Niveau avancé
 ## Présentation
 strace permet de suivre les appels systèmes et les signaux liés à un processus. 
 
-Un appel système peut un code retour et/ou une erreur ex **bind** retourne **EADDRINUSE** si l'adresse et le port sont déjà utilisés. 
+Concrètement, un appel système peut renvoyer un code retour et/ou une erreur ex **bind** retourne **EADDRINUSE** si l'adresse et le port sont déjà utilisés, *strace* le révèlera.
 
 ## Utilisation typique
 * connaitre les actions précise d'un processus - 
