@@ -99,6 +99,12 @@ Le type de périphérique indique la manière dont les données sont écrites su
 Quelles sont les logs ouverts par le serveur apache ?
 
 ```
+lsof -n -u www-data | grep log
+```
+
+et uniquement les logs d'erreur (fd 2)
+
+```
 fg25:~# lsof -n -u www-data -a -d w,2
 COMMAND   PID     USER   FD   TYPE DEVICE SIZE    NODE NAME
 apache2  3316 www-data    2w   REG    8,1  384 1124607 /var/log/apache2/error.log

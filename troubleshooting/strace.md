@@ -5,6 +5,8 @@ Niveau avancé
 ## Présentation
 strace permet de suivre les appels systèmes et les signaux liés à un processus. 
 
+Un appel système peut un code retour et/ou une erreur ex **bind** retourne **EADDRINUSE** si l'adresse et le port sont déjà utilisés. 
+
 ## Exemple concret 
 
 Je met un processus netcat en écoute local sur le port 1025 (netcat serveur) , ensuite, avec un autre netcat (netcat client), j'ouvre une connexion vers ce port et transmet chaine "pouet" ; après 1 seconde, je ferme la connexion. 
@@ -28,7 +30,7 @@ pouet
 
 ### Analyse
 
-Et enfin, on regarde la trace et on essaye de l'interpreter
+Maintenant on regarde la trace et on essaye de l'interpreter.
 ```
 fg25:~# cat /tmp/out
      1  13:28:20 execve("/bin/netcat", ["netcat", "-l", "-p", "1025"], [/* 17 vars */]) = 0
@@ -48,7 +50,7 @@ création de la socket TCP (SOCK_STREAM) sur IPV4 (PF_INET,) pour le netcat serv
    206  13:28:20 setsockopt(3, SOL_SOCKET, SO_REUSEADDR, [1], 4) = 0
    207  13:28:20 bind(3, {sa_family=AF_INET, sin_port=htons(1025), sin_addr=inet_addr("0.0.0.0")}, 16) = 0
 ```
-assignation de l'adresse "0.0.0.0" et du port "1025" au netcat serveur 
+assignation de l'adresse "0.0.0.0" et du port "1025" au netcat serveur (fd 3)
 
 ```
    208  13:28:20 listen(3, 1)                   = 0
