@@ -7,6 +7,12 @@ strace permet de suivre les appels systèmes et les signaux liés à un processu
 
 Un appel système peut un code retour et/ou une erreur ex **bind** retourne **EADDRINUSE** si l'adresse et le port sont déjà utilisés. 
 
+## Utilisation typique
+* connaitre les actions précise d'un processus - 
+* savoir quelles sont les ressources accéder par un processus - ouverture d'un socket
+* connaitre les données traitées par un processus - écriture dans un log
+* calculer le temps consommé par les appels systèmes et les comparer - savoir quelle appel occupe le processus php
+* 
 ## Exemple concret 
 
 Je met un processus netcat en écoute local sur le port 1025 (netcat serveur) , ensuite, avec un autre netcat (netcat client), j'ouvre une connexion vers ce port et transmet chaine "pouet" ; après 1 seconde, je ferme la connexion. 
