@@ -82,10 +82,10 @@ munin-nod 3321 root    5u  IPv4   7398             TCP *:munin (LISTEN)
 * la quatrième au descripteur de fichier (point d'entrée de communication), ainsi qu'à son accès  - 1w correspond à la sortie standard ouvert en écriture 
 * la cinquième correspond au type :
 
-    REG – fichier régulier
-    DIR – répertoire
-    FIFO – tube 
-    CHR – fichier de type caractère
+   **  REG – fichier régulier
+   **  DIR – répertoire
+   **  FIFO – tube 
+   **  CHR – fichier de type caractère
 
 
 Le type de périphérique indique la manière dont les données sont écrites sur un périphérique. Pour un périphérique caractère, on parle d'écriture en série, octet par octet, alors que pour un périphérique bloc (par exemple, un disque dur), elle s'effectue sous forme de blocs d'octet (ref1)
