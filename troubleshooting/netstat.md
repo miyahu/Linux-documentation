@@ -2,6 +2,11 @@
 
 La commande netstat permet, entre autre,  de connaitre l'état des sockets
 
+## Utilisation typique
+* voir les services réseaux offerts
+* identifier des processus anormaux - analyse post-piratage
+* estimer la charge réseau - nb de connexion en ESTABLISH
+
 ## lab de démonstration 
 On monte le serveur de test
 ```
