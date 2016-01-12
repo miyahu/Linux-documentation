@@ -4,7 +4,7 @@
 
 lsof permet de savoir quels objets utilise un processus - par objets on entend les fichiers, répertoires, sockets, descripteurs.
 
-lsof s'utilise beaucoup lors du troubleshooting système et un peu lors du troubleshooting réseau, un cas d'utilisation typique l'analyse post piratage.
+lsof s'utilise beaucoup lors du troubleshooting système et, un peu lors du troubleshooting réseau, un cas d'utilisation typique l'analyse post piratage.
 
 ### Quels processus utilise le fichier /var/log/syslog ?
 
