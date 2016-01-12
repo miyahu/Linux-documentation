@@ -17,7 +17,7 @@ fg25:~# echo "pouet" | netcat -w 1 localhost 1025
 ```
 Lecture du fichier
 ```
-francegalop25:~# cat  /tmp/pouet
+fg25:~# cat  /tmp/pouet
 tcp        0      0 0.0.0.0:1025            0.0.0.0:*               LISTEN     3160/netcat         
 tcp        0      0 0.0.0.0:1025            0.0.0.0:*               LISTEN     3160/netcat         
 tcp        0      0 0.0.0.0:1025            0.0.0.0:*               LISTEN     3160/netcat         

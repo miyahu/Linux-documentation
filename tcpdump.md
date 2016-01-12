@@ -6,13 +6,13 @@ Tcpdump permet de capturer le trafic en vue de, par exemple, l'analyser.
 ## Analyse
 
 ```
-francegalop25:~# tcpdump -i lo tcp and port 1025 -s0 -w /tmp/out.pcap &
-francegalop25:~# netcat -l -p 1025 &
-francegalop25:~# echo "pouet" | netcat -w 1 localhost 1025
+fg25:~# tcpdump -i lo tcp and port 1025 -s0 -w /tmp/out.pcap &
+fg25:~# netcat -l -p 1025 &
+fg25:~# echo "pouet" | netcat -w 1 localhost 1025
 ```
 Analyse
 ```
-francegalop25:~# tcpdump -Anr /tmp/out.pcap 
+fg25:~# tcpdump -Anr /tmp/out.pcap 
 reading from file /tmp/out.pcap, link-type EN10MB (Ethernet)
 14:48:13.864514 IP 127.0.0.1.53187 > 127.0.0.1.1025: S 2331260649:2331260649(0)
  win 32792 <mss 16396,sackOK,timestamp 4462404 0,nop,wscale 7>

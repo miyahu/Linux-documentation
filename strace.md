@@ -11,18 +11,18 @@ Je met un processus netcat en écoute local sur le port 1025 (netcat serveur) , 
 
 Je lance le process bidon
 ```
-francegalop25:~# strace -s -v -t -s 5000 -o /tmp/out netcat -l -p 1025 &
+fg25:~# strace -s -v -t -s 5000 -o /tmp/out netcat -l -p 1025 &
 ```
 
 J'en vérifie son execution
 ```
-francegalop25:~# netstat -lntp | grep 1025
+fg25:~# netstat -lntp | grep 1025
 tcp        0      0 0.0.0.0:1025            0.0.0.0:*               LISTEN     21083/netcat
 ```
 
 et j'envoi des données bidon
 ```
-francegalop25:~# echo "pouet" | netcat -w 1 localhost 1025
+fg25:~# echo "pouet" | netcat -w 1 localhost 1025
 pouet
 ```
 
@@ -30,7 +30,7 @@ pouet
 
 Et enfin, on regarde la trace et on essaye de l'interpreter
 ```
-francegalop25:~# cat /tmp/out
+fg25:~# cat /tmp/out
      1  13:28:20 execve("/bin/netcat", ["netcat", "-l", "-p", "1025"], [/* 17 vars */]) = 0
 ```
 Mise en écoute du netcat 
