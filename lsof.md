@@ -86,10 +86,30 @@ munin-nod 3321 root    5u  IPv4   7398             TCP *:munin (LISTEN)
  * DIR – répertoire
  * FIFO – tube 
  * CHR – fichier de type caractère
+* la sixième colone correspond à l'identifiant du périphérique (majeur et mineur) 
+* la septième correspond à la taille mémoire de la ressource 
+* la huitième correpond au numéro de l'inode de la ressource
+* la neuvième correspond au nom de la ressource   
+
 
 
 Le type de périphérique indique la manière dont les données sont écrites sur un périphérique. Pour un périphérique caractère, on parle d'écriture en série, octet par octet, alors que pour un périphérique bloc (par exemple, un disque dur), elle s'effectue sous forme de blocs d'octet (1)
 
+
+## exercices
+
+Quelles sont les logs ouverts par le serveur apache ?
+
+```
+francegalop25:~# lsof -n -u www-data -a -d w,2
+COMMAND   PID     USER   FD   TYPE DEVICE SIZE    NODE NAME
+apache2  3316 www-data    2w   REG    8,1  384 1124607 /var/log/apache2/error.log
+apache2  3317 www-data    2w   REG    8,1  384 1124607 /var/log/apache2/error.log
+apache2  3318 www-data    2w   REG    8,1  384 1124607 /var/log/apache2/error.log
+apache2  3319 www-data    2w   REG    8,1  384 1124607 /var/log/apache2/error.log
+apache2  3320 www-data    2w   REG    8,1  384 1124607 /var/log/apache2/error.log
+php     13010 www-data    2w  FIFO    0,6        45279 pipe
+```
 
 1) http://ftp.traduc.org/doc-vf/gazette-linux/html/2006/125/lg125-B.html#lg125b-3.fr
 
