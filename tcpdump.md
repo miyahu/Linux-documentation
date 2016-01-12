@@ -1,7 +1,9 @@
 #tcpdump
 
 ## présentation
-Tcpdump permet de capturer le trafic en vue de, par exemple, l'analyser.
+Tcpdump permet de capturer le trafic réseau en vue de, par exemple, l'analyser.
+La lecture des RFC TCP, IPV4 et HTTP est généralement un bon pré-requis à la compréhension d'un dump.
+
 
 ## Analyse
 
