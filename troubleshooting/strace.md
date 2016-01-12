@@ -13,7 +13,7 @@ Concrètement, un appel système peut renvoyer un code retour et/ou une erreur e
 * connaitre les données traitées par un processus - écriture dans un log
 * calculer le temps consommé par les appels systèmes et les comparer - savoir quel appel occupe le processus php
 
-## Exemples concret 
+## Lab de démonstration 
 
 Je met un processus netcat en écoute local sur le port 1025 (netcat serveur) , ensuite, avec un autre netcat (netcat client), j'ouvre une connexion vers ce port et transmet chaine "pouet" ; après 1 seconde, je ferme la connexion. 
 
@@ -34,7 +34,7 @@ fg25:~# echo "pouet" | netcat -w 1 localhost 1025
 pouet
 ```
 
-### Analyse
+### Analyse de la trace
 
 Maintenant on regarde la trace et on essaye de l'interpreter.
 ```
