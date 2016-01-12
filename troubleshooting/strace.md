@@ -11,7 +11,7 @@ Concrètement, un appel système peut renvoyer un code retour et/ou une erreur e
 * connaitre les actions précise d'un processus - 
 * savoir quelles sont les ressources accéder par un processus - ouverture d'un socket
 * connaitre les données traitées par un processus - écriture dans un log
-* calculer le temps consommé par les appels systèmes et les comparer - savoir quelle appel occupe le processus php
+* calculer le temps consommé par les appels systèmes et les comparer - savoir quel appel occupe le processus php
 
 ## Exemples concret 
 
