@@ -20,7 +20,7 @@ fg25:~# netcat -l -p 1025 &
 ```
 Puis on surveille le socket 10 fois par seconde (valeur arbitraire mais suffisement fréquente pour capturer un évenement)
 ```
-while true ; do sleep 0.1 ; netstat -antp | grep 1025 >>  /tmp/pouet ; done &
+while true ; do sleep 0.1 ; netstat -4antp | grep 1025 >>  /tmp/pouet ; done &
 ```
 Enfin, envoi la string "pouet" sur le serveur
 ```
