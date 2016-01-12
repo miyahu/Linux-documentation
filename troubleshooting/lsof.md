@@ -1,10 +1,12 @@
 #lsof
 
-## Présentation et exemple 
+## Présentation
 
-lsof permet de savoir quels objets utilise un processus - par objets on entend les fichiers, répertoires, sockets, descripteurs.
+lsof permet de connaitre les éléments utilisés par un processus - par élément on entend les fichiers, les répertoires, les sockets et les descripteurs.
 
 lsof s'utilise beaucoup lors du troubleshooting système et, un peu lors du troubleshooting réseau - un cas d'utilisation typique étant l'analyse post-piratage.
+
+## Exemples de'utilisation
 
 ### Quels processus utilise le fichier /var/log/syslog ?
 
