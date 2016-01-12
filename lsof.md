@@ -1,5 +1,6 @@
 #lsof
 
+## Présentation et exemple 
 
 lsof permet de savoir quels objets utilise un processus - par objets on entend fichiers, répertoires, sockets, descripteurs.
 
@@ -43,4 +44,53 @@ Dans cette exemple, on peut constater que l'utilisateur www-data n'écoute pas s
     lsof -u www-data
 
 
-2) Analyse de la sortie
+## Analyse de la sortie
+
+```
+francegalop25:~# lsof -nc munin-node 
+COMMAND    PID USER   FD   TYPE DEVICE    SIZE    NODE NAME
+munin-nod 3321 root  cwd    DIR    8,1    4096       2 /
+munin-nod 3321 root  rtd    DIR    8,1    4096       2 /
+munin-nod 3321 root  txt    REG    8,1 1061700 1540108 /usr/bin/perl
+munin-nod 3321 root  mem    REG    0,0               0 [heap] (stat: No such file or directory)
+munin-nod 3321 root  mem    REG    8,1   38372 1442019 /lib/tls/i686/cmov/libnss_files-2.3.6.so
+munin-nod 3321 root  mem    REG    8,1   34320 1441973 /lib/tls/i686/cmov/libnss_nis-2.3.6.so
+munin-nod 3321 root  mem    REG    8,1   76548 1441972 /lib/tls/i686/cmov/libnsl-2.3.6.so
+munin-nod 3321 root  mem    REG    8,1   30428 1441801 /lib/tls/i686/cmov/libnss_compat-2.3.6.so
+munin-nod 3321 root  mem    REG    8,1    5916 1526179 /usr/lib/perl/5.8.8/auto/Sys/Hostname/Hostname.so
+munin-nod 3321 root  mem    REG    8,1   11784 1523806 /usr/lib/perl/5.8.8/auto/Fcntl/Fcntl.so
+munin-nod 3321 root  mem    REG    8,1  111304 1523796 /usr/lib/perl/5.8.8/auto/POSIX/POSIX.so
+munin-nod 3321 root  mem    REG    8,1   15640 1523778 /usr/lib/perl/5.8.8/auto/IO/IO.so
+munin-nod 3321 root  mem    REG    8,1   21868 1441960 /lib/tls/i686/cmov/libcrypt-2.3.6.so
+munin-nod 3321 root  mem    REG    8,1 1241392 1441958 /lib/tls/i686/cmov/libc-2.3.6.so
+munin-nod 3321 root  mem    REG    8,1   89370 1442018 /lib/tls/i686/cmov/libpthread-2.3.6.so
+munin-nod 3321 root  mem    REG    8,1  145136 1441957 /lib/tls/i686/cmov/libm-2.3.6.so
+munin-nod 3321 root  mem    REG    8,1    9592 1441795 /lib/tls/i686/cmov/libdl-2.3.6.so
+munin-nod 3321 root  mem    REG    8,1   19764 1523772 /usr/lib/perl/5.8.8/auto/Socket/Socket.so
+munin-nod 3321 root  mem    REG    8,1   88164 5201938 /lib/ld-2.3.6.so
+munin-nod 3321 root    0r   CHR    1,3            1103 /dev/null
+munin-nod 3321 root    1w   CHR    1,3            1103 /dev/null
+munin-nod 3321 root    2w   REG    8,1   16770  532647 /var/log/munin/munin-node.log
+munin-nod 3321 root    3r   REG    8,1     784 4776242 /etc/munin/munin-node.conf
+munin-nod 3321 root    4w   REG    8,1   16770  532647 /var/log/munin/munin-node.log
+munin-nod 3321 root    5u  IPv4   7398             TCP *:munin (LISTEN)
+```
+
+* la première colone correspond à la commande lancée - ex /usr/sbin/sshd -D 
+* la seconde au PID du processus - ex 1121
+* la troisième à l'utilisateur du processus - ex www-data
+* la quatrième au descripteur de fichier (point d'entrée de communication), ainsi qu'à son accès  - 1w correspond à la sortie standard ouvert en écriture 
+* la cinquième correspond au type :
+
+    REG – fichier régulier
+    DIR – répertoire
+    FIFO – tube 
+    CHR – fichier de type caractère
+
+
+Le type de périphérique indique la manière dont les données sont écrites sur un périphérique. Pour un périphérique caractère, on parle d'écriture en série, octet par octet, alors que pour un périphérique bloc (par exemple, un disque dur), elle s'effectue sous forme de blocs d'octet (ref1)
+
+
+1) http://ftp.traduc.org/doc-vf/gazette-linux/html/2006/125/lg125-B.html#lg125b-3.fr
+
+
