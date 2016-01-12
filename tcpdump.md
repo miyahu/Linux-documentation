@@ -1,5 +1,9 @@
 #tcpdump
 
+## présentation
+Tcpdump permet de capturer le trafic en vue de, par exemple, l'analyser.
+
+## Analyse
 
 ```
 francegalop25:~# tcpdump -i lo tcp and port 1025 -s0 -w /tmp/out.pcap &
