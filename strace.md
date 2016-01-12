@@ -64,7 +64,13 @@ connexion sur le socket par le netcat client
 Le bind du netcat serveur se termine, il cesse d'écouter sur le port 1025 mais continue de servir la connexion ouverte  
 ```
    216  13:28:30 getsockname(4, {sa_family=AF_INET, sin_port=htons(1025), sin_addr=inet_addr("127.0.0.1")}, [16]) = 0
+```
+ben euh ...
+```
    217  13:28:30 select(16, [0 4], NULL, NULL, NULL) = 1 (in [4])
+```
+le processus ? continu à scruter ses fd, de manière non bloquante
+```
    218  13:28:30 read(4, "pouet\n", 8192)       = 6
 ```
 Lecture de la chaine "pouet" (6 octets) sur le socket serveur (fd 4)
