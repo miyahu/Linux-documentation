@@ -6,6 +6,11 @@ lsof permet de connaitre les éléments utilisés par un processus - par éléme
 
 lsof s'utilise principalement pour effectuer du troubleshooting système et, dans une moindre mesure, du troubleshooting réseau ; un cas d'utilisation typique étant l'analyse post-piratage.
 
+### utilisation typique
+* en cas de piratage, trouver les fichiers sources d'un processus écoutant sur un socket
+* trouver les fichiers dépendant du processus ex log personnalisé
+* regarder les libs chargée pour identifié le programme ex tomcat 
+
 ## Quelques exemples d'utilisation
 
 ### Quels processus utilisent le fichier /var/log/syslog ?
