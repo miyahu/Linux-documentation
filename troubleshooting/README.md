@@ -1,6 +1,7 @@
 # Troubleshooting système et réseau sous Linux
 
 *Si tu donnes un poisson à un homme, il mangera un jour.*
+
 *Si tu lui apprends à pêcher, il mangera toujours.*
                                           
 Il s'agit de méthodes d'analyse de comportement mise en oeuvre pour comprendre précisement le fonctionnement d'un programme, généralement utilisées dans dans le but de corriger une anomalie.
