@@ -4,13 +4,13 @@
 
 lsof permet de connaitre les éléments utilisés par un processus - par élément on entend les fichiers, les répertoires, les sockets et les descripteurs.
 
-lsof s'utilise beaucoup lors du troubleshooting système et, un peu lors du troubleshooting réseau - un cas d'utilisation typique étant l'analyse post-piratage.
+lsof s'utilise principalement pour effectuer du troubleshooting système et, dans une moindre mesure, du troubleshooting réseau ; un cas d'utilisation typique étant l'analyse post-piratage.
 
-## Exemples de'utilisation
+## Quelques exemples d'utilisation
 
-### Quels processus utilise le fichier /var/log/syslog ?
+### Quels processus utilisent le fichier /var/log/syslog ?
 
-    lsof /var/log/syslog
+    fg25:~# lsof /var/log/syslog
 
 ### Quels sont les fichiers ouverts par le processus ?
 
@@ -22,29 +22,28 @@ lsof s'utilise beaucoup lors du troubleshooting système et, un peu lors du trou
     sshd    3094 root  txt    REG    8,1  321328 1532308 /usr/sbin/sshd
 ```
 
-
-### Quels sont les sockets TCP ouverts par un processus ?
+### Quels sont les *sockets* *TCP* ouverts par un processus ?
 
     fg25:~# lsof -ni 4 -a -u www-data
     COMMAND   PID     USER   FD   TYPE DEVICE SIZE NODE NAME
     php     15743 www-data    3u  IPv4 554042       TCP 223.182.58.229:38046->223.218.158.233:mysql (SYN_SENT)
 
-#### Question ?
+#### Remarque 
 
-Dans cette exemple, on peut constater que l'utilisateur www-data n'écoute pas sur le port 80, c'est normal car par sécurité Apache écoute en root sur le port 80 et sert ensuite les clients en www-data, compte non privilégié
+* l'option -a permet d'effectuer un ET logique sur les options
+* dans cette exemple, on peut constater que l'utilisateur www-data n'écoute pas sur le port 80, c'est normal car par sécurité Apache écoute en root sur le port 80 et sert ensuite les clients en www-data, compte non privilégié
 
-### Quel processus à ouvert un socket sur le port 22 ?
+### Quel processus à ouvert un socket sur le *port* *22* ?
     lsof -ni tcp:22
     COMMAND  PID USER   FD   TYPE DEVICE SIZE NODE NAME
     sshd    3094 root    3u  IPv6   7235       TCP *:ssh (LISTEN)
     sshd    8681 root    3u  IPv6  32581       TCP 213.282.158.229:ssh->213.228.137.221:34288 (ESTABLISHED)
 
-### Quel processus accède à un répertoire ?
+### Quel processus accède au répertoire */var/lib/* ?
     lsof +D /var/lib/
 
-### Quel sont les fichiers ouverts par les processus d'un utilisateur
+### Quel sont les fichiers ouverts par les processus de l'utilisateur Apache
     lsof -u www-data
-
 
 ## Analyse de la sortie
 
@@ -93,10 +92,7 @@ munin-nod 3321 root    5u  IPv4   7398             TCP *:munin (LISTEN)
 * la huitième correpond au numéro de l'inode de la ressource
 * la neuvième correspond au nom de la ressource   
 
-
-
 Le type de périphérique indique la manière dont les données sont écrites sur un périphérique. Pour un périphérique caractère, on parle d'écriture en série, octet par octet, alors que pour un périphérique bloc (par exemple, un disque dur), elle s'effectue sous forme de blocs d'octet (1)
-
 
 ## exercices
 
