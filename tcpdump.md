@@ -7,7 +7,7 @@ La lecture des RFC TCP, IPV4 et HTTP est généralement un bon pré-requis à la
 
 
 ## Analyse
-Exemple de petit =lab= d'analyse
+Exemple de petit **lab** d'analyse
 
 ```
 fg25:~# tcpdump -i lo tcp and port 1025 -s0 -w /tmp/out.pcap &
