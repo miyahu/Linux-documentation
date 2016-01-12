@@ -37,4 +37,5 @@ tcp        0      0 127.0.0.1:57237         127.0.0.1:1025          TIME_WAIT  -
 tcp        0      0 127.0.0.1:57237         127.0.0.1:1025          TIME_WAIT  -
 ```
 ### analyse
-On peut suivre la modification du socket, passant de LISTEN à ESTABLISHED puis, une fois la connexion close, puis en TIME_WAIT. 
+* On peut suivre la modification du socket, passant de LISTEN à ESTABLISHED puis, une fois la connexion close, puis en TIME_WAIT. 
+* on pourra également suivre le changement de processus - client en 3217 - serveur en 3160
