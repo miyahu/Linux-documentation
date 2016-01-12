@@ -18,14 +18,15 @@ On monte le serveur de test
 ```
 fg25:~# netcat -l -p 1025 &
 ```
-On surveille le socket 10 fois par seconde
+Puis on surveille le socket 10 fois par seconde (valeur arbitraire mais suffisement fréquente pour capturer un évenement)
 ```
 while true ; do sleep 0.1 ; netstat -antp | grep 1025 >>  /tmp/pouet ; done &
 ```
-On envoi une string "pouet" sur le serveur
+Enfin, envoi la string "pouet" sur le serveur
 ```
 fg25:~# echo "pouet" | netcat -w 1 localhost 1025
 ```
+### Post analyse
 Lecture du fichier (sortie tronquée et concatenée)
 ```
 fg25:~# cat  /tmp/pouet
@@ -40,7 +41,7 @@ tcp        0      0 127.0.0.1:57237         127.0.0.1:1025          TIME_WAIT  -
 tcp        0      0 127.0.0.1:57237         127.0.0.1:1025          TIME_WAIT  -                   
 tcp        0      0 127.0.0.1:57237         127.0.0.1:1025          TIME_WAIT  -
 ```
-### Post analyse
+
 * On peut suivre la modification du socket, passant de LISTEN à ESTABLISHED puis, une fois la connexion close, puis en TIME_WAIT. 
 * on pourra également suivre le changement de PID du processus - client en 3217 et serveur en 3160
 * ainsi que les colonnes des données transmises et reçues sont à **0** car la string "pouet" est trop petite (6 octets) pour être capturée.  
