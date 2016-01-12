@@ -27,7 +27,7 @@ lsof s'utilise beaucoup lors du troubleshooting système et un peu lors du troub
     COMMAND   PID     USER   FD   TYPE DEVICE SIZE NODE NAME
     php     15743 www-data    3u  IPv4 554042       TCP 213.182.58.229:38046->213.218.148.233:mysql (SYN_SENT)
 
-Question
+#### Question ?
 
 Dans cette exemple, on peut constater que l'utilisateur www-data n'écoute pas sur le port 80, c'est normal car par sécurité Apache écoute en root sur le port 80 et sert ensuite les clients en www-data, compte non privilégié
 
@@ -88,7 +88,7 @@ munin-nod 3321 root    5u  IPv4   7398             TCP *:munin (LISTEN)
  * CHR – fichier de type caractère
 
 
-Le type de périphérique indique la manière dont les données sont écrites sur un périphérique. Pour un périphérique caractère, on parle d'écriture en série, octet par octet, alors que pour un périphérique bloc (par exemple, un disque dur), elle s'effectue sous forme de blocs d'octet (ref1)
+Le type de périphérique indique la manière dont les données sont écrites sur un périphérique. Pour un périphérique caractère, on parle d'écriture en série, octet par octet, alors que pour un périphérique bloc (par exemple, un disque dur), elle s'effectue sous forme de blocs d'octet (1)
 
 
 1) http://ftp.traduc.org/doc-vf/gazette-linux/html/2006/125/lg125-B.html#lg125b-3.fr
