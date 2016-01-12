@@ -12,8 +12,8 @@ Concrètement, un appel système peut renvoyer un code retour et/ou une erreur e
 * savoir quelles sont les ressources accéder par un processus - ouverture d'un socket
 * connaitre les données traitées par un processus - écriture dans un log
 * calculer le temps consommé par les appels systèmes et les comparer - savoir quelle appel occupe le processus php
-* 
-## Exemple concret 
+
+## Exemples concret 
 
 Je met un processus netcat en écoute local sur le port 1025 (netcat serveur) , ensuite, avec un autre netcat (netcat client), j'ouvre une connexion vers ce port et transmet chaine "pouet" ; après 1 seconde, je ferme la connexion. 
 
