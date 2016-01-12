@@ -2,9 +2,9 @@
 
 ## Présentation et exemple 
 
-lsof permet de savoir quels objets utilise un processus - par objets on entend fichiers, répertoires, sockets, descripteurs.
+lsof permet de savoir quels objets utilise un processus - par objets on entend les fichiers, répertoires, sockets, descripteurs.
 
-lsof s'utilise beaucoup lors du troubleshooting système et un peu lors du troubleshooting réseau, un cas d'utilisation typique l'analyse d'un piratage.
+lsof s'utilise beaucoup lors du troubleshooting système et un peu lors du troubleshooting réseau, un cas d'utilisation typique l'analyse post piratage.
 
 ### Quels processus utilise le fichier /var/log/syslog ?
 
@@ -13,7 +13,7 @@ lsof s'utilise beaucoup lors du troubleshooting système et un peu lors du troub
 ### Quels sont les fichiers ouverts par le processus ?
 
 ```
-    francegalop25:~# lsof -p 3094
+    fg25:~# lsof -p 3094
     COMMAND  PID USER   FD   TYPE DEVICE    SIZE    NODE NAME
     sshd    3094 root  cwd    DIR    8,1    4096       2 /
     sshd    3094 root  rtd    DIR    8,1    4096       2 /
@@ -23,9 +23,9 @@ lsof s'utilise beaucoup lors du troubleshooting système et un peu lors du troub
 
 ### Quels sont les sockets TCP ouverts par un processus ?
 
-    francegalop25:~# lsof -ni 4 -a -u www-data
+    fg25:~# lsof -ni 4 -a -u www-data
     COMMAND   PID     USER   FD   TYPE DEVICE SIZE NODE NAME
-    php     15743 www-data    3u  IPv4 554042       TCP 213.182.58.229:38046->213.218.148.233:mysql (SYN_SENT)
+    php     15743 www-data    3u  IPv4 554042       TCP 223.182.58.229:38046->223.218.158.233:mysql (SYN_SENT)
 
 #### Question ?
 
@@ -35,7 +35,7 @@ Dans cette exemple, on peut constater que l'utilisateur www-data n'écoute pas s
     lsof -ni tcp:22
     COMMAND  PID USER   FD   TYPE DEVICE SIZE NODE NAME
     sshd    3094 root    3u  IPv6   7235       TCP *:ssh (LISTEN)
-    sshd    8681 root    3u  IPv6  32581       TCP 213.182.58.229:ssh->213.218.130.221:34288 (ESTABLISHED)
+    sshd    8681 root    3u  IPv6  32581       TCP 213.282.158.229:ssh->213.228.137.221:34288 (ESTABLISHED)
 
 ### Quel processus accède à un répertoire ?
     lsof +D /var/lib/
@@ -47,7 +47,7 @@ Dans cette exemple, on peut constater que l'utilisateur www-data n'écoute pas s
 ## Analyse de la sortie
 
 ```
-francegalop25:~# lsof -nc munin-node 
+fg25:~# lsof -nc munin-node 
 COMMAND    PID USER   FD   TYPE DEVICE    SIZE    NODE NAME
 munin-nod 3321 root  cwd    DIR    8,1    4096       2 /
 munin-nod 3321 root  rtd    DIR    8,1    4096       2 /
@@ -101,7 +101,7 @@ Le type de périphérique indique la manière dont les données sont écrites su
 Quelles sont les logs ouverts par le serveur apache ?
 
 ```
-francegalop25:~# lsof -n -u www-data -a -d w,2
+fg25:~# lsof -n -u www-data -a -d w,2
 COMMAND   PID     USER   FD   TYPE DEVICE SIZE    NODE NAME
 apache2  3316 www-data    2w   REG    8,1  384 1124607 /var/log/apache2/error.log
 apache2  3317 www-data    2w   REG    8,1  384 1124607 /var/log/apache2/error.log
