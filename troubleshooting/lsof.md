@@ -1,5 +1,7 @@
 #lsof
 
+Niveau moyen
+
 ## Présentation
 
 lsof permet de connaitre les éléments utilisés par un processus - par élément on entend les fichiers, les répertoires, les sockets et les descripteurs.
