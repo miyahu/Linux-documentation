@@ -7,7 +7,7 @@ strace permet de suivre les appels systèmes et les signaux liés à un processu
 
 ## Exemple concret 
 
-Je met un processus netcat en écoute local sur le port 1025, ensuite j'ouvre une connexion vers ce port et transmet chaine "pouet" ; après 1 seconde, je ferme la connexion. 
+Je met un processus netcat en écoute local sur le port 1025 (netcat serveur) , ensuite, avec un autre netcat (netcat client), j'ouvre une connexion vers ce port et transmet chaine "pouet" ; après 1 seconde, je ferme la connexion. 
 
 Je lance le process bidon
 ```
@@ -31,56 +31,69 @@ pouet
 Et enfin, on regarde la trace et on essaye de l'interpreter
 ```
 francegalop25:~# cat /tmp/out
-13:28:20 execve("/bin/netcat", ["netcat", "-l", "-p", "1025"], [/* 17 vars */]) = 0
-13:28:20 uname({sys="Linux", node="francegalop25", ...}) = 0
-13:28:20 brk(0)                         = 0x804e000
-13:28:20 access("/etc/ld.so.nohwcap", F_OK) = -1 ENOENT (No such file or directory)
-13:28:20 mmap2(NULL, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xb7f39000
-13:28:20 access("/etc/ld.so.preload", R_OK) = -1 ENOENT (No such file or directory)
-13:28:20 open("/etc/ld.so.cache", O_RDONLY) = 3
-13:28:20 fstat64(3, {st_mode=S_IFREG|0644, st_size=25170, ...}) = 0
-13:28:20 mmap2(NULL, 25170, PROT_READ, MAP_PRIVATE, 3, 0) = 0xb7f32000
-13:28:20 close(3)                       = 0
-13:28:20 access("/etc/ld.so.nohwcap", F_OK) = -1 ENOENT (No such file or directory)
-13:28:20 open("/lib/tls/i686/cmov/libc.so.6", O_RDONLY) = 3
-13:28:20 read(3, "\177ELF\1\1\1\0\0\0\0\0\0\0\0\0\3\0\3\0\1\0\0\0\240O\1\0004\0\0\0\250\347\22\0\0\0\0\0004\0 \0\n\0(\0=\0<\0\6\0\0\0004\0\0\0004\0\0\0004\0\0\0@\1\0\0@\1\0\0\5\0\0\0\4\0\0\0
-\3\0\0\0\340]\22\0\340]\22\0\340]\22\0\23\0\0\0\23\0\0\0\4\0\0\0\1\0\0\0\1\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\304m\22\0\304m\22\0\5\0\0\0\0\20\0\0\1\0\0\0\274v\22\0\274v\22\0\274v\22\0Tf\0\0\340\
-221\0\0\6\0\0\0\0\20\0\0\2\0\0\0<\315\22\0<\315\22\0<\315\22\0\350\0\0\0\350\0\0\0\6\0\0\0\4\0\0\0\4\0\0\0t\1\0\0t\1\0\0t\1\0\0 \0\0\0 \0\0\0\4\0\0\0\4\0\0\0\7\0\0\0\330\262\22\0\330\262\22\
-0\330\262\22\0\10\0\0\0(\0\0\0\4\0\0\0\4\0\0\0P\345td\364]\22\0\364]\22\0\364]\22\0\274\r\0\0\274\r\0\0\4\0\0\0\4\0\0\0Q\345td\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\6\0\0\0\4\0\0\0R\345td\
-274v\22\0\274v\22\0\274v\22\0 Y\0\0 Y\0\0\4\0\0\0 \0\0\0\4\0\0\0\20\0\0\0\1\0\0\0GNU\0\0\0\0\0\2\0\0\0\6\0\0\0\0\0\0\0\377\3\0\0m\10\0\0\5\1\0\0\214\6\0\0U\2\0\0\321\0\0\0\364\6\0\0\0\0\0\0\
-0\0\0\0\0\0\0\0\0\0\0\0{\6\0\0\333\5\0\0\0\0\0\0%\10\0\0\205\6\0\0\23\2\0\0\247\2\0\0009\10\0\0\"\4\0\0.\10\0\0\0\0\0\0\272\6\0\0|\2\0\0\373\7\0\0\'\6\0\0\311\4\0\0", 512) = 512
-13:28:20 fstat64(3, {st_mode=S_IFREG|0644, st_size=1241392, ...}) = 0
-13:28:20 mmap2(NULL, 1247388, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0xb7e01000
-13:28:20 mmap2(0xb7f28000, 28672, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x127) = 0xb7f28000
-13:28:20 mmap2(0xb7f2f000, 10396, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0xb7f2f000
-13:28:20 close(3)                       = 0
-13:28:20 mmap2(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xb7e00000
-13:28:20 mprotect(0xb7f28000, 20480, PROT_READ) = 0
-13:28:20 set_thread_area({entry_number:-1 -> 6, base_addr:0xb7e008e0, limit:1048575, seg_32bit:1, contents:0, read_exec_only:0, limit_in_pages:1, seg_not_present:0, useable:1}) = 0
-13:28:20 munmap(0xb7f32000, 25170)      = 0
-13:28:20 gettimeofday({1452601700, 691686}, NULL) = 0
-13:28:20 getpid()                       = 22425
-13:28:20 brk(0)                         = 0x804e000
-13:28:20 brk(0x806f000)                 = 0x806f000
-13:28:20 open("/etc/resolv.conf", O_RDONLY) = 3
-13:28:20 fstat64(3, {st_mode=S_IFREG|0644, st_size=71, ...}) = 0
-13:28:20 mmap2(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xb7f38000
-13:28:20 read(3, "search ecritel.net\nnameserver 195.200.97.54\nnameserver 195.200.116.151\n", 4096) = 71
-13:28:20 read(3, "", 4096)              = 0
-13:28:20 close(3)                       = 0
-13:28:20 munmap(0xb7f38000, 4096)       = 0
-13:28:20 rt_sigaction(SIGINT, {0x8049160, [INT], SA_RESTART}, {SIG_DFL}, 8) = 0
-13:28:20 rt_sigaction(SIGQUIT, {0x8049160, [QUIT], SA_RESTART}, {SIG_DFL}, 8) = 0
-13:28:20 rt_sigaction(SIGTERM, {0x8049160, [TERM], SA_RESTART}, {SIG_DFL}, 8) = 0
-13:28:20 rt_sigaction(SIGURG, {SIG_IGN}, {SIG_DFL}, 8) = 0
-13:28:20 rt_sigaction(SIGPIPE, {SIG_IGN}, {SIG_DFL}, 8) = 0
-13:28:20 open("/etc/nsswitch.conf", O_RDONLY) = 3
-13:28:20 fstat64(3, {st_mode=S_IFREG|0644, st_size=475, ...}) = 0
+     1  13:28:20 execve("/bin/netcat", ["netcat", "-l", "-p", "1025"], [/* 17 vars */]) = 0
+```
+Mise en écoute du netcat 
+```
+...
+...
+...
+   202  13:28:20 read(3, "", 4096)              = 0
+   203  13:28:20 close(3)                       = 0
+   204  13:28:20 munmap(0xb7f38000, 4096)       = 0
+   205  13:28:20 socket(PF_INET, SOCK_STREAM, IPPROTO_TCP) = 3
+```
+création de la socket TCP (SOCK_STREAM) sur IPV4 (PF_INET,) pour le netcat serveur 
+```
+   206  13:28:20 setsockopt(3, SOL_SOCKET, SO_REUSEADDR, [1], 4) = 0
+   207  13:28:20 bind(3, {sa_family=AF_INET, sin_port=htons(1025), sin_addr=inet_addr("0.0.0.0")}, 16) = 0
+```
+assignation de l'adresse "0.0.0.0" et du port "1025" au netcat serveur 
+
+```
+   208  13:28:20 listen(3, 1)                   = 0
+```
+écoute du processus sur le socket 
+```
+   212  13:28:20 accept(3, {sa_family=AF_INET, sin_port=htons(54425), sin_addr=inet_addr("127.0.0.1")}, [16]) = 4
+```
+connexion sur le socket par le netcat client
+```
+   215  13:28:30 close(3)                       = 0
+```
+Le bind du netcat serveur se termine, il cesse d'écouter sur le port 1025 mais continue de servir la connexion ouverte  
+```
+   216  13:28:30 getsockname(4, {sa_family=AF_INET, sin_port=htons(1025), sin_addr=inet_addr("127.0.0.1")}, [16]) = 0
+   217  13:28:30 select(16, [0 4], NULL, NULL, NULL) = 1 (in [4])
+   218  13:28:30 read(4, "pouet\n", 8192)       = 6
+```
+Lecture de la chaine "pouet" (6 octets) sur le socket serveur (fd 4)
+```
+   219  13:28:30 write(1, "pouet\n", 6)         = 6
+```
+Ecriture de la chaine "pouet" (6 octets) sur la sortie standard du netcat serveur (fd 0)
+```
+   220  13:28:30 select(16, [0 4], NULL, NULL, NULL) = 1 (in [4])
+   221  13:28:32 read(4, "", 8192)              = 0
+```
+fermeture du socket serveur présenté au client netcat (fd 4) 
+```
+   222  13:28:32 close(4)                       = 0
+```
+sortie avec code 0
+```
+   223  13:28:32 exit_group(0)                  = ?
 ```
 
 Description des appels systèmes rencontrés :
 
 * execve : execute program 
+* socket : create an endpoint for communication
+* bind : bind a name to a socket
+* listen : listen for connections on a socket
+* accept, accept4 : accept a connection on a socket
+* getsockname : get socket name - getsockname() returns the current address to which the socket sockfd is bound, in the buffer pointed to by addr
+* select,  pselect, FD_CLR, FD_ISSET, FD_SET, FD_ZERO : synchronous I/O multiplexing - select() and pselect() allow a program to monitor multiple file descriptors, waiting until one or more of the file descriptors become "ready" for some class of I/O operation (e.g., input possible)
 * uname : get name and information about current kernel
 * access, faccessat : check user's permissions for a file
 * brk, sbrk : change data segment size
