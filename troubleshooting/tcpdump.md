@@ -9,9 +9,9 @@ La lecture des RFC TCP, IPV4 et HTTP est généralement un bon pré-requis à la
 
 ## Utilisation typique
 - anomalie réseau - pas de connexion vers untel
-- comportement des services orienté réseau - **zero size reply** après une requête
+- comportement des services orientés réseau - **zero size reply** après une requête par exemple
 - détection de problème de performance - multiples petites requêtes au lieu de plus grosses et moins fréquentes
-- détection de flux non attendue - piratage et detection de services inconnus 
+- détection de flux non attendu - détection de services inconnus ou piratés 
 
 ## Lab de démonstration
 ### Génération de trafic et capture
@@ -20,7 +20,7 @@ fg25:~# tcpdump -i lo tcp and port 1025 -s0 -w /tmp/out.pcap &
 fg25:~# netcat -l -p 1025 &
 fg25:~# echo "pouet" | netcat -w 1 localhost 1025
 ```
-### Analyse
+### Post-analyse
 ```
 fg25:~# tcpdump -Anr /tmp/out.pcap 
 reading from file /tmp/out.pcap, link-type EN10MB (Ethernet)
