@@ -14,11 +14,11 @@ Les processus entre crochets appartiennent au noyau.
 
 Explication sur le titre des colones :
 
-* USER : 
-* PID
-* %CPU
-* %MEM
-* VSZ
+* USER : identité du processus
+* PID : identifiant du processus 
+* %CPU : pourcentage CPU utilisé par le processus
+* %MEM : pourcentage mémoire physique utilisée par le processus
+* VSZ : 
 * RSS
 * TTY
 * STAT
