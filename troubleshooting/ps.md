@@ -12,6 +12,20 @@ Niveau facile
 
 Les processus entre crochets appartiennent au noyau.
 
+Explication sur le titre des colones :
+
+* USER : 
+* PID
+* %CPU
+* %MEM
+* VSZ
+* RSS
+* TTY
+* STAT
+* START
+* TIME
+* COMMAND
+
 ```
 francegalop25:~# ps auxf
 USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
