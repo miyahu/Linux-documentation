@@ -24,9 +24,9 @@ Explication sur le titre des colones :
 * RSS : mémoire physique utilisée par le processus
 * TTY : console, apparaît quand le processus est lié à un terminal
 * STAT : état du processus, par exemple en attente (sleep), en cours d'execution sur le CPU (R) etc ...
-* START :
-* TIME :
-* COMMAND :
+* START : âge du processus
+* TIME : temps CPU cumulé - très utile pour connaître le processus consommant du CPU
+* COMMAND : commande executée
 
 ```
 francegalop25:~# ps auxf
