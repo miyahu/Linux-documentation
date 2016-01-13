@@ -22,8 +22,8 @@ Explication sur le titre des colones :
 * %MEM : pourcentage mémoire physique utilisée par le processus
 * VSZ : mémoire virtuelle utilisée par le processus
 * RSS : mémoire physique utilisée par le processus
-* TTY :
-* STAT :
+* TTY : console, apparaît quand le processus est lié à un terminal
+* STAT : état du processus, par exemple en attente (sleep), en cours d'execution sur le CPU (R) etc ...
 * START :
 * TIME :
 * COMMAND :
