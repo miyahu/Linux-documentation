@@ -4,7 +4,7 @@
 
 *Si tu lui apprends à pêcher, il mangera toujours.*
                                           
-Il s'agit de méthodes d'analyse généralement mise en oeuvre dans l'optique de comprendre puis corriger une anomalie de fonctionnement.
+Il s'agit de méthodes d'analyse mises en oeuvre dans l'optique de comprendre un comportement afin corriger une anomalie de fonctionnement.
 
 * le troubleshooting requiert de la part de l'analyste une base technique correct ainsi qu'une bonne intuition
 * le troubleshooting ne s'apprend pas sur Internet (Stack overflow)
