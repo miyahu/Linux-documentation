@@ -12,14 +12,16 @@ Niveau facile
 
 Les processus entre crochets appartiennent au noyau.
 
+La mémoire virtuelle est égale à la mémoire physique additionnée à la mémoire de débordement (swap) 
+
 Explication sur le titre des colones :
 
 * USER : identité du processus
 * PID : identifiant du processus 
 * %CPU : pourcentage CPU utilisé par le processus
 * %MEM : pourcentage mémoire physique utilisée par le processus
-* VSZ : 
-* RSS :
+* VSZ : mémoire virtuelle utilisée par le processus
+* RSS : mémoire physique utilisée par le processus
 * TTY :
 * STAT :
 * START :
