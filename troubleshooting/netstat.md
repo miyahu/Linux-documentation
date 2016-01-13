@@ -5,7 +5,7 @@ Niveau débutant
 Attention, avec netstat, le diable est dans les détails, il y a peu d'information, donc il faut réfléchir ... 
 
 ## Présentation
-La commande netstat permet, entre autre,  de connaitre l'état des sockets
+La commande netstat permet d'obtenir des informations sur les connexions et des statistiques. 
 
 ## Utilisation typique
 * voir les services réseaux offerts
