@@ -28,8 +28,10 @@ Explication sur le titre des colones :
 * TIME : temps CPU cumulé - très utile pour connaître le processus consommant du CPU
 * COMMAND : commande executée
 
+### Analyse de la sortie
+
 ```
-francegalop25:~# ps auxf
+fg25:~# ps auxf
 USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
 root         1  0.0  0.0   1948   640 ?        Ss   Jan12   0:01 init [2]  
 root         2  0.0  0.0      0     0 ?        S    Jan12   0:00 [migration/0]
