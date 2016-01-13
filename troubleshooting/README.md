@@ -9,7 +9,6 @@ Il s'agit de méthodes d'analyse mise en oeuvre généralement dans l'optique de
 Le troubleshooting requiert de l'analyste une base technique correct ainsi qu'une bonne intuition, celle-çi lui permettra de prédire des comportements orthodoxes et à l'inverse, mettre en évidence ce qui ne l'est pas (orthodoxe hein, tu me suis ?). 
 
 * le troubleshooting ne s'apprend pas sur Internet (Stack overflow)
-* la démarche de troubleshooting "professionelle" permet de pratiquement **TOUT** comprendre 
 * le troubleshooting réseau nécessite de comprendre les protocoles à analyser, la lecture des RFC est donc un point de passage obligé.
 
 
