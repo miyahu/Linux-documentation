@@ -1,10 +1,14 @@
 # ps
 
-niveau débutant
+Niveau facile
 
 ## Présentation
 
-## 
+## Utilisation typique
+* connaître les services actifs
+* connaître les dépendances et relations
+* savoir quel processus consomme le plus de ressource
+* savoir à qui appartient un processus 
 
 Les processus entre crochets appartiennent au noyau.
 
