@@ -19,12 +19,12 @@ Explication sur le titre des colones :
 * %CPU : pourcentage CPU utilisé par le processus
 * %MEM : pourcentage mémoire physique utilisée par le processus
 * VSZ : 
-* RSS
-* TTY
-* STAT
-* START
-* TIME
-* COMMAND
+* RSS :
+* TTY :
+* STAT :
+* START :
+* TIME :
+* COMMAND :
 
 ```
 francegalop25:~# ps auxf
