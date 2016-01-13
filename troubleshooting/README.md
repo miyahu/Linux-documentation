@@ -10,4 +10,4 @@ Il s'agit de méthodes d'analyse mises en oeuvre dans l'optique de comprendre un
 * le troubleshooting ne s'apprend pas sur Internet (Stack overflow)
 * le troubleshooting réseau nécessite de comprendre les protocoles à analyser, la lecture des RFC est donc, au bout d'un moment, un point de passage obligé.
 
-
+Ici, l'idée n'est pas d'appliquer 
