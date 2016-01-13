@@ -29,7 +29,6 @@ Explication sur le titre des colones :
 * COMMAND : commande executée
 
 ### Analyse de la sortie
-
 ```
 fg25:~# ps auxf
 USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
@@ -52,4 +51,6 @@ www-data  3318  0.0  0.0 155028  5020 ?        S    Jan12   0:00  \_ /usr/sbin/a
 www-data  3319  0.0  0.0 155028  5020 ?        S    Jan12   0:00  \_ /usr/sbin/apache2 -k start
 www-data  3320  0.0  0.0 155028  5020 ?        S    Jan12   0:00  \_ /usr/sbin/apache2 -k start
 ```
-
+* on peut constater que le processus de PID 30355 (ps auxf) est en cours d'utilisation CPU (R+)
+* on peut aussi voir que le processus de PID 3950 à consommé 0:01 de temps CPU cumulé
+* on voit aussi que les processus 30349 (bash) et 30350 (ps auxf) sont effectivement rattachés à un terminal
