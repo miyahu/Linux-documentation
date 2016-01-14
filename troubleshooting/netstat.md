@@ -12,7 +12,11 @@ La commande netstat permet d'obtenir des informations sur les connexions et des 
 * identifier des processus anormaux - analyse post-piratage
 * estimer la charge réseau - nb de connexion en ESTABLISHED
 * voir si les tampons d'émission ou reception (Send-Q et Recv-Q) sont utilisés de manière importantes
-
+ 
+## Exemple d'utilisation
+```
+fg25~# netstat -4lntp
+```
 ## lab de démonstration 
 On monte le serveur de test
 ```
