@@ -8,10 +8,16 @@ Tcpdump permet de capturer le trafic réseau en vue de, par exemple, l'analyser.
 La lecture des RFC TCP, IPV4 et HTTP est généralement un bon pré-requis à la compréhension d'un dump.
 
 ## Utilisation typique
-- anomalie réseau - pas de connexion vers untel
-- comportement des services orientés réseau - **zero size reply** après une requête par exemple
-- détection de problème de performance - multiples petites requêtes au lieu de plus grosses et moins fréquentes
-- détection de flux non attendu - détection de services inconnus ou piratés 
+* anomalie réseau - pas de connexion vers untel
+* comportement des services orientés réseau - **zero size reply** après une requête par exemple
+* détection de problème de performance - multiples petites requêtes au lieu de plus grosses et moins fréquentes
+* détection de flux non attendu - détection de services inconnus ou piratés 
+ 
+## Exemples d'utilisation
+### capturer dans **un fichier** (-w /tmp/out.pcap) **l'intégralité** (-s0) des paquets **tcp** transitants entre **192.168.0.1 et l'host local** à destination du **port 80**,    
+```
+fg25:~# tcpdump -vi any tcp and host 192.168.0.1 ans port 80 -s0 -w /tmp/out.pcap 
+```
 
 ## Lab de démonstration
 ### Génération de trafic et capture
