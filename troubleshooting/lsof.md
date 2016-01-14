@@ -13,13 +13,13 @@ lsof s'utilise principalement pour effectuer du troubleshooting système et, dan
 * trouver les fichiers dépendant du processus ex log personnalisé
 * regarder les libs chargée pour identifié le programme ex tomcat 
 
-## Quelques exemples d'utilisation
+## Exemples d'utilisation
 
-### Quels processus utilisent le fichier /var/log/syslog ?
+Quels processus utilisent le fichier /var/log/syslog ?
 
     fg25:~# lsof /var/log/syslog
 
-### Quels sont les fichiers ouverts par le processus ?
+Quels sont les fichiers ouverts par le processus de PID 3094 ?
 
 ```
     fg25:~# lsof -p 3094
@@ -29,27 +29,27 @@ lsof s'utilise principalement pour effectuer du troubleshooting système et, dan
     sshd    3094 root  txt    REG    8,1  321328 1532308 /usr/sbin/sshd
 ```
 
-### Quels sont les *sockets* *TCP* ouverts par un processus ?
+ Quels sont les *sockets* réseaux ouverts par l'identifiant **www-data** ?
 
     fg25:~# lsof -ni 4 -a -u www-data
     COMMAND   PID     USER   FD   TYPE DEVICE SIZE NODE NAME
     php     15743 www-data    3u  IPv4 554042       TCP 223.182.58.229:38046->223.218.158.233:mysql (SYN_SENT)
 
-#### Remarque 
+Quelques explications
 
 * l'option -a permet d'effectuer un ET logique sur les options
 * dans cette exemple, on peut constater que l'utilisateur www-data n'écoute pas sur le port 80, c'est normal car par sécurité Apache écoute en root sur le port 80 et sert ensuite les clients en www-data, compte non privilégié
 
-### Quel processus à ouvert un socket sur le *port* *22* ?
+Quel processus écoute sur le *port* *tcp* *22* ?
     lsof -ni tcp:22
     COMMAND  PID USER   FD   TYPE DEVICE SIZE NODE NAME
     sshd    3094 root    3u  IPv6   7235       TCP *:ssh (LISTEN)
     sshd    8681 root    3u  IPv6  32581       TCP 213.282.158.229:ssh->213.228.137.221:34288 (ESTABLISHED)
 
-### Quel processus accède au répertoire */var/lib/* ?
+Quel processus accède au répertoire */var/lib/* ?
     lsof +D /var/lib/
 
-### Quel sont les fichiers ouverts par les processus de l'utilisateur Apache
+Quel sont les fichiers ouverts par les processus de l'utilisateur Apache
     lsof -u www-data
 
 ## Analyse de la sortie
