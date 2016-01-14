@@ -14,7 +14,7 @@ La lecture des RFC TCP, IPV4 et HTTP est généralement un bon pré-requis à la
 * détection de flux non attendu - détection de services inconnus ou piratés 
  
 ## Exemples d'utilisation
-### capturer dans **un fichier** (-w /tmp/out.pcap) **l'intégralité** (-s0) des paquets **tcp** transitants entre **192.168.0.1 et l'host local** à destination du **port 80**,    
+capturer dans **un fichier** (-w /tmp/out.pcap) **l'intégralité** (-s0) des paquets **tcp** transitants entre **192.168.0.1 et l'host local** à destination du **port 80**,    
 ```
 fg25:~# tcpdump -vi any tcp and host 192.168.0.1 ans port 80 -s0 -w /tmp/out.pcap 
 ```
