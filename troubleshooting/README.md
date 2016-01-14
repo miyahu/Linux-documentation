@@ -15,8 +15,8 @@ Il s'agit de méthodes d'analyse mises en oeuvre dans l'optique de comprendre un
 Dans l'ordre, du plus simple au plus compliqué, nous étudierons :
 * ps : de quelle manière lister les processus peut nous aider
 * netstat : mieux comprendre les processus exposés sur le réseau
-* lsof : quelles  ressources, un programme utilise-il  ?
-* strace : 
+* lsof : quelles  ressources, un programme utilise-t-il  ?
+* strace : comment un programme interagit-t-il avec le système ? 
 * tcpdump : 
 
 
