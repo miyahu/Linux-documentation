@@ -41,17 +41,20 @@ Quelques explications
 * dans cette exemple, on peut constater que l'utilisateur www-data n'écoute pas sur le port 80, c'est normal car par sécurité Apache écoute en root sur le port 80 et sert ensuite les clients en www-data, compte non privilégié
 
 Quel processus écoute sur le *port* *tcp* *22* ?
+```
     lsof -ni tcp:22
     COMMAND  PID USER   FD   TYPE DEVICE SIZE NODE NAME
     sshd    3094 root    3u  IPv6   7235       TCP *:ssh (LISTEN)
     sshd    8681 root    3u  IPv6  32581       TCP 213.282.158.229:ssh->213.228.137.221:34288 (ESTABLISHED)
-
+```
 Quel processus accède au répertoire */var/lib/* ?
+```
     lsof +D /var/lib/
-
+```
 Quel sont les fichiers ouverts par les processus de l'utilisateur Apache
+```
     lsof -u www-data
-
+```
 ## Analyse de la sortie
 
 ```
@@ -101,7 +104,7 @@ munin-nod 3321 root    5u  IPv4   7398             TCP *:munin (LISTEN)
 
 Le type de périphérique indique la manière dont les données sont écrites sur un périphérique. Pour un périphérique caractère, on parle d'écriture en série, octet par octet, alors que pour un périphérique bloc (par exemple, un disque dur), elle s'effectue sous forme de blocs d'octet (1)
 
-## exercices
+## Exercices
 
 Quelles sont les logs ouverts par le serveur apache ?
 
