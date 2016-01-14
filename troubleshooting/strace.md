@@ -25,7 +25,9 @@ fg25~# strace -v -f -t -s 5000 -o /tmp/out -p $PID
 fg25~# strace -c ps
 ```
 
-## Lab de démonstration 
+## Premier lab de démonstration 
+
+### Analyser une trace
 
 Je met un processus netcat en écoute local sur le port 1025 (netcat serveur) , ensuite, avec un autre netcat (netcat client), j'ouvre une connexion vers ce port et transmet chaine "pouet" ; après 1 seconde, je ferme la connexion. 
 
@@ -46,7 +48,7 @@ fg25:~# echo "pouet" | netcat -w 1 localhost 1025
 pouet
 ```
 
-### Analyse de la trace
+#### Analyse
 
 Maintenant on regarde la trace et on essaye de l'interpreter.
 ```
@@ -134,6 +136,10 @@ Description des appels systèmes rencontrés :
 * sigaction, rt_sigaction : examine and change a signal action
 * open, openat, creat : open and possibly create a file
 * stat, fstat, lstat, fstatat : get file status
+
+## Second lab de démonstration 
+
+### Obtenir des statistiques sur les appels systèmes.
 
 ```
 fg25:~# strace -c -p 15359
