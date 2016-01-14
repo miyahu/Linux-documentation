@@ -15,9 +15,14 @@ Concrètement, un appel système peut renvoyer un code retour et/ou une erreur e
 * connaitre les données traitées par un processus - écriture dans un log
 * calculer le temps consommé par les appels systèmes et les comparer - savoir quel appel occupe le processus php
  
-## Exemple d'utilisation
+## Exemples d'utilisation
+### Tracer le processus $PID et suivre d'éventuels fils, envoyer la sortie dans un fichier et limiter la taille des donnéss capturées à 5000 octets  
 ```
 fg25~# strace -v -f -t -s 5000 -o /tmp/out -p $PID
+```
+### Obtenir des statistiques sur le nombre, le type et la durée des appels systèmes    
+```
+fg25~# strace -c ps
 ```
 
 ## Lab de démonstration 
