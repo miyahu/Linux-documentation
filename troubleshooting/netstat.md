@@ -30,6 +30,7 @@ fg25:~# echo "pouet" | netcat -w 1 localhost 1025
 Lecture du fichier (sortie tronquée et concatenée)
 ```
 fg25:~# cat  /tmp/pouet
+Proto Recv-Q Send-Q Adresse locale          Adresse distante        Etat        PID/Program name
 tcp        0      0 0.0.0.0:1025            0.0.0.0:*               LISTEN     3160/netcat         
 tcp        0      0 0.0.0.0:1025            0.0.0.0:*               LISTEN     3160/netcat         
 tcp        0      0 0.0.0.0:1025            0.0.0.0:*               LISTEN     3160/netcat         
