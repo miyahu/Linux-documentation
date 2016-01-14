@@ -3,13 +3,19 @@
 Niveau facile
 
 ## Présentation
+La commande *ps* permet de lister les processus présents sur le système. 
 
 ## Utilisation typique
 * connaître les services actifs
 * connaître les dépendances et relations
 * savoir quel processus consomme le plus de ressource
 * savoir à qui appartient un processus 
-
+* 
+## Exemple d'utilisation
+```
+fg25~# ps auxf
+```
+## Explication
 Les processus entre crochets appartiennent au noyau.
 
 La mémoire virtuelle est égale à la mémoire physique additionnée à la mémoire de débordement (swap) 
