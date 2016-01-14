@@ -18,9 +18,13 @@ Capturer dans **un fichier** (-w /tmp/out.pcap) **l'intégralité** (-s0) des pa
 ```
 fg25:~# tcpdump -vi any tcp and host 192.168.0.1 ans port 80 -s0 -w /tmp/out.pcap 
 ```
-Lire un dump avec tous le détails 
+Lire un dump avec le contenu des paquets 
 ```
 fg25:~# tcpdump -Anr /tmp/out.pcap 
+```
+Lire un dump avec juste le résumé des échanges   
+```
+fg25:~# tcpdump -nr /tmp/out.pcap 
 ```
 ## Premier lab de démonstration
 ### Analyse "de surface" d'un dump
