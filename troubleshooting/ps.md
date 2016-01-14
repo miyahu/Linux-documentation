@@ -12,6 +12,7 @@ La commande *ps* permet de lister les processus présents sur le système.
 * savoir à qui appartient un processus 
 
 ## Exemple d'utilisation
+### Obtenir la liste de tous les processus du système avec affichage hiérarchisé 
 ```
 fg25~# ps auxf
 ```
