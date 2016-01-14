@@ -16,7 +16,7 @@ La lecture des RFC TCP, IPV4 et HTTP est généralement un bon pré-requis à la
 ## Exemples d'utilisation
 Capturer dans **un fichier** (-w /tmp/out.pcap) **l'intégralité** (-s0) des paquets **tcp** transitants entre **192.168.0.1 et l'host local** à destination du **port 80**   
 ```
-fg25:~# tcpdump -vi any tcp and host 192.168.0.1 ans port 80 -s0 -w /tmp/out.pcap 
+fg25:~# tcpdump -vi any tcp and host 192.168.0.1 and port 80 -s0 -w /tmp/out.pcap 
 ```
 Lire un dump avec le contenu des paquets 
 ```
