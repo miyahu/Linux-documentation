@@ -1,7 +1,5 @@
 # strace
 
-------- faire un strace -c ------
-
 Niveau avancé
 
 ## Présentation
@@ -151,7 +149,7 @@ fg25:~# fg
 -bash: fg: job has terminated
 [1]+  Done                    strace -c -o /tmp/out netcat -l -p 1025
 ```
-
+### Analyse
 
 ```
 francegalop25:~# cat  /tmp/out                                                                                                       
@@ -187,6 +185,10 @@ francegalop25:~# cat  /tmp/out
 ------ ----------- ----------- --------- --------- ----------------
 100.00    0.000000                   222       124 total
 ```
+On peut constater que :
+* les appels **open** et **stat64** sont les plus souvent appelés, ce qui s'explique ainsi : habituellement, lors de l'éxecution d'un programme, nombres de fichiers et bibliothèques sont recherchés mais non trouvés (d'où les 64 erreurs sur les open et les 55 erreurs sur les stat64), il s'agit d'un comportement normal.
+* aucun appel n'a consommé beaucoup de temps
+* l'appel système **write**
 
 ## ressources :
 http://man7.org/linux/man-pages/man2/syscalls.2.html 
