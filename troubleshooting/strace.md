@@ -188,7 +188,7 @@ francegalop25:~# cat  /tmp/out
 On peut constater que :
 * les appels **open** et **stat64** sont les plus souvent appelés, ce qui s'explique ainsi : habituellement, lors de l'éxecution d'un programme, nombres de fichiers et bibliothèques sont recherchés mais non trouvés (d'où les 64 erreurs sur les open et les 55 erreurs sur les stat64), il s'agit d'un comportement normal.
 * aucun appel n'a consommé beaucoup de temps
-* l'appel système **write**
+* l'appel système **write** n'est appelé qu'une fois, lors de l'écriture sur stdout (fd 1).
 
 ## ressources :
 http://man7.org/linux/man-pages/man2/syscalls.2.html 
