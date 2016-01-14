@@ -22,9 +22,33 @@ Lire un dump avec tous le détails
 ```
 fg25:~# tcpdump -Anr /tmp/out.pcap 
 ```
+## Premier lab de démonstration
+### Analyse "de surface" d'un dump
+Dans ce petit lab, nous tenterons de nous connecter sur un service réseau inexistant.
+```
+fg25:~# tcpdump -i lo tcp and port 1025 -w /tmp/out.pcap  &                                                                                                                          
+[1] 14545
+fg25:~# tcpdump: listening on lo, link-type EN10MB (Ethernet), capture size 96 bytes
 
-## Lab de démonstration
-### Génération de trafic et capture
+fg25:~# echo "pouet" | netcat -w 1 localhost 1025
+localhost [127.0.0.1] 1025 (?) : Connection refused
+```
+### Analyse
+```
+francegalop25:~# tcpdump -nr /tmp/out.pcap 
+reading from file /tmp/out.pcap, link-type EN10MB (Ethernet)
+13:22:09.959691 IP 127.0.0.1.55775 > 127.0.0.1.1025: S 3241574427:3241574427(0) win 32792 <mss 16396,sackOK,timestamp 46371390 0,nop,wscale 7>
+13:22:09.959730 IP 127.0.0.1.1025 > 127.0.0.1.55775: R 0:0(0) ack 3241574428 win 0
+```
+1. le client **netcat** attaque le port 1025 en localhost (drapeau S) 
+2. aucun service n'écoutant, c'est la pile TCP du système qui renvoi un RESET
+
+Remarque intéressante :
+* généralement, et contrairement à notre exemple, un firewall "dropperais" la connexion en ne renvoyant rien - attention, dans de rare cas, certains firewall **reset** la connexion ex iptables avec "j REJECT --reject-with tcp-reset"
+* aucune donnée utile n'ayant été échangée, remarquez la taille de 0 des paquets   
+
+## Second lab de démonstration
+### Analyse appronfondie d'un dump
 ```
 fg25:~# tcpdump -i lo tcp and port 1025 -s0 -w /tmp/out.pcap &
 fg25:~# netcat -l -p 1025 &
