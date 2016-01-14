@@ -37,7 +37,8 @@ localhost [127.0.0.1] 1025 (?) : Connection refused
 ```
 francegalop25:~# tcpdump -nr /tmp/out.pcap 
 reading from file /tmp/out.pcap, link-type EN10MB (Ethernet)
-13:22:09.959691 IP 127.0.0.1.55775 > 127.0.0.1.1025: S 3241574427:3241574427(0) win 32792 <mss 16396,sackOK,timestamp 46371390 0,nop,wscale 7>
+13:22:09.959691 IP 127.0.0.1.55775 > 127.0.0.1.1025: S 3241574427:3241574427(0)
+win 32792 <mss 16396,sackOK,timestamp 46371390 0,nop,wscale 7>
 13:22:09.959730 IP 127.0.0.1.1025 > 127.0.0.1.55775: R 0:0(0) ack 3241574428 win 0
 ```
 1. le client **netcat** attaque le port 1025 en localhost (drapeau S) 
