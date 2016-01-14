@@ -30,7 +30,7 @@ fg25:~# tcpdump -i lo tcp and port 1025 -s0 -w /tmp/out.pcap &
 fg25:~# netcat -l -p 1025 &
 fg25:~# echo "pouet" | netcat -w 1 localhost 1025
 ```
-### Post-analyse
+### Analyse
 ```
 fg25:~# tcpdump -Anr /tmp/out.pcap 
 reading from file /tmp/out.pcap, link-type EN10MB (Ethernet)
