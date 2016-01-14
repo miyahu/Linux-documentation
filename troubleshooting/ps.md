@@ -10,7 +10,7 @@ La commande *ps* permet de lister les processus présents sur le système.
 * connaître les dépendances et relations
 * savoir quel processus consomme le plus de ressource
 * savoir à qui appartient un processus 
-* 
+
 ## Exemple d'utilisation
 ```
 fg25~# ps auxf
