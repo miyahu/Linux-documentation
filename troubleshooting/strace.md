@@ -14,6 +14,11 @@ Concrètement, un appel système peut renvoyer un code retour et/ou une erreur e
 * savoir quelles sont les ressources accéder par un processus - ouverture d'un socket
 * connaitre les données traitées par un processus - écriture dans un log
 * calculer le temps consommé par les appels systèmes et les comparer - savoir quel appel occupe le processus php
+ 
+## Exemple d'utilisation
+```
+fg25~# strace -v -f -t -s 5000 -o /tmp/out -p $PID
+```
 
 ## Lab de démonstration 
 
