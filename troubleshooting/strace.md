@@ -1,9 +1,11 @@
 # strace
 
+------- faire un strace -c ------
+
 Niveau avancé
 
 ## Présentation
-strace permet de suivre les appels systèmes et les signaux liés à un processus. 
+strace permet de suivre les appels systèmes et les signaux liés à un processus. Il vous permet aussi d'obtenir des statistiques sur les appels systèmes.   
 
 Concrètement, un appel système peut renvoyer un code retour et/ou une erreur ex **bind** retourne **EADDRINUSE** si l'adresse et le port sont déjà utilisés, alors **strace** le révèlera.
 
