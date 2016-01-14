@@ -142,47 +142,50 @@ Description des appels systèmes rencontrés :
 ## Second lab de démonstration 
 
 ### Obtenir des statistiques sur les appels systèmes.
+```
+fg25:~# strace -c -o /tmp/out netcat -l -p 1025 &
+[1] 29741
+fg25:~# echo "pouet" | netcat -w 1 localhost 1025
+pouet
+fg25:~# fg
+-bash: fg: job has terminated
+[1]+  Done                    strace -c -o /tmp/out netcat -l -p 1025
+```
+
 
 ```
-fg25:~# strace -c -p 15359
-Process 15359 attached - interrupt to quit
-Process 15359 detached
+francegalop25:~# cat  /tmp/out                                                                                                       
 % time     seconds  usecs/call     calls    errors syscall
 ------ ----------- ----------- --------- --------- ----------------
------- ----------- ----------- --------- --------- ----------------
-100.00    0.000000                     0           total
-francegalop25:~# strace -c ps
-  PID TTY          TIME CMD
-13103 pts/0    00:00:00 bash
-28868 pts/0    00:00:00 strace
-28869 pts/0    00:00:00 ps
-Process 28869 detached
-% time     seconds  usecs/call     calls    errors syscall
------- ----------- ----------- --------- --------- ----------------
-   nan    0.000000           0       173           read
-   nan    0.000000           0         4           write
-   nan    0.000000           0       176           open
-   nan    0.000000           0       174           close
+   nan    0.000000           0        14           read
+   nan    0.000000           0         1           write
+   nan    0.000000           0        72        64 open
+   nan    0.000000           0        10           close
    nan    0.000000           0         1           execve
-   nan    0.000000           0         1           time
-   nan    0.000000           0         2           lseek
-   nan    0.000000           0         4         4 access
+   nan    0.000000           0         1           getpid
+   nan    0.000000           0         2           alarm
+   nan    0.000000           0         5         5 access
    nan    0.000000           0         3           brk
-   nan    0.000000           0         2           ioctl
-   nan    0.000000           0         3           readlink
-   nan    0.000000           0         5           munmap
+   nan    0.000000           0         1           gettimeofday
+   nan    0.000000           0         6           munmap
    nan    0.000000           0         1           uname
-   nan    0.000000           0         2           mprotect
-   nan    0.000000           0        23           rt_sigaction
-   nan    0.000000           0        17           mmap2
-   nan    0.000000           0        91         3 stat64
-   nan    0.000000           0        10           fstat64
-   nan    0.000000           0         1           geteuid32
-   nan    0.000000           0         2           getdents64
-   nan    0.000000           0         1           fcntl64
+   nan    0.000000           0         1           mprotect
+   nan    0.000000           0         2           select
+   nan    0.000000           0         7           rt_sigaction
+   nan    0.000000           0         1           rt_sigprocmask
+   nan    0.000000           0        13           mmap2
+   nan    0.000000           0        64        55 stat64
+   nan    0.000000           0         8           fstat64
+   nan    0.000000           0         2           fcntl64
    nan    0.000000           0         1           set_thread_area
+   nan    0.000000           0         1           socket
+   nan    0.000000           0         1           bind
+   nan    0.000000           0         1           listen
+   nan    0.000000           0         1           accept
+   nan    0.000000           0         1           getsockname
+   nan    0.000000           0         1           setsockopt
 ------ ----------- ----------- --------- --------- ----------------
-100.00    0.000000                   697         7 total
+100.00    0.000000                   222       124 total
 ```
 
 ## ressources :
