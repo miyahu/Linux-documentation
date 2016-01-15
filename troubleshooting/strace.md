@@ -25,7 +25,7 @@ fg25~# strace -v -f -t -s 5000 -o /tmp/out -p $PID
 ```
 Obtenir des statistiques sur le nombre, le type et la durée des appels systèmes    
 ```
-fg25~# strace -c ps
+fg25~# strace -c ls
 ```
 
 ## Premier lab de démonstration 
