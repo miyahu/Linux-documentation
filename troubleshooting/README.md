@@ -4,11 +4,14 @@
 
 *Si tu lui apprends à pêcher, il mangera toujours.*
                                           
-Il s'agit de méthodes d'analyse habituellement mises en oeuvre dans le but de corriger une anomalie de fonctionnement.
+### Il s'agit de méthodes d'analyse habituellement mises en oeuvres dans le but de corriger une anomalie de fonctionnement.
 
 * le troubleshooting requiert de la part de l'analyste une base technique correct ainsi qu'une bonne intuition
 * le troubleshooting ne s'apprend pas sur Internet (Stack overflow)
 * le troubleshooting réseau nécessite de comprendre les protocoles à analyser, la lecture des RFC est donc, au bout d'un moment, un point de passage obligé.
+* 
+
+### Nous n'étudierons pas spécifiquement ici les méthodes à utiliser pour le troubleshooting. 
 
 ### Chaque outil présenté, sera accompagné d'un petit lab de démonstration.  
 
