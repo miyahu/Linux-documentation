@@ -9,7 +9,6 @@
 * le troubleshooting requiert de la part de l'analyste une base technique correct ainsi qu'une bonne intuition
 * le troubleshooting ne s'apprend pas sur Internet (Stack overflow)
 * le troubleshooting réseau nécessite de comprendre les protocoles à analyser, la lecture des RFC est donc, au bout d'un moment, un point de passage obligé.
-* 
 
 ### Nous n'étudierons pas spécifiquement ici les méthodes à utiliser pour le troubleshooting. 
 
