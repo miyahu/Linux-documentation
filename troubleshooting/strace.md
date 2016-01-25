@@ -10,7 +10,7 @@ strace permet aussi d'obtenir les statistiques sur les appels systèmes utilisé
 ## Quelques rappels
 un appel système (en anglais, system call, abrégé en syscall) est une fonction primitive fournie par le noyau d'un système d'exploitation et utilisée par les programmes s'exécutant dans l'espace utilisateur (en d'autres termes, tous les processus distincts du noyau). Ce système permet de contrôler de façon sécurisée les applications dans l'espace utilisateur. source [Wikipedia](https://fr.wikipedia.org/wiki/Appel_syst%C3%A8me)
 
-Concrètement, un appel système peut renvoyer un code retour et/ou une erreur - ex **bind** retourne **EADDRINUSE** si l'adresse et le port sont déjà utilisés, alors **strace** le révèlera.
+Par exemple, un appel système peut renvoyer un code retour et/ou une erreur - ex **bind** retourne **EADDRINUSE** si l'adresse et le port sont déjà utilisés.
 
 ## Utilisation typique
 * connaitre les actions précise d'un processus - 
