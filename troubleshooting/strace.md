@@ -13,10 +13,10 @@ un appel système (en anglais, system call, abrégé en syscall) est une fonctio
 Par exemple, un appel système peut renvoyer un code retour et/ou une erreur - ex **bind** retourne **EADDRINUSE** si l'adresse et le port sont déjà utilisés.
 
 ## Cas d'utilisation typique
-* connaitre les actions précise d'un processus - 
-* savoir quelles sont les ressources accéder par un processus - ouverture d'un socket
-* connaitre les données traitées par un processus - écriture dans un log
-* calculer le temps consommé par les appels systèmes et les comparer - savoir quel appel occupe le processus php
+* connaitre les actions précise d'un processus - dans quel ordre les fichiers de configuration sont-ils lus ? 
+* savoir quelles sont les ressources accéder par un processus - le processus ouvre-t-il un socket UDP (DGRAM) ?
+* connaitre les données traitées par un processus - qu'écrit le processus dans son log ?
+* calculer le temps consommé par les appels systèmes et les comparer - savoir quels appels occupe le plus le processus php
  
 ## Exemples d'utilisation
 Tracer le processus $PID et suivre d'éventuels fils, envoyer la sortie dans un fichier et limiter la taille des donnéss capturées à 5000 octets  
