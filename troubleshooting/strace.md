@@ -32,7 +32,7 @@ fg25~# strace -c ls
 
 ### Analyser une trace
 
-Je met un processus netcat en écoute local sur le port 1025 (netcat serveur) , ensuite, avec un autre netcat (netcat client), j'ouvre une connexion vers ce port et transmet chaine "pouet" ; après 1 seconde, je ferme la connexion. 
+Je met un processus netcat en écoute local sur le port 1025 (serveur dans ce cas), ensuite, avec un autre netcat (client cette fois-çi), j'ouvre une connexion vers ce port et transmet la chaine "pouet" ; 1 seconde après, je ferme la connexion. 
 
 Je lance le process bidon
 ```
@@ -189,7 +189,7 @@ francegalop25:~# cat  /tmp/out
 100.00    0.000000                   222       124 total
 ```
 On peut constater que :
-* les appels **open** et **stat64** sont les plus souvent appelés, ce qui s'explique ainsi : habituellement, lors de l'éxecution d'un programme, nombres de fichiers et bibliothèques sont recherchés mais non trouvés (d'où les 64 erreurs sur les open et les 55 erreurs sur les stat64), il s'agit d'un comportement normal.
+* les appels **open** et **stat64** sont les plus régulièrement appelés, ceci s'explique ainsi : habituellement, lors de l'éxecution d'un programme, nombres de fichiers et bibliothèques sont recherchés mais non trouvés (d'où les 64 erreurs sur les open et les 55 erreurs sur les stat64), il peut s'agir d'un comportement normal
 * aucun appel n'a consommé beaucoup de temps
 * l'appel système **write** n'est appelé qu'une fois, lors de l'écriture sur stdout (fd 1).
 
