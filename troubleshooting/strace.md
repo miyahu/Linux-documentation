@@ -12,7 +12,7 @@ un appel système (en anglais, system call, abrégé en syscall) est une fonctio
 
 Par exemple, un appel système peut renvoyer un code retour et/ou une erreur - ex **bind** retourne **EADDRINUSE** si l'adresse et le port sont déjà utilisés.
 
-## Utilisation typique
+## Cas d'utilisation typique
 * connaitre les actions précise d'un processus - 
 * savoir quelles sont les ressources accéder par un processus - ouverture d'un socket
 * connaitre les données traitées par un processus - écriture dans un log
