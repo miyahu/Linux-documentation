@@ -49,7 +49,7 @@ InnoDB: corruption in the InnoDB tablespace. Please refer to
 InnoDB: http://dev.mysql.com/doc/refman/5.0/en/forcing-recovery.html
 InnoDB: about forcing recovery.
 mysqld got signal 11;
-
+```
 En recherchant la phrase "InnoDB: Assertion failure in thread  in file fsp0fsp.c line 3116" sur Internet, je tombe sur un bug référencé 
 
 https://bugs.mysql.com/bug.php?id=74187```
