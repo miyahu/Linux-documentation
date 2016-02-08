@@ -31,5 +31,8 @@ la colonne **Priority** :
 update-alternatives --install /usr/sbin/tagada  tagada /usr/bin/vim 50
 ```
 ## exceptions
-attention, certains programmes gère tout seul l'éditeur utilisé via la prise en compte de la variable EDITOR et VISUAL, ex vipw 
+attention, certains programmes gèrent tout seuls l'éditeur utilisé via la prise en compte de la variable EDITOR et VISUAL, ex vipw 
 
+```
+~# export VISUAL=/usr/bin/vim.basic
+```
