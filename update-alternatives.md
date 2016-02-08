@@ -1,4 +1,8 @@
-# Lister les alternatives
+## Obtenir la liste de tous les choix 
+
+ update-alternatives --get-selections
+
+## Lister les alternatives
 ```
 update-alternatives --config editor
 There are 3 choices for the alternative editor (providing /usr/bin/editor).
