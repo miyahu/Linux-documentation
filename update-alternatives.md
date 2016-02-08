@@ -1,7 +1,7 @@
 ## Obtenir la liste de tous les choix 
-
- update-alternatives --get-selections
-
+```
+update-alternatives --get-selections
+```
 ## Lister les alternatives
 ```
 update-alternatives --config editor
