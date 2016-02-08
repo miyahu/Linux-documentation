@@ -10,6 +10,8 @@ There are 3 choices for the alternative editor (providing /usr/bin/editor).
 * 2            /usr/bin/vim.basic   30        manual mode
   3            /usr/bin/vim.tiny    10        manual mode
   ```
-Le status peut adopter les valeurs suivantes :
-* auto mode
-* manual mode
+La colonne status peut adopter les valeurs suivantes :
+* auto mode : 
+* manual mode : 
+
+
