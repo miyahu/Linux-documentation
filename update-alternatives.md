@@ -2,7 +2,7 @@
 ```
 update-alternatives --get-selections
 ```
-## Lister les alternatives
+## Séléctioner une alternative (mode interractif)
 ```
 update-alternatives --config editor
 There are 3 choices for the alternative editor (providing /usr/bin/editor).
@@ -20,5 +20,11 @@ La colonne **Status** peut adopter les valeurs suivantes :
  
 la colonne **Priority** :
 * (tiré de la manpage) Quand un groupe de liens est en mode automatique, l'alternative visée par les éléments du groupe est celle qui possède la priorité la plus élevée.
+
+## Séléctioner une alternative (One liner)
+```
+ update-alternatives --set editor /usr/bin/vim.basic
+ ```
+ 
 
 
