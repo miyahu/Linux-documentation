@@ -26,9 +26,10 @@ la colonne **Priority** :
  update-alternatives --set editor /usr/bin/vim.basic
  ```
  
- ## Créer une alternative
+## Créer une alternative
 ```
 update-alternatives --install /usr/sbin/tagada  tagada /usr/bin/vim 50
 ```
-
+## exceptions
+attention, certains programmes gère tout seul l'éditeur utilisé via la prise en compte de la variable EDITOR et VISUAL, ex vipw 
 
