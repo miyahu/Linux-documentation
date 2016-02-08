@@ -15,6 +15,6 @@ La colonne **Status** peut adopter les valeurs suivantes :
 * manual mode : explicitement modifié par root (ou un installer)
  
 Explication de la colonne **Priority** :
-(tiré de la manpage) Quand un groupe de liens est en mode automatique, l'alternative visée par les éléments du groupe est celle qui possède la priorité la plus élevée.
+* (tiré de la manpage) Quand un groupe de liens est en mode automatique, l'alternative visée par les éléments du groupe est celle qui possède la priorité la plus élevée.
 
 
