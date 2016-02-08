@@ -26,5 +26,9 @@ la colonne **Priority** :
  update-alternatives --set editor /usr/bin/vim.basic
  ```
  
+ ## Créer une alternative
+```
+update-alternatives --install /usr/sbin/tagada  tagada /usr/bin/vim 50
+```
 
 
