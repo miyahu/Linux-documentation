@@ -12,10 +12,10 @@ cat /tmp/globals_only.dump | psql
 Dump d'une base 
 ```
 su - postgres
-pg_dump newpegasus > /tmp/newpegasus.sql
+pg_dump mabase > /tmp/mabase.sql
 ```
 Insertion
 ```
 su - postgres
-cat /tmp/globals_only.dump | psql
+psql mabase < /tmp/mabase.sql
 ```
