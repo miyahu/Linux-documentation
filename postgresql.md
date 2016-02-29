@@ -8,3 +8,14 @@ Insertion
 su - postgres
 cat /tmp/globals_only.dump | psql
 ```
+
+Dump d'une base 
+```
+su - postgres
+pg_dump newpegasus > /tmp/newpegasus.sql
+```
+Insertion
+```
+su - postgres
+cat /tmp/globals_only.dump | psql
+```
