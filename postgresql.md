@@ -14,7 +14,7 @@ Dump d'une base
 su - postgres
 pg_dump mabase > /tmp/mabase.sql
 ```
-Insertion
+Réinsertion 
 ```
 su - postgres
 psql mabase < /tmp/mabase.sql
