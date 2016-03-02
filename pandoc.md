@@ -14,7 +14,7 @@ Par défaut, l'executable est installé dans
 ```
 Et enfin on transforme
 ```
-/pandoc -r mediawiki /tmp/in -t markdown -o /tmp/ou
+pandoc -r mediawiki /tmp/in -t markdown -o /tmp/ou
 ````
 Ou :
 * -r format d'entrée
