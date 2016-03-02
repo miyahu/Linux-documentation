@@ -33,14 +33,10 @@ Ou depuis la machine cible:
     la VM
 
 -   et modifier, une fois la VM chargée, le fichier suivant :
-```
 `cat /etc/modules.conf`\
 `alias scsi_hostadapter BusLogic`
-```
 -   regénérer l'initrd pour prise en compte du nouveau module avec
-```
 `mkinitrd -v -f /boot/initrd-2.x.y-zz.img 2.x.y-zz`
-```
 ### FS
 
 Si les partitions sont créés et formatées avec un noyau récent,
@@ -48,10 +44,8 @@ l'utilisation de ces partitions avec un noyau 2.4 présentera des
 problèmes de compatabilité d'option :
 
 On désactive les options
-```
 `tune2fs -O ^dir_index /dev/sda3`\
 `debugfs -w /dev/sda3 -R "features ^resize_inode ^ext_attr"`
-```
 Solution pour Debian
 --------------------
 
