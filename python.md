@@ -2,7 +2,7 @@
 ```
  pip list 
  ```
- ### Pip - créer un requirement.txt des paquets installés
+### Pip - créer un requirement.txt des paquets installés
  ```
   pip freeze > requirement.txt
 ```
