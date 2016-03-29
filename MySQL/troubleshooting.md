@@ -1,4 +1,10 @@
-## ERROR 2013 (HY000): Lost connection to MySQL server during query 
+### statistiques 
+
+```
+ mysqladmin  extended-status
+ ```
+
+### ERROR 2013 (HY000): Lost connection to MySQL server during query 
 
 Rien n'apparaît dans les logs, mystère
 
