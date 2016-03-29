@@ -30,6 +30,7 @@ pecl donwload libsodium
 
 ### je génère les fichiers Debian
 ```
+# https://bugs.launchpad.net/ubuntu/+source/dh-make-php/+bug/1039364
 # !!!!! attention, bien appeller bash pour ne pas avoir d'erreur
 bash dh-make-pecl --phpversion 5 --prefix php5-20100525- libsodium-1.0.2.tgz
 ```
