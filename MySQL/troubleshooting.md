@@ -1,5 +1,9 @@
-### statistiques 
+### requêtes
+```
+mysqladmin processlist
+```
 
+### statistiques 
 ```
  mysqladmin  extended-status
  ```
