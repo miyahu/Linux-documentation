@@ -13,3 +13,17 @@ Avoir la version de l'API php
 php-config5 --phpapi
 ```
 https://www.dotdeb.org/2008/09/25/how-to-package-php-extensions-by-yourself/
+
+# j'exporte certaines variables
+```
+export DEBFULLNAME="gruik"
+export DEBEMAIL="gruik@gruik"
+```
+# j'install la lib "manuellement"
+```
+pecl install libsodium
+```
+# je download les sources 
+```
+pecl donwload libsodium
+```
