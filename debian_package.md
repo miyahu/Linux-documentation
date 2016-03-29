@@ -32,3 +32,7 @@ pecl donwload libsodium
 ```
 bash dh-make-pecl --phpversion 5 --prefix php5-20100525- libsodium-1.0.2.tgz
 ```
+### je génère les deb
+```
+cd php5-20100525-libsodium-1.0.2 &&  ./debian/rules binary
+```
