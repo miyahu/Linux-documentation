@@ -1,3 +1,5 @@
+https://www.howtoforge.com/how-to-benchmark-your-system-cpu-file-io-mysql-with-sysbench#-mysql-benchmark-
+
 ```
 apt install sysbench
 ```
