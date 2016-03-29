@@ -1,8 +1,13 @@
-### requêtes
+### lister les requêtes en cours
 ```
 mysqladmin processlist
 ```
 
+
+### obtenir la liste des variables 
+```
+ mysqladmin variables
+```
 ### statistiques 
 ```
  mysqladmin  extended-status
