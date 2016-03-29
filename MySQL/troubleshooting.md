@@ -8,7 +8,7 @@ mysqladmin processlist
 ```
  mysqladmin variables
 ```
-### statistiques 
+### obtenir des statistiques - ex cache 
 ```
  mysqladmin  extended-status
  ```
