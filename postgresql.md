@@ -46,7 +46,7 @@ CREATE DATABASE rantanplan OWNER tagada;
 
 ## ERROR:  relation "" does not exist postgres
 ```
-GRANT ALL  ON database latribune_php7 TO latribune_php7;
+GRANT usage on schema public to latribune_php7;
 ```
 ## Insufficient privilege: 7 ERROR:  permission denied for relation permalinks
 ```
