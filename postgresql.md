@@ -42,4 +42,9 @@ CREATE DATABASE rantanplan OWNER tagada;
 ```
 \dt
 ```
+# troubleshooting
 
+## Insufficient privilege: 7 ERROR:  permission denied for relation permalinks
+```
+GRANT ALL  ON database latribune_php7 TO latribune_php7;
+```
