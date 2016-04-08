@@ -21,7 +21,11 @@ su - postgres
 psql mabase < /tmp/mabase.sql
 ```
 ## Création des comptes
-### création de l'utilsiateur ainsi que de son mot de passe
+### création de l'utilisateur ainsi que de son mot de passe
 ```
 CREATE USER tagada WITH PASSWORD 'pouet';
+```
+### création de la base
+```
+CREATE DATABASE rantanplan OWNER tagada;
 ```
