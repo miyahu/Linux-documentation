@@ -29,3 +29,9 @@ CREATE USER tagada WITH PASSWORD 'pouet';
 ```
 CREATE DATABASE rantanplan OWNER tagada;
 ```
+# commandes usuelles
+### lister les bases
+```
+\l
+```
+
