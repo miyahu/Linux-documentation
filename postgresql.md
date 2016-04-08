@@ -52,3 +52,6 @@ GRANT usage on schema public to latribune_php7;
 ```
 GRANT ALL  ON database latribune_php7 TO latribune_php7;
 ```
+```
+SELECT * FROM pg_roles ;
+```
