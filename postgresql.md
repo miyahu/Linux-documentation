@@ -44,6 +44,10 @@ CREATE DATABASE rantanplan OWNER tagada;
 ```
 # troubleshooting
 
+## ERROR:  relation "" does not exist postgres
+```
+GRANT ALL  ON database latribune_php7 TO latribune_php7;
+```
 ## Insufficient privilege: 7 ERROR:  permission denied for relation permalinks
 ```
 GRANT ALL  ON database latribune_php7 TO latribune_php7;
