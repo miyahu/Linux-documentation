@@ -55,7 +55,8 @@ GRANT ALL  ON database latribune_php7 TO latribune_php7;
 ```
 SELECT * FROM pg_roles ;
 ```
+Vérifier avec un "\connect" et un "\dt" que le propriétaire est bien celui qui doit être.
 
+### Changement du owner des tables 
 
-## Changement du owner des tables 
 while read line ; do psql tagada -c "alter table $line owner to tralala;" ; done <  /tmp/out2
