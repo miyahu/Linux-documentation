@@ -34,4 +34,8 @@ CREATE DATABASE rantanplan OWNER tagada;
 ```
 \l
 ```
+### lister les tables
+```
+\dt
+```
 
