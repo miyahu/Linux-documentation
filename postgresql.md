@@ -34,6 +34,10 @@ CREATE DATABASE rantanplan OWNER tagada;
 ```
 \l
 ```
+### ce connecter à une base
+```
+\c mabase
+```
 ### lister les tables
 ```
 \dt
