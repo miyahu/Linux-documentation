@@ -1,5 +1,17 @@
 # Linux-documentation
 
+## éxecuter un plugin
+
+ Utiliser munin-run
+```
+ munin-run  dovecot
+```
+
+## recréer les liens manquants 
+```
+eval "$(munin-node-configure --shell 2>&1 | grep -E "^ln")
+```
+
 ## Munin vs Nginx
 
 Recette de cuisine 
