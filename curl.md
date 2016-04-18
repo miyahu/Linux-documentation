@@ -1,6 +1,7 @@
 ### Tester la compression
 
 Pour tester la compression, il faut insérer un entête disant le type de compression acceptée, exemple :
+
 sans entête Accept-encoding
 ```
 curl  -I -H "Host: www.tagada.com" localhost:6080/json-list/
