@@ -198,6 +198,27 @@ cinquième : ??
 sixième : ??
 septième : "m" pour master elligible, "*" pour master effectif et - ??
 
+### état des index (indices)
+
+```
+curl 'localhost:9200/_cat/indices?v'
+health status index                 pri rep docs.count docs.deleted store.size pri.store.size 
+green  open   village              1   1    2541204       364644    196.7mb         97.3mb 
+green  open   preprod_village      1   1     905310            0     94.1mb           47mb 
+green  open   moderation           1   1       6183            5     16.1mb            8mb 
+green  open   preprod_tags         1   1       2178            0    578.8kb        289.4kb 
+green  open   log                  1   1    1117393            0    156.5mb         78.2mb 
+green  open   categories           1   1        344            0    226.8kb        113.4kb 
+green  open   preprod_moderation   1   1          2            0     28.4kb         14.2kb 
+green  open   ags                 1   1       2601            0    733.1kb        357.1kb 
+green  open   preprod_log          1   1     709760            0     85.1mb         42.5mb 
+yellow open   classified           1   1    2294880       172341      1.3gb          1.3gb 
+green  open   preprod_classified   1   1      18749         3597     28.9mb         14.4mb 
+green  open   preprod_categories   1   1        344            0    221.8kb        110.9kb
+```
+
+Ici, on peut voir que l'index "classified" est en anomalie (Yellow status)
+
 ### Status des shards (et replicas)
 ```
 curl -XGET http://localhost:9200/_cat/shards
