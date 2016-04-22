@@ -7,3 +7,7 @@ haproxy -f /etc/haproxy/haproxy.cfg -c
 ```
 echo "show servers state" | socat /var/run/haproxy/admin.sock stdio
 ```
+### désactiver un backend 
+```
+echo "disable server bk_eol/tagada2" | socat /var/run/haproxy/admin.sock stdio
+```
