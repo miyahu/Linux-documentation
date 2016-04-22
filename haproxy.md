@@ -15,3 +15,7 @@ echo "disable server bk_eol/tagada2" | socat /var/run/haproxy/admin.sock stdio
 ```
 hatop -s  /run/haproxy/admin.sock
 ```
+### socket avec accès tcp 
+```
+stats socket ipv4@0.0.0.0:666 level admin
+```
