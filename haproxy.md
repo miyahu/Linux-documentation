@@ -11,3 +11,7 @@ echo "show servers state" | socat /var/run/haproxy/admin.sock stdio
 ```
 echo "disable server bk_eol/tagada2" | socat /var/run/haproxy/admin.sock stdio
 ```
+### utiliser hatop
+```
+hatop -s  /run/haproxy/admin.sock
+```
