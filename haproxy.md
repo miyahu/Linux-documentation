@@ -18,7 +18,7 @@ hatop -s  /run/haproxy/admin.sock
 ### socket avec accès tcp 
 ```
 stats socket ipv4@0.0.0.0:666 level admin
-
+```
 ### Activer les logs
 
 Comme haproxy tourne dans un chroot, il est nécessaire d'utiliser un socket réseau pour communiquer 
