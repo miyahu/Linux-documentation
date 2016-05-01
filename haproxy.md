@@ -33,3 +33,9 @@ $ModLoad imudp
 $UDPServerRun 514
 ```
 Puis rechargement des démons. 
+
+### Tuning multi-coeurs
+
+En configuration multi-coeur nbproc > 1
+
+désactiver irqbalance.
