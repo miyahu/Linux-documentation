@@ -18,4 +18,18 @@ hatop -s  /run/haproxy/admin.sock
 ### socket avec accès tcp 
 ```
 stats socket ipv4@0.0.0.0:666 level admin
+
+### Activer les logs
+
+Comme haproxy tourne dans un chroot, il est nécessaire d'utiliser un socket réseau pour communiquer 
+
+Côté haproxy :
 ```
+log 127.0.0.1   syslog notice
+```
+Côté rsyslog
+```
+$ModLoad imudp
+$UDPServerRun 514
+```
+Puis rechargement des démons. 
