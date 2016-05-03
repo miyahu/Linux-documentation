@@ -223,6 +223,12 @@ Ici, on peut voir que l'index "classified" est en anomalie (Yellow status)
 ```
 curl -XGET http://localhost:9200/_cat/shards
 ```
+
+### vérifier le mapping
+Mapping is the process of defining how a document, and the fields it contains, are stored and indexed
+
+̀ curl localhost:92009.collection/_mapping?prettye
+
 Troubleshooting
 ---------------
 
