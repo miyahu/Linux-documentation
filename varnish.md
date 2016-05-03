@@ -11,3 +11,7 @@ if (req.url ~ "/(\w+)/assets/") {
    Documentation here :
    
    https://www.varnish-cache.org/docs/4.1/users-guide/vcl-syntax.html?highlight=regsub
+
+### varnish et systemd
+
+https://ma.ttias.be/running-varnish-4-x-on-systemd/
