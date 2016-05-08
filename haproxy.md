@@ -37,9 +37,14 @@ Puis rechargement des démons.
 ### multi process
 
 ce mode est à éviter par défaut, contre indication :
-**pas de mémoire paratgé en les process**
-
-Il n'est principalement recommandé que lors de l'offload SSL, et encore  
+**pas de mémoire partagée en les process**
+ce qui entraine que toute les informations sont uniquement présentes dans un process :
+* pas de partage des stats (obligation d'itérer ...)
+* pas de partage de l'état des backends (multiplication des checks)
+* pas de partage de l'état des backends (obligation d'itérer ...)
+* etc ...
+ 
+Il n'est principalement recommandé que lors de l'offload SSL, et encore ...  
 #### Tuning multi-coeurs
 
 En configuration multi-coeur nbproc > 1
