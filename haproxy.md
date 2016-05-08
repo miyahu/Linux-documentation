@@ -39,3 +39,17 @@ Puis rechargement des démons.
 En configuration multi-coeur nbproc > 1
 
 désactiver irqbalance.
+
+## Tuning
+### Keep-alive
+#### uniquement côté client
+Feature 1.4 
+
+`option http-server-close`
+
+Cette directive maintien le keep-alive côté client mais ferme celle côté serveur après chaque requête, pas idéal
+#### De bout en bout 
+Feature 1.5
+`option http-keep-alive`
+`option prefer-last-server`
+La seconde option permet d'utiliser une connexion existant de préférence (logique!) 
