@@ -37,7 +37,8 @@ Puis rechargement des démons.
 ### multi process
 
 ce mode est à éviter par défaut, contre indication :
-*pas de mémoire paratgé en les process*
+**pas de mémoire paratgé en les process**
+
 Il n'est principalement recommandé que lors de l'offload SSL, et encore  
 #### Tuning multi-coeurs
 
