@@ -96,6 +96,10 @@ Installation
 
 Par défaut, un *node name* est généré dynamiquement par Elasticsearch
 
+Une dépendance à java est requise
+
+` apt install openjdk-8-jre-headless`
+
 Mise en cluster
 ---------------
 
