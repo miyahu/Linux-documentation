@@ -8,3 +8,13 @@ apt-get install haproxy -t jessie-backports
 ```
 apt-get install  php5-mysql=5.5.30-1~dotdeb+7.1
 ```
+### geler la version d'un paquet
+Avec elasticsearch
+`echo "elasticsearch hold" | dpkg --set-selections`
+
+On vérifie avec un
+
+```
+dpkg --get-selections elasticsearch
+elasticsearch                                   hold
+```
