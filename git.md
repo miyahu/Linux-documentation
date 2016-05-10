@@ -1,5 +1,5 @@
 [cloner une branche spécifique d'un repo]: #cloner
-1. [cloner une branche spécifique d'un repo][Overview]
+1. [cloner une branche spécifique d'un repo][cloner]
 
 
 ### voir la branche actuelle
