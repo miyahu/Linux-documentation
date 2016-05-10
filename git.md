@@ -23,3 +23,5 @@ git config --global user.email pouet@gruik.fr
 `git commit -m "add varnish steering(pilotage)"`
 ### enfin les pousser
 `git push`
+### cloner une branche spécifique d'un repo
+`git clone -b release2.0.0  git@git.ateway.fr:ansibleroles/aw-apache.git`
