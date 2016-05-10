@@ -7,3 +7,6 @@ vagrant plugin install vagrant-lxc
 vagrant plugin list
 No plugins installed.
 ```
+### initialiser et démarrer 
+
+`vagrant init debian/jessie64; vagrant up --provider lxc`
