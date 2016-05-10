@@ -8,3 +8,8 @@ utiliser become
 ```
 ansible cache -m shell --become   -u ansible -a "apt-get -y install socat"
 ```
+
+### Mode Ad-hoc et sudo avec ansible 1.*
+```
+ansible cache -m shell -s   -u ansible -a "apt-get -y install socat"
+```
