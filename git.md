@@ -1,4 +1,4 @@
-[cloner une branche spécifique d'un repo]: #cloner une branche spécifique d'un repo
+[cloner une branche spécifique d'un repo]: #repo
 1. [cloner une branche spécifique d'un repo][cloner une branche spécifique d'un repo]
 
 
