@@ -44,3 +44,7 @@ puis
 #### lancer une sauvegarde différentiel
 
 `gsutil -m rsync -d -r /sauvegardes/mail  gs://tagada-backup`
+
+#### autoriser l'accès à tout le monde vers ce bucket
+
+`gsutil acl ch -u AllUsers:R  gs://tagada-backup`
