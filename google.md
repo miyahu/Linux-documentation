@@ -29,4 +29,8 @@ cat>lifecycle_config.json<<EOF
 EOF
 ``` 
 puis
-`gsutil lifecycle set lifecycle_config.json gs://-tagada-backup`
+`gsutil lifecycle set lifecycle_config.json gs://tagada-backup`
+
+### lancer une sauvegarde différentiel
+
+`gsutil -m rsync -d -r /sauvegardes/mail  gs://tagada-backup`
