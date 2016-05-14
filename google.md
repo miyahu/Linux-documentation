@@ -3,6 +3,11 @@
 ## Google storage
 
 ### gsutil
+#### créer un bucket 
+De type DRA, associé à notre projet et créé sur la zone Europe-west
+
+`gsutil mb -c DRA -l EUROPE-WEST1 -p tagada-1487 gs://tagada-backup`
+
 #### activer le versionning 
 `gsutil versioning set on  gs://tagada-backup`
 
