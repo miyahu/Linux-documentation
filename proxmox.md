@@ -19,3 +19,7 @@ Il y a un doublon, par exemple que proxmox qui répond au même nom
 ### status du cluster
 
 `pvecm status`
+
+### générer une nouvelle conf réseau pour une VM
+
+`qm set 564 --net0 virtio,bridge=vmbr229,rate=1000`
