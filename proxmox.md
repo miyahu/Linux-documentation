@@ -16,3 +16,6 @@ fatal: [localhost]: FAILED! => {"changed": false, "failed": true, "parsed": fals
 
 Il y a un doublon, par exemple que proxmox qui répond au même nom
 
+### status du cluster
+
+`pvecm status`
