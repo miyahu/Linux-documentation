@@ -1,3 +1,3 @@
 ### Quitter une session
 
-Ctrl+a puis a+q
+Ctrl+a puis q
