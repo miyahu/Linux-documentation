@@ -12,6 +12,7 @@ Il faut supprimer la newline
 `cat elasticsearch | tr -d '\n'`
 
 ### utiliser les groupes de commandes 
+Ou comment faire les choses proprement.
 
 ```
 # Cmnd alias specification
