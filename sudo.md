@@ -15,7 +15,7 @@ Il faut supprimer la newline
 
 ```
 # Cmnd alias specification
-Cmnd_Alias MJB = /usr/sbin/service elasticsearch *, sudoedit /etc/default/elasticsearch, sudoedit /etc/elasticsearch/*, sudoedit /etc/init.d/elasticsearch
+Cmnd_Alias TAGADA = /usr/sbin/service elasticsearch *, sudoedit /etc/default/elasticsearch, sudoedit /etc/elasticsearch/*, sudoedit /etc/init.d/elasticsearch
 
-elasticsearch ALL=(ALL) MJB
+elasticsearch ALL=(ALL) TAGADA
 ```
