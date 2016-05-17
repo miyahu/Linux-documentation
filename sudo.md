@@ -10,3 +10,12 @@ visudo -c -f /etc/sudoers.d/elasticsearch
 Il faut supprimer la newline
 
 `cat elasticsearch | tr -d '\n'`
+
+### utiliser les groupes de commandes 
+
+```
+# Cmnd alias specification
+Cmnd_Alias MJB = /usr/sbin/service elasticsearch *, sudoedit /etc/default/elasticsearch, sudoedit /etc/elasticsearch/*, sudoedit /etc/init.d/elasticsearch
+
+elasticsearch ALL=(ALL) MJB
+```
