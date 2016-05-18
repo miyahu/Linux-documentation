@@ -9,3 +9,13 @@ TCP  10.0.30.60:25 rr
   -> 10.0.30.30:25                Route   1      1          595       
   -> 10.0.30.64:25                Route   1      1          595
 ```  
+
+### suivre une session
+```  
+ipvsadm -L -n --stats -t  89.31.147.4:8282 
+Prot LocalAddress:Port               Conns   InPkts  OutPkts  InBytes OutBytes
+  -> RemoteAddress:Port
+TCP  89.31.147.4:8282                   95      447      384    49453    38830
+  -> 10.0.153.42:82                     95      447      384    49453    38830
+```  
+  
