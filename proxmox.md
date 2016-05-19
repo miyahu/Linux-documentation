@@ -23,3 +23,7 @@ Il y a un doublon, par exemple que proxmox qui répond au même nom
 ### générer une nouvelle conf réseau pour une VM
 
 `qm set 564 --net0 virtio,bridge=vmbr229,rate=1000`
+
+### savoir ou se trouve une VM
+Sur n'impporte quel node du cluster 
+`connect_VM --show-all`
