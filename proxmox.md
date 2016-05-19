@@ -26,4 +26,5 @@ Il y a un doublon, par exemple que proxmox qui répond au même nom
 
 ### savoir ou se trouve une VM
 Sur n'impporte quel node du cluster 
+
 `connect_VM --show-all`
