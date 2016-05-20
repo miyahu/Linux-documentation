@@ -26,3 +26,7 @@ Date: Mon, 18 Apr 2016 09:19:52 GMT
 X-Vhost-Id: www-2016.orpi.com
 Content-Encoding: gzip
 ````
+
+### ne pas cacher la requête
+
+`curl -H 'Cache-Control: no-cache' http://www.example.com`
