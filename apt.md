@@ -18,3 +18,8 @@ On vérifie avec un
 dpkg --get-selections elasticsearch
 elasticsearch                                   hold
 ```
+### voir la liste des clés chargées
+`apt-key list`
+
+
+
