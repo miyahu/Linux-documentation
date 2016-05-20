@@ -223,6 +223,12 @@ green  open   preprod_categories   1   1        344            0    221.8kb     
 
 Ici, on peut voir que l'index "classified" est en anomalie (Yellow status)
 
+Pour information :
+ * store.size : store size of primaries & replicas 
+ * pri.store.size : store size of primaries
+
+
+
 ### Status des shards (et replicas)
 ```
 curl -XGET http://localhost:9200/_cat/shards
