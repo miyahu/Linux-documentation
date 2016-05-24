@@ -67,3 +67,6 @@ spawn-fcgi et systemd
         [Install]
         WantedBy=multi-user.target
 
+### erreur dynazoom
+
+Ajouter Allow from all à la directive /munin-cgi/munin-cgi-graph
