@@ -326,3 +326,7 @@ les désactiver :
 ```
 index.number_of_replicas: 0
 ```
+### performance
+Données de performances :
+
+`curl "http://localhost:9200/_nodes/stats/jvm?pretty"̀
