@@ -13,6 +13,11 @@ ansible cache -m shell --become   -u ansible -a "apt-get -y install socat"
 ```
 ansible cache -m shell -s   -u ansible -a "apt-get -y install socat"
 ```
+
+### copie de clés
+```
+ansible cache -s -m authorized_key -a "user=ansible key='ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDQuvjauHdo6MnfukMo8AO8uxcdeq9UudOrxXLLhsSu7oL9Hvk5NDSDcQvnhSXFQulqsHgB9PQ345I773cDanpZOkYn7WXa1tXkcchh3u7Dl5hg8KT8fXwkZLOeqIEHdXTm7CjoIY88lPRxo6fseHg7hqM3/ZJV+AfDfzoa2bY0VVOD5x9JWYioL69i6FAI9Pdsu9biHoBNrOMQXujjIrslP/fPygkR5/TOAcIQTnbjwNWb+bv9R2hghitmeUNNyMaehX+FDRboRPIyE+VWwMdCPXyF1MVA7A2CgN3oEoTB1X75PUR7NJses0dyvu8ZaJ7ZYhQLFydOyme9E/ bob@eollect'"
+```
 ## Ansible et fact
 
 http://jpmens.net/2012/07/15/ansible-it-s-a-fact/
