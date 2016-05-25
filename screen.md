@@ -30,3 +30,11 @@ screen -ln -t "mhyp3 [ Proxmox ]" ssh mjbhyp3
 ### le charger 
 
 `screen -c .screenrc-pouetpouet -S pouetpouet`
+
+### terminer une instance 
+
+`Ctrl+a puis :quit`
+
+### relire la conf d'une instance 
+
+`Ctrl+a puis :source ~/.screenrc`
