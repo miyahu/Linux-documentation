@@ -27,3 +27,6 @@ screen -ln -t "mhyp1 [ Proxmox ]" ssh mjbhyp1
 screen -ln -t "mhyp2 [ Proxmox ]" ssh mjbhyp2
 screen -ln -t "mhyp3 [ Proxmox ]" ssh mjbhyp3
 ``` 
+### le charger 
+
+`screen -c .screenrc-pouetpouet -S pouetpouet`
