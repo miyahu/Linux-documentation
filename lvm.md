@@ -2,7 +2,7 @@
 ```
  lvresize --resizefs --size +5G /dev/mapper/systemvm-var_lib_mysql
  ```
-### ajout de disque
+### agrandissement d'un vg 
 
 ` pvcreate /dev/vdb`
 
