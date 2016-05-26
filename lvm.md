@@ -2,3 +2,8 @@
 ```
  lvresize --resizefs --size +5G /dev/mapper/systemvm-var_lib_mysql
  ```
+### ajout de disque
+
+` pvcreate /dev/vdb`
+
+`vgextend systemvm /dev/vdb`
