@@ -30,4 +30,9 @@ git config --global user.email pouet@gruik.fr
 ### cloner une branche spécifique d'un repo
 `git clone -b release2.0.0  git@git.ateway.fr:ansibleroles/aw-apache.git`
 
-### Overview
+### afficher la liste des commits
+
+`git log`
+
+### afficher un commit (ainsi que son diff) 
+ 
