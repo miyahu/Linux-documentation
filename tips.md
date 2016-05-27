@@ -12,4 +12,4 @@ tailf kern.log | ccze -A | less -R
 ### dézipper on the fly (sans créer de faichier)
 C'est plus écolo 
 
-`gunzip -c syslog.1.gz | less̀
+`gunzip -c syslog.1.gz | less ̀
