@@ -38,3 +38,6 @@ git config --global user.email pouet@gruik.fr
  la dernière string est le n° de commit
  
 `git show 79e3efa2c4e87cb8bf4590ac13278b3e71a286b3̀ 
+
+### voir les différences entre 2 branches
+`git diff master pilotage`
