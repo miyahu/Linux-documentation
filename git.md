@@ -35,4 +35,6 @@ git config --global user.email pouet@gruik.fr
 `git log`
 
 ### afficher un commit (ainsi que son diff) 
+ la dernière string est le n° de commit
  
+`git show 79e3efa2c4e87cb8bf4590ac13278b3e71a286b3̀ 
