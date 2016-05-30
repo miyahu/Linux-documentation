@@ -64,3 +64,13 @@ Feature 1.5
 `option http-keep-alive`
 `option prefer-last-server`
 La seconde option permet d'utiliser une connexion existant de préférence (logique!) 
+
+### troubleshooting
+
+Utiliser hatop et vérifier
+
+* qmax
+* qcurrent
+* smax
+* scurrent
+
