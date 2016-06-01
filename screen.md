@@ -1,3 +1,4 @@
+référence : http://aperiodic.net/screen/quick_reference
 ### renommer un onglet
 
 Ctrl+a puis A 
