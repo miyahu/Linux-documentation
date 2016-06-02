@@ -3,3 +3,9 @@
 
 ### augmenter la taille d'un panel
 `Ctrl+b puis Alt+flèche direction du pavé numérique`
+
+### spliters
+
+horizontalement : Ctrl+b+%
+
+veritcalement : Ctrl+b+"
