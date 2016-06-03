@@ -74,3 +74,6 @@ Utiliser hatop et vérifier
 * smax
 * scurrent
 
+### ajouter un entête sur le trafic sortant (troubleshooting)
+
+`http-response set-header X-Test ok` dans le block backend
