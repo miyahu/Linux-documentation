@@ -8,4 +8,4 @@
 
 horizontalement : Ctrl+b+%
 
-veritcalement : Ctrl+b+"
+verticalement : Ctrl+b+"
