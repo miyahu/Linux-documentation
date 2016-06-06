@@ -1,3 +1,5 @@
+* [failed with error code 1 in /root/build/cryptography](#failed with error code 1 in /root/build/cryptography)
+
 ### copier des données - local vers distant
 ```
 ansible -i hosts  all  -m copy -a "src=roles/haproxy/files/haproxy.cfg dest=/etc/haproxy/"
@@ -56,3 +58,8 @@ Et dans la tâche
 - name: pouet
 debug: msg={{ansible_local.toto.ansible_facts.users_logged_in}}
 ```
+
+failed with error code 1 in /root/build/cryptography
+----------------------------------------------------
+
+`apt-get install libffi-dev` 
