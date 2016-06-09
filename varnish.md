@@ -17,5 +17,6 @@ if (req.url ~ "/(\w+)/assets/") {
 https://ma.ttias.be/running-varnish-4-x-on-systemd/
 
 ### exporter la conf en cours
+en varnish 4, utiliser -l pour obtenir les includes. 
 
 `varnishadm vcl.show $(varnishadm vcl.list | awk '$0 ~ /active/{print$NF}') > /tmp/out`
