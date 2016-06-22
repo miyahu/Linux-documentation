@@ -1,5 +1,5 @@
-*[tagada](#description)
-*[obtenir le status d'Apache en ligne de commande avec les explications](#aveclynx)
+* [tagada](#description)
+* [obtenir le status d'Apache en ligne de commande avec les explications](#aveclynx)
 
 ## obtenir le status d'Apache en ligne de commande avec les explications
 
