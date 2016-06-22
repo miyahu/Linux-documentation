@@ -95,3 +95,5 @@ un slot est un processus
 * SS   Seconds since beginning of most recent request 
 * Req  Milliseconds required to process most recent request
 * Conn  Kilobytes transferred this connection
+* Child Megabytes transferred this child
+* Slot  Total megabytes transferred this slot
