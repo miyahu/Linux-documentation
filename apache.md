@@ -1,3 +1,5 @@
+* [Description](#description)
+
 ## obtenir le status d'Apache en ligne de commande avec les explications
 
 Ajouter '?auto' à la fin de l'url
@@ -97,3 +99,6 @@ un slot est un processus
 * Conn  Kilobytes transferred this connection
 * Child Megabytes transferred this child
 * Slot  Total megabytes transferred this slot
+
+description
+-----------
