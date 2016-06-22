@@ -25,8 +25,9 @@ Ajouter '?auto' à la fin de l'url
 * IdleWorkers - si ce compteur se décrémente rapidement ou bien qu'il soit à zéro (situation critique)
 * BusyWorkers - si ce compteur s'incrémente rapidement et qu'il tend vers le max client 
 
-avec lynx (c mieux) 
+avec lynx 
 -------------------
+(c mieux) 
 http://wiki.kogite.fr/index.php/Explication_server-status_Apache
 
 apt-get install lynx
