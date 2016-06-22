@@ -15,3 +15,8 @@ Explication sur la sortie
 * BytesPerReq: nb d'octets traités par requête 
 * BusyWorkers: nb de processus occupé à traiter les requêtes 
 * IdleWorkers: nb de processus inactif
+
+Je pense que l'important est principalement :
+* ReqPerSec - si ce compteur s'incrémente rapidement
+* IdleWorkers - si ce compteur se décrémente rapidement ou bien qu'il soit à zéro (situation critique)
+* BusyWorkers - si ce compteur s'incrémente rapidement et qu'il tend vers le max client 
