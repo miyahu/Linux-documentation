@@ -1,5 +1,5 @@
 * [tagada](#description)
-* [obteni](#pouet)
+* [obteni](#toto)
 
 ## obtenir le status d'Apache en ligne de commande avec les explications
 
@@ -26,6 +26,9 @@ Ajouter '?auto' à la fin de l'url
 
 aveclynx 
 --------
+
+toto
+----
 
 (c mieux) 
 http://wiki.kogite.fr/index.php/Explication_server-status_Apache
