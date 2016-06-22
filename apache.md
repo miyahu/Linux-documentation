@@ -26,7 +26,7 @@ Ajouter '?auto' à la fin de l'url
 * BusyWorkers - si ce compteur s'incrémente rapidement et qu'il tend vers le max client 
 
 aveclynx 
--------------------
+--------
 (c mieux) 
 http://wiki.kogite.fr/index.php/Explication_server-status_Apache
 
