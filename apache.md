@@ -23,6 +23,8 @@ Ajouter '?auto' à la fin de l'url
 
 ### avec lynx (c mieux) 
 
+http://wiki.kogite.fr/index.php/Explication_server-status_Apache
+
 apt-get install lynx
 
 ```
