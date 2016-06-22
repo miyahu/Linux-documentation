@@ -77,3 +77,6 @@ Utiliser hatop et vérifier
 ### ajouter un entête sur le trafic sortant (troubleshooting)
 
 `http-response set-header X-Test ok` dans le block backend
+
+### stats haproxy 1.5
+`echo "show stat" | socat /run/haproxy/admin.sock stdio | awk -F ',' '{print"frontend:"$1" backend:"$2" status:"$18" qcur:"$3" qmax:"$4" scur:"$5" smax:"$6}'`
