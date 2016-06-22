@@ -83,3 +83,13 @@ _____W_____W______W______.......................................
    0-1 -     0/0/217 . 0.97  1265 164   0.0  0.00  0.70 10.0.157.11 pa2.nen.net POST /?rand=1466380800036 HTTP/1.1                                                                                                                      
    0-1 -     0/0/218 . 0.96  1265 1536  0.0  0.00  0.81 10.0.157.11 pa2.nen.net GET /soldes?p=26 HTTP/1.1 
    ```
+#### explications
+un slot est un processus
+
+##### Titre des colones
+* Srv  Child Server number - generation                                                                                        * PID  OS process ID                                                                                                           * Acc  Number of accesses this connection / this child / this slot
+* M   Mode of operation
+* CPU  CPU usage, number of seconds
+* SS   Seconds since beginning of most recent request 
+* Req  Milliseconds required to process most recent request
+* Conn  Kilobytes transferred this connection
