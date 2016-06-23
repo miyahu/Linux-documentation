@@ -1,8 +1,0 @@
-### obtenir le nom des métriques stockés
-
-`use mydb`
-
-`select * from /.*/ limit 1
-
-
-
