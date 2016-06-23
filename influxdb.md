@@ -1,4 +1,8 @@
-### obtenir le nom des métriques stockés
+### obtenir le nom des métriques
+
+``influx -database collectd --execute 'SHOW MEASUREMENTS̀`
+
+### obtenir le nom des séries stockés
 
 `use mydb`
 
