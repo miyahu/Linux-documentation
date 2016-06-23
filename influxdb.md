@@ -1,6 +1,6 @@
 ### obtenir le nom des métriques
 
-``influx -database collectd --execute 'SHOW MEASUREMENTS̀`
+`influx -database collectd --execute 'SHOW MEASUREMENTS̀`
 
 ### obtenir le nom des séries stockés
 
@@ -18,5 +18,7 @@ encore mieux
 
 `influx -database collectd --execute 'show series'`
 
+### exemple de requêtes
 
+`influx -database collectd --execute "select * from /.*/ where host = 'pmdptvprdweb01' limit 1"`
 
