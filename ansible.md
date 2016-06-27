@@ -7,6 +7,9 @@
 ```
 ansible -i hosts  all  -m copy -a "src=roles/haproxy/files/haproxy.cfg dest=/etc/haproxy/"
 ```
+### récupérer des fichiers distant
+
+`ansible web -s -m fetch -a "src=/etc/apache2/apache2.conf  dest=/tmp/dd"`
 
 ### Mode Ad-hoc et sudo avec ansible 2
 utiliser become 
