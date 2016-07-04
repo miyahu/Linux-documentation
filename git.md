@@ -1,6 +1,9 @@
 [cloner une branche spécifique d'un repo]: #cloner
 1. [cloner une branche spécifique d'un repo][cloner]
 
+## Doc gitlab
+http://docs.gitlab.com/ee/workflow/workflow.html
+
 
 ### voir la branche actuelle
 ```
