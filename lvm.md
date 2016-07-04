@@ -7,3 +7,8 @@
 ` pvcreate /dev/vdb`
 
 `vgextend systemvm /dev/vdb`
+
+### création d'un snapshot
+
+`lvcreate -L1G -s -n mysnap /dev/system/var_lib_mysql`
+
