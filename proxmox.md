@@ -37,11 +37,15 @@ Sur n'impporte quel node du cluster
 
 `qemu-img create -f qcow2 -o preallocation=metadata vm-296-disk-3.qcow2 50G`
 
-qm monitor <vm_id>
+`qm monitor <vm_id>̀
+
 `drive_add 0 file=/VMs/images/<vm_id>/vm-<vm_id>-disk-3.qcow2,format=qcow2,id=drive-virtio-disk2,if=none`
 `device_add virtio-blk-pci,scsi=on,drive=drive-virtio-disk2`
 
 Ajouter :
+
 `virtio2: VMs_prphyp2:<vm_id>/vm-<vm_id>-disk-3.qcow2,format=qcow2`
-à 
+
+à
+
 `/etc/pve/qemu-server/<vm_id>.conf`
