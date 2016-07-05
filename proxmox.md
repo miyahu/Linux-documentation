@@ -28,3 +28,8 @@ Il y a un doublon, par exemple que proxmox qui répond au même nom
 Sur n'impporte quel node du cluster 
 
 `connect_VM --show-all`
+
+
+####
+
+qemu-img create -f qcow2 -o preallocation=metadata vm-296-disk-3.qcow2 50G
