@@ -69,3 +69,7 @@ failed /root/build/cryptography
 -------------------------------
 
 `apt-get install libffi-dev` 
+
+
+### exclure certains serveur du traitement
+`ansible-playbook --limit '!hoost1:!host2' yourPlaybook.yml̀
