@@ -72,4 +72,4 @@ failed /root/build/cryptography
 
 
 ### exclure certains serveur du traitement
-`ansible-playbook --limit '!hoost1:!host2' yourPlaybook.yml̀
+`ansible-playbook --limit '!hoost1:!host2' yourPlaybook.yml`
