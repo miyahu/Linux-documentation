@@ -97,7 +97,7 @@ _____W_____W______W______.......................................
 #### explications
 un slot est un processus
 
-##### Titre des colones
+### Titre des colones
 * Srv  Child Server number - generation
 * PID  OS process ID
 * Acc  Number of accesses this connection / this child / this slot
