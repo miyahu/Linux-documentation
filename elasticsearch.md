@@ -1,6 +1,6 @@
 ##Littérature
 
-* [Measure dns server response time with dig](#Measure-dns-server-response-time-with-dig)
+* [Measure dns server response time with dig](#Measure)
 
 
 <http://soat.developpez.com/articles/elasticsearch/>
@@ -334,4 +334,4 @@ Données de performances :
 `curl "http://localhost:9200/_nodes/stats/jvm?pretty"̀
 
 
-# Measure-dns-server-response-time-with-dig
+# Measure
