@@ -2,7 +2,7 @@
 
 [Measure dns server response time with dig](#measure)
 
-[create an anchor](#anchors-in-markdown) 
+[create an anchor](#Anchors-in-markdown) 
 
 
 
