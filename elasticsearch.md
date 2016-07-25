@@ -9,7 +9,7 @@
 * [Concepts](#concepts)
 * [Terminologie et architecture](#terminologie-et-architecture)
 * [Cas concret](#cas-concret)
-* [Roles et scalabilitee](#roles-et-scalabilitee)
+* [Rôles et scalabilitée](#roles-et-scalabilitee)
 
 <http://soat.developpez.com/articles/elasticsearch/>
 
@@ -74,7 +74,7 @@ Explication :
 -   septième : adresse du nœud
 -   huitième : nom du nœud
 
-### rôles et scalabilitée
+### roles et scalabilitee
 
 Dans le cas d'un gros cluster, il est intéressant de séparer les rôles 
 
