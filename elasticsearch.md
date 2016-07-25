@@ -15,6 +15,7 @@
 * [Installation et configuration](#installation-et-configuration)
 * [Installation](#installation) 
 * [Mise en cluster](#mise-encluster)
+* [Sauvegarde](#sauvegarde)
 
 <http://soat.developpez.com/articles/elasticsearch/>
 
@@ -349,3 +350,13 @@ Données de performances :
 # Measure
 
 ## anchors-in-markdown
+
+## Sauvegarde
+
+récupérer le nom du dépôt de backup avec :
+
+`curl -s 'http://localhost:9200/_cluster/state?pretty' | less`
+
+Puis, récupérer la liste des snapshot
+
+`curl -s 'http://localhost:9200/_snapshot/es_backup/_all?pretty' | less`
