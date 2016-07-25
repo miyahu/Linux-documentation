@@ -6,6 +6,10 @@
 
 
 
+* [Concepts](#concepts)
+* [Terminologie et architecture](#terminologie-et-architecture)
+* [Cas concret](#cas concret)
+
 <http://soat.developpez.com/articles/elasticsearch/>
 
 <http://fr.slideshare.net/dadoonet/elasticsearch-devoxx-france-2012>
@@ -13,8 +17,7 @@
 Réglage pour un standalone :
 * http://blog.lavoie.sl/2012/09/configure-elasticsearch-on-a-single-host.html
 
-Concepts
---------
+## concepts
 
 ### terminologie et architecture
 
