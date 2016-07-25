@@ -9,7 +9,7 @@
 * [Concepts](#concepts)
 * [Terminologie et architecture](#terminologie-et-architecture)
 * [Cas concret](#cas-concret)
-* [rôles et scalabilitée](#roles-et-scalabilitee)
+* [Rôles et scalabilitée](#roles-et-scalabilitee)
 
 <http://soat.developpez.com/articles/elasticsearch/>
 
