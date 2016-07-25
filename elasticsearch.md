@@ -10,6 +10,10 @@
 * [Terminologie et architecture](#terminologie-et-architecture)
 * [Cas concret](#cas-concret)
 * [Roles et scalabilitee](#roles-et-scalabilitee)
+* [Un dessin qui vaut mille mots](#un-dessin-qui-vaut-mille-mots)
+
+* [Installation et configuration](#installation-et-configuration)
+** [Installation](#installation) 
 
 <http://soat.developpez.com/articles/elasticsearch/>
 
