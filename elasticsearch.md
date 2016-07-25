@@ -13,7 +13,8 @@
 * [Un dessin qui vaut mille mots](#un-dessin-qui-vaut-mille-mots)
 
 * [Installation et configuration](#installation-et-configuration)
-** [Installation](#installation) 
+* [Installation](#installation) 
+* [Mise en cluster](#mise-encluster)
 
 <http://soat.developpez.com/articles/elasticsearch/>
 
