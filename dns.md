@@ -36,12 +36,12 @@ nis.dacom.co.kr.	600	IN	A	164.124.101.31
 ```
 ### Analyse de la section header
 
-opcode: QUERY
-status: NOERROR
-id: 47527
-flags: qr rd ra
-QUERY: 1
-ANSWER: 1
-AUTHORITY: 2
-ADDITIONAL: 2
+* opcode: QUERY - type, en l'occurence opcode 0 (type query) http://www.networksorcery.com/enp/protocol/dns.htm#Opcode
+* status: NOERROR - status de la resquête ?? (à confirmer)
+* id: 47527 http://www.networksorcery.com/enp/protocol/dns.htm#Identification
+* flags: qr rd ra
+* QUERY: 1
+* ANSWER: 1
+* AUTHORITY: 2
+* ADDITIONAL: 2
 
