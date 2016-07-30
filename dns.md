@@ -1,4 +1,7 @@
 *[analyse de requete dig](#analyse-de-requete-dig)
+
+http://www.networksorcery.com/enp/protocol/dns.htm
+
 ## analyse de requete dig
 
 ```
@@ -31,4 +34,14 @@ nis.dacom.co.kr.	600	IN	A	164.124.101.31
 ;; WHEN: Sat Jul 30 13:10:35 CEST 2016
 ;; MSG SIZE  rcvd: 118
 ```
+### Analyse de la section header
+
+opcode: QUERY
+status: NOERROR
+id: 47527
+flags: qr rd ra
+QUERY: 1
+ANSWER: 1
+AUTHORITY: 2
+ADDITIONAL: 2
 
