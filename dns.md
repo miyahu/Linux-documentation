@@ -1,4 +1,5 @@
 * [analyse de requete dig](#analyse-de-requete-dig)
+* [configuration de unbound](#configuration-de-unbound)
 
 http://www.networksorcery.com/enp/protocol/dns.htm
 
@@ -45,3 +46,62 @@ nis.dacom.co.kr.	600	IN	A	164.124.101.31
 * AUTHORITY: 2
 * ADDITIONAL: 2
 
+## configuration de unbound
+```
+server:
+
+        verbosity: 4
+        statistics-interval: 60
+        extended-statistics: "yes"
+        statistics-cumulative: "yes"
+
+        do-ip6: "no"
+        do-udp: "yes"
+        do-tcp: "yes"
+
+        interface: 0.0.0.0
+        access-control: 127.0.0.0/8 allow
+        do-not-query-localhost: "no"
+
+
+        #logfile: /var/log/unbound.log
+        use-syslog: "yes"
+        log-queries: "yes"
+
+        prefetch: "yes"
+
+        cache-min-ttl: 3600
+        cache-max-ttl: 86400
+
+        so-reuseport: "yes"
+        msg-cache-size: 100m
+        rrset-cache-size: 100m
+        key-cache-size: 100m
+
+        harden-dnssec-stripped: "no"
+        disable-dnssec-lame-check: "yes"
+        domain-insecure: "architux.com"
+
+
+        # blacklist
+        local-zone: "doubleclick.net" redirect
+        local-data: "doubleclick.net A 127.0.0.1"
+        local-zone: "googlesyndication.com" redirect
+        local-data: "googlesyndication.com A 127.0.0.1"
+        local-zone: "googleadservices.com" redirect
+        local-data: "googleadservices.com A 127.0.0.1"
+        local-zone: "google-analytics.com" redirect
+        local-data: "google-analytics.com A 127.0.0.1"
+        local-zone: "ads.youtube.com" redirect
+        local-data: "ads.youtube.com A 127.0.0.1"
+        local-zone: "adserver.yahoo.com" redirect
+        local-data: "adserver.yahoo.com A 127.0.0.1"
+
+        forward-zone:
+                name: "architux.com"
+                forward-addr: 8.8.8.8
+        forward-zone:
+                name: "."
+                forward-addr: 195.154.236.164
+                #forward-addr: 8.8.8.8
+```
