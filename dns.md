@@ -106,3 +106,8 @@ server:
                 forward-addr: 195.154.236.164
                 #forward-addr: 8.8.8.8
 ```
+## dnsperf
+
+http://nominum.com/measurement-tools/
+
+apt-get install libssl-dev  libkrb5-dev
