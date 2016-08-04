@@ -111,3 +111,9 @@ server:
 http://nominum.com/measurement-tools/
 
 `apt-get install libssl-dev libkrb5-dev libcap-dev libxml2-dev`
+```
+./configure
+make
+make install
+```
+
