@@ -1,6 +1,7 @@
 * [analyse de requete dig](#analyse-de-requete-dig)
 * [configuration de unbound](#configuration-de-unbound)
 * [dnsperf](#dnsperf)
+* [unbound avec dnstap](#unbound-avec-dnstap)
 
 http://www.networksorcery.com/enp/protocol/dns.htm
 
@@ -115,5 +116,51 @@ http://nominum.com/measurement-tools/
 ./configure
 make
 make install
+```
+
+récupération du sample de NDD
+```
+wget ftp://ftp.nominum.com/pub/nominum/dnsperf/data/queryfile-example-current.gz | gunzip -
+
+```
+
+lancement du bench
+
+```
+  dnsperf -d queryfile-example-current -s localhost
+
+```
+
+## unbound avec dnstap
+
+
+### dépendances
+
+Le paquet Debian Jessie classique ne supporte pas dnstap
+
+#### Jessie backport 
+```
+cat /etc/apt/sources.list.d/backports.list
+deb http://http.debian.net/debian jessie-backports main
+deb-src http://http.debian.net/debian jessie-backports main
+```
+Téléchargement des sources
+```
+apt-get source unbound=1.5.9-1~bpo8+1
+```
+
+```
+wget http://ftp.debian.org/debian/pool/main/f/fstrm/libfstrm-dev_0.3.0-1_amd64.deb
+dpkg -i libfstrm-dev_0.3.0-1_amd64.deb
+
+apt install libevent-dev \
+            libevent-extra-2.0-5 \
+            libevent-pthreads-2.0-5 \
+            libevent-core-2.0-5 \
+            protobuf-c-compiler \
+            protobuf-compiler \
+            build-essential \
+            dh-make \
+            bzr-builddeb \
 ```
 
