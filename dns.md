@@ -2,6 +2,7 @@
 * [configuration de unbound](#configuration-de-unbound)
 * [dnsperf](#dnsperf)
 * [unbound avec dnstap](#unbound-avec-dnstap)
+* [ressources](#ressources)
 
 http://www.networksorcery.com/enp/protocol/dns.htm
 
@@ -164,3 +165,10 @@ apt install libevent-dev \
             bzr-builddeb \
 ```
 
+## Ressources
+
+* DNS Flood Detector : http://www.adotout.com/
+* Forging DNS request/response : https://github.com/crondaemon/dines
+* capturing DNS trafic : https://www.dns-oarc.net/tools/dnscap
+
+* L'INDEX !!! : http://www.statdns.com/resources/
