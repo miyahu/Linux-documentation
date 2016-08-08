@@ -1,3 +1,5 @@
+* [quitter minicom](#quitter minicom)
+
 ### rediriger tous les ports VNC d'une  VM vers un port unique
 
 https://pve.proxmox.com/wiki/Vnc_2.0
@@ -49,3 +51,6 @@ Ajouter :
 à
 
 `/etc/pve/qemu-server/<vm_id>.conf`
+
+## quitter minicom
+Ctrl+a & a+q
