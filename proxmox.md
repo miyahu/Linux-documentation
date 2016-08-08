@@ -1,4 +1,5 @@
 * [quitter minicom](#quitter minicom)
+* [convertir un disque raw en qcow](#convertir-un-disque-raw-en-qcow)   
 
 ### rediriger tous les ports VNC d'une  VM vers un port unique
 
@@ -54,3 +55,7 @@ Ajouter :
 
 ## quitter minicom
 Ctrl+a & a+q
+
+## convertir un disque raw en qcow
+
+`qemu-img convert -p -O qcow2 /dev/mapper/VG_VMs_SSD-vm--113--disk--1 vm--113--disk--1.qcow2̀
