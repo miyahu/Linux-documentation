@@ -35,6 +35,7 @@ tmux -2 attach-session -d
 
 From : http://www.hamvocke.com/blog/a-guide-to-customizing-your-tmux-conf/
 
+```
 ######################
 ### DESIGN CHANGES ###
 ######################
@@ -138,5 +139,4 @@ set -g message-fg colour232
 set -g message-bg colour166
 
 # }
-
-
+```
