@@ -1,8 +1,8 @@
-*[changer l'organisation des panels](#changer-l-organisation-des-panels)
-*[augmenter la taille d'un panel](#augmenter-la-taille-d'-un-panel)
-*[spliter](#spliter)
-*[scritp de lancement](#scritp-de-lancement)
-*[tmux.conf](#tmux.conf)
+* [changer l'organisation des panels](#changer-l-organisation-des-panels)
+* [augmenter la taille d'un panel](#augmenter-la-taille-d'-un-panel)
+* [spliter](#spliter)
+* [scritp de lancement](#scritp-de-lancement)
+* [tmux.conf](#tmux.conf)
 
 ### changer l'organisation des panels
 `Ctrl+b+espace`
