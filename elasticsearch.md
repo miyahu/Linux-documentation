@@ -194,11 +194,11 @@ Pilotage
 
 ### Arrêt du cluster
 
-`curl -XPOST '`[`http://localhost:9200/_shutdown`](http://localhost:9200/_shutdown)`'`
+`curl -XPOST `http://localhost:9200/_shutdown`
 
 ### Status du cluster
 
-` curl -XGET `[`http://localhost:9200/_cluster/health?pretty`](http://localhost:9200/_cluster/health?pretty)
+` curl `http://localhost:9200/_cluster/health?pretty`
 
 ### Status des nodes
 
@@ -246,7 +246,7 @@ Pour information :
 
 ### Status des shards (et replicas)
 ```
-curl -XGET http://localhost:9200/_cat/shards
+curl http://localhost:9200/_cat/shards
 ```
 ### vérifier le mapping
 Mapping is the process of defining how a document, and the fields it contains, are stored and indexed
@@ -254,7 +254,7 @@ Mapping is the process of defining how a document, and the fields it contains, a
 ̀ curl localhost:92009.collection/_mapping?prettu`e
 
 ### obtenir la version d'ES
-`curl -XGET localhost:9200`
+`curl localhost:9200`
 
 Troubleshooting
 ---------------
@@ -277,7 +277,7 @@ Sinon
 
 1\) vérifier si des shards sont orphelins ("unassigned\_shards" : 2,)
 
-    curl -XGET http://localhost:9200/_cluster/health?pretty          
+    curl http://localhost:9200/_cluster/'health?pretty'          
     {
       "cluster_name" : "nom du cluster",
       "status" : "red",
@@ -296,7 +296,7 @@ Sinon
 2\) si unassigned\_shards est différent de 0, récupérer la liste des
 shards "UNASSIGNED" et le nom du node avec un
 
-    curl -XGET http://localhost:9200/_cat/shards 
+    curl http://localhost:9200/_cat/shards 
     graylog2_8                 0 p STARTED 5013226   2.4gb 127.0.0.1 Aquarian 
     graylog2_8                 3 p STARTED 5005312   2.4gb 127.0.0.1 Aquarian 
     graylog2_8                 1 p STARTED 5001062   2.4gb 127.0.0.1 Aquarian 

@@ -1,5 +1,6 @@
 [cloner une branche spécifique d'un repo]: #cloner
 1. [cloner une branche spécifique d'un repo][cloner]
+2. [poussez sa branche pour un merge](#poussez-sa-branche-pour-un-merge)
 
 ## Doc gitlab
 http://docs.gitlab.com/ee/workflow/workflow.html
@@ -44,3 +45,6 @@ git config --global user.email pouet@gruik.fr
 
 ### voir les différences entre 2 branches
 `git diff master pilotage`
+
+## poussez sa branche pour un merge
+`git push origin fix-1.6`
