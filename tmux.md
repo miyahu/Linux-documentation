@@ -27,6 +27,7 @@ tmux new-window -n 'COMMON' ''
 tmux split-window -v ''
 tmux split-window -h
 tmux new-window -n 'ROOT' 'su -'
+tmux selectw -t 2
 
 tmux -2 attach-session -d
 ```
@@ -41,8 +42,8 @@ From : http://www.hamvocke.com/blog/a-guide-to-customizing-your-tmux-conf/
 ######################
 
 unbind C-b
-set-option -g prefix C-w
-bind-key C-w send-prefix
+set-option -g prefix C-s
+bind-key C-s send-prefix
 
 
 # panes
