@@ -87,3 +87,7 @@ Device      Boot   Start       End   Sectors  Size Id Type
 Enfin on monte la partition qui nous intéresse
 
 `mount /dev/nbd0p5 /media/̀
+
+et enfin déconnecter le périphérique nbd0
+
+`qemu-nbd --disconnect /dev/nbd0̀
