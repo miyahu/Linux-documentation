@@ -1,5 +1,6 @@
 * [quitter minicom](#quitter minicom)
 * [convertir un disque raw en qcow](#convertir-un-disque-raw-en-qcow)   
+* [monter un qcow](#monter_un_qcow) 
 
 ### rediriger tous les ports VNC d'une  VM vers un port unique
 
@@ -59,3 +60,30 @@ Ctrl+a & a+q
 ## convertir un disque raw en qcow
 
 `qemu-img convert -p -O qcow2 /dev/mapper/VG_VMs_SSD-vm--113--disk--1 vm--113--disk--1.qcow2̀
+
+## monter un qcow
+
+http://www.randomhacks.co.uk/how-to-mount-a-qcow2-disk-image-on-ubuntu/
+
+`qemu-nbd --connect=/dev/nbd0 /VMs/images/112/vm-112-disk-0.qcow2`
+
+On vérifie son partitionnement
+``` 
+fdisk -l /dev/nbd0 
+
+Disque /dev/nbd0 : 50 GiB, 53687091200 octets, 104857600 secteurs
+Unités : secteur de 1 × 512 = 512 octets
+Taille de secteur (logique / physique) : 512 octets / 512 octets
+taille d'E/S (minimale / optimale) : 512 octets / 512 octets
+Type d'étiquette de disque : dos
+Identifiant de disque : 0x832ab2b5
+
+Device      Boot   Start       End   Sectors  Size Id Type
+/dev/nbd0p1 *       2048    999423    997376  487M 83 Linux
+/dev/nbd0p2      1001470 104855551 103854082 49,5G  5 Extended
+/dev/nbd0p5      1001472   7000063   5998592  2,9G 83 Linux
+/dev/nbd0p6      7002112 104855551  97853440 46,7G 8e Linux LVM
+```
+Enfin on monte la partition qui nous intéresse
+
+`mount /dev/nbd0p5 /media/̀
