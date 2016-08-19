@@ -34,9 +34,10 @@ Sur n'impporte quel node du cluster
 `connect_VM --show-all`
 
 
-#### ajout de disque en CLI
+### ajout de disque en CLI
 
  version 3.3
+ 
  attention, proxmox en version 3.3 nous oblige à utiliser qm monitor pour présenter les nouveaux devices aux guests
 
 `qemu-img create -f qcow2 -o preallocation=metadata vm-296-disk-3.qcow2 50G`
