@@ -1,6 +1,9 @@
 * [failed with error code 1 in /root/build/cryptography](#failed /root/build/cryptography)
+* [ad-hoc MaJ de sécurite](#ad-hoc-MaJ-de-securite)
+* [ad-hoc MaJ de sécurite](#ad-hoc-MaJ-de-securite)
 
-### ad-hoc MàJ de sécurité
+
+### ad-hoc MaJ de securite
 `ansible messerveurs -s  -m apt -a "name=imagemagick,imagemagick-common state=latest"`
 
 ### copier des données - local vers distant
