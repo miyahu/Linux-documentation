@@ -1,12 +1,13 @@
 * [failed with error code 1 in /root/build/cryptography](#failed /root/build/cryptography)
 * [ad-hoc MaJ de sécurite](#ad-hoc-MaJ-de-securite)
-* [ad-hoc MaJ de sécurite](#ad-hoc-MaJ-de-securite)
+* [copier des données - local vers distant](#copier-des-données-local-vers-distant)
+* [récupérer des fichiers distant](#recuperer-des-fichiers-distant)
 
 
 ### ad-hoc MaJ de securite
 `ansible messerveurs -s  -m apt -a "name=imagemagick,imagemagick-common state=latest"`
 
-### copier des données - local vers distant
+### copier des données local vers distant
 ```
 ansible -i hosts  all  -m copy -a "src=roles/haproxy/files/haproxy.cfg dest=/etc/haproxy/"
 ```
