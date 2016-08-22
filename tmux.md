@@ -1,22 +1,26 @@
 * [changer l'organisation des panels](#changer-l-organisation-des-panels)
 * [augmenter la taille d'un panel](#augmenter-la-taille-d'-un-panel)
+* [attacher à la session](#attacher-à-la-session)
 * [spliter](#spliter)
 * [scritp de lancement](#scritp-de-lancement)
 * [tmux.conf](#tmux.conf)
 
-### changer l'organisation des panels
+## changer l'organisation des panels
 `Ctrl+b+espace`
 
-### augmenter la taille d'un panel
+## augmenter la taille d'un panel
 `Ctrl+b puis Alt+flèche direction du pavé numérique`
 
-### spliter
+## attacher à la session
+`tmux a`
+
+## spliter
 
 horizontalement : Ctrl+b+%
 
 verticalement : Ctrl+b+"
 
-### scritp de lancement
+## scritp de lancement
 
 From http://stackoverflow.com/questions/5609192/how-to-set-up-tmux-so-that-it-starts-up-with-specified-windows-opened
 
@@ -32,7 +36,7 @@ tmux selectw -t 2
 tmux -2 attach-session -d
 ```
 
-### tmux.conf
+## tmux.conf
 
 From : http://www.hamvocke.com/blog/a-guide-to-customizing-your-tmux-conf/
 
