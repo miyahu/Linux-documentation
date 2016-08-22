@@ -1,6 +1,7 @@
 [cloner une branche spécifique d'un repo]: #cloner
-1. [cloner une branche spécifique d'un repo][cloner]
-2. [poussez sa branche pour un merge](#poussez-sa-branche-pour-un-merge)
+* [cloner une branche spécifique d'un repo][cloner]
+* [poussez sa branche pour un merge](#poussez-sa-branche-pour-un-merge)
+* [pull de sa branche a partir de la master](#pull-de-sa-branche-a-partir-de-la-master)
 
 ## Doc gitlab
 http://docs.gitlab.com/ee/workflow/workflow.html
@@ -48,3 +49,7 @@ git config --global user.email pouet@gruik.fr
 
 ## poussez sa branche pour un merge
 `git push origin fix-1.6`
+
+## pull de sa branche a partir de la master
+
+`git branch --set-upstream-to=origin/master antonio-vhost`
