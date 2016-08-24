@@ -16,6 +16,7 @@
 * [Installation](#installation) 
 * [Mise en cluster](#mise-encluster)
 * [Sauvegarde](#sauvegarde)
+* [would have more than the allowed 10% free disk threshold](would-have-more-than-the-allowed-10%-free-disk-threshold#)
 
 <http://soat.developpez.com/articles/elasticsearch/>
 
@@ -360,3 +361,13 @@ récupérer le nom du dépôt de backup avec :
 Puis, récupérer la liste des snapshot
 
 `curl -s 'http://localhost:9200/_snapshot/es_backup/_all?pretty' | less`
+
+## would have more than the allowed 10% free disk threshold
+
+```
+curl -XPUT localhost:9200/_cluster/settings -d '{
+    "transient" : {
+        "cluster.routing.allocation.disk.threshold_enabled" : false
+    }
+}'
+```
