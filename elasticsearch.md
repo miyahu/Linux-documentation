@@ -17,6 +17,7 @@
 * [Mise en cluster](#mise-encluster)
 * [Sauvegarde](#sauvegarde)
 * [would have more than the allowed 10% free disk threshold](would-have-more-than-the-allowed-10%-free-disk-threshold#)
+* [supprimer d'anciennes donnés](#supprimer-d'anciennes-donnés)
 
 <http://soat.developpez.com/articles/elasticsearch/>
 
@@ -371,3 +372,7 @@ curl -XPUT localhost:9200/_cluster/settings -d '{
     }
 }'
 ```
+
+## supprimer d'anciennes donnés
+
+`curator delete --prefix packetbeat- --older-than 3̀
