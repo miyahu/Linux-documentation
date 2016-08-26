@@ -1,8 +1,16 @@
+* [passer les variables d'ansible.cfg en variables d'environement](#passer-les-variables-d'ansible.cfg-en-variables-d'environement)
 * [failed with error code 1 in /root/build/cryptography](#failed /root/build/cryptography)
 * [ad-hoc MaJ de sécurite](#ad-hoc-MaJ-de-securite)
 * [copier des données - local vers distant](#copier-des-données-local-vers-distant)
 * [récupérer des fichiers distant](#récupérer-des-fichiers-distant)
 
+
+## passer les variables d'ansible.cfg en variables d'envirronement
+
+```
+export ANSIBLE_ROLES_PATH=$PWD/roles
+export ANSIBLE_INVENTORY=$PWD/hosts-test
+```
 
 ### ad-hoc MaJ de securite
 `ansible messerveurs -s  -m apt -a "name=imagemagick,imagemagick-common state=latest"`
