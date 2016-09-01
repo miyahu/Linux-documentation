@@ -18,6 +18,7 @@
 * [Sauvegarde](#sauvegarde)
 * [would have more than the allowed 10% free disk threshold](would-have-more-than-the-allowed-10%-free-disk-threshold#)
 * [supprimer d'anciennes donnés](#supprimer-d'anciennes-donnés)
+* [cluster.routing.allocation.disk.watermark](#cluster.routing.allocation.disk.watermark)
 
 <http://soat.developpez.com/articles/elasticsearch/>
 
@@ -372,6 +373,11 @@ curl -XPUT localhost:9200/_cluster/settings -d '{
     }
 }'
 ```
+
+## cluster.routing.allocation.disk.watermark 
+
+https://www.elastic.co/guide/en/elasticsearch/reference/current/disk-allocator.html
+
 
 ## supprimer d'anciennes donnés
 
