@@ -313,3 +313,39 @@ http://www.rabbitmq.com/management-cli.html
 
 https://www.rabbitmq.com/troubleshooting.html
 
+
+## lister les queues
+
+```
+rabbitmqctl list_queues -p /
+```
+
+## export de conf
+
+```
+rabbitmqadmin -u admin -p ma export rabbit.config
+```
+
+## mise en cluster
+
+!! se mettre en même version
+
+```
+sur le node à ajouter
+```
+
+```
+rabbitmqctl stop_app
+```
+
+```
+rabbitmqctl reset
+```
+
+```
+rabbitmqctl join_cluster rabbit@nomdumaitre
+```
+
+```
+rabbitmqctl start_app
+```
