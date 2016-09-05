@@ -342,14 +342,20 @@ Troubleshooting
 
 ##  mise en cluster
 
-!! se mettre en même version rabbitmq et erlang\*
+Se mettre en même version rabbitmq et erlang*
 
-\`\`\` sur le node à ajouter \`\`\`
+sur le node à ajouter 
 
-\`\`\` rabbitmqctl stop\_app \`\`\`
+```rabbitmqctl stop_app ```
 
-\`\`\` rabbitmqctl reset \`\`\` ajout au cluster \`\`\` rabbitmqctl
-join\_cluster rabbit@nomdumaitre \`\`\`
+``` rabbitmqctl reset ``` 
 
-\`\`\` rabbitmqctl start\_app \`\`\` on install le plugin de managment
-\`\`\` rabbitmq-plugins enable rabbitmq\_management \`\`\`
+ajout au cluster 
+
+``` rabbitmqctl join_cluster rabbit@nomdumaitre ```
+
+``` rabbitmqctl start_app ``` 
+
+on install le plugin de managment
+
+``` rabbitmq-plugins enable rabbitmq_management ```
