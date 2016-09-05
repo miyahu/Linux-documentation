@@ -1,3 +1,5 @@
+* [mise en cluster] (#mise-en-cluster)
+
 Présentation
 ------------
 
@@ -338,7 +340,7 @@ Troubleshooting
 
 \`\`\` rabbitmqadmin -u admin -p ma export rabbit.config \`\`\`
 
-1.  1.  mise en cluster
+##  mise en cluster
 
 !! se mettre en même version rabbitmq et erlang\*
 
