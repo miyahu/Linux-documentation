@@ -19,6 +19,7 @@
 * [would have more than the allowed 10% free disk threshold](would-have-more-than-the-allowed-10%-free-disk-threshold#)
 * [supprimer d'anciennes donnés](#supprimer-d'anciennes-donnés)
 * [cluster.routing.allocation.disk.watermark](#cluster.routing.allocation.disk.watermark)
+* [This can result in part of the JVM being swapped out. Increase RLIMIT_MEMLOCK ](#This-can-result-in-part-of-the-JVM-being-swapped-out.-Increase-RLIMIT_MEMLOCK)
 
 <http://soat.developpez.com/articles/elasticsearch/>
 
@@ -382,3 +383,8 @@ https://www.elastic.co/guide/en/elasticsearch/reference/current/disk-allocator.h
 ## supprimer d'anciennes donnés
 
 `curator delete --prefix packetbeat- --older-than 3̀
+
+## This can result in part of the JVM being swapped out. Increase RLIMIT_MEMLOCK 
+
+Ajout MAX_LOCKED_MEMORY=unlimited dans /etc/init.d/elasticsearch
+
