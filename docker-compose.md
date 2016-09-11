@@ -3,6 +3,8 @@
 * [Préparation du dockerfile](#Préparation-du-dockerfile)
 * [docker-compose](#docker-compose)
 * [Configuration de docker-compose](#Configuration-de-docker-compose)
+* [Vérifier le démarrage des instances](#Vérifier-le-démarrage-des-instances)
+* [Accéder à ses instances](#Accéder-à-ses-instances)
 
 ## environement de devellopement pour Ansible avec Docker
 
@@ -117,6 +119,18 @@ docker-compose up -d
 
 `̀ ̀ 
 docker-compose down
+`̀ ̀ 
+
+### Vérifier le démarrage des instances
+
+`̀ ̀ 
+docker ps
+`̀ ̀ 
+
+### Accéder à ses instances docker
+
+`̀ ̀ 
+docker exec -it lamphc bash
 `̀ ̀ 
 
 ## Test unitaire avec Kitchen:
