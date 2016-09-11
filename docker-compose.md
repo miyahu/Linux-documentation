@@ -1,5 +1,4 @@
 *[environement de devellopement pour Ansible avec Docker](#environement-de-devellopement-pour-Ansible-avec-Docker)
-*[environement de devellopement pour Ansible avec Docker](#environement-de-devellopement-pour-Ansible-avec-Docker)
 
 ## environement de devellopement pour Ansible avec Docker
 

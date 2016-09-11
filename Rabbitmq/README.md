@@ -328,7 +328,7 @@ rabbitmqadmin -u admin -p ma export rabbit.config
 
 ## mise en cluster
 
-!! se mettre en même version
+!! se mettre en même version rabbitmq et erlang*
 
 ```
 sur le node à ajouter
@@ -341,11 +341,15 @@ rabbitmqctl stop_app
 ```
 rabbitmqctl reset
 ```
-
+ajout au cluster
 ```
 rabbitmqctl join_cluster rabbit@nomdumaitre
 ```
 
 ```
 rabbitmqctl start_app
+```
+on install le plugin de managment
+```
+rabbitmq-plugins enable rabbitmq_management
 ```

@@ -85,3 +85,10 @@ failed /root/build/cryptography
 
 ### exclure certains serveur du traitement
 `ansible-playbook --limit '!hoost1:!host2' yourPlaybook.yml`
+
+
+# bonnes pratiques AWH 
+
+- templates : créer des répertoires par 
+
+
