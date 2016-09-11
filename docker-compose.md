@@ -13,15 +13,16 @@
 
 1. On install la dernière version de docker
 
-`̀ ̀ 
+```
 wget -qO- https://get.docker.com/ | sh
-`̀ ̀ 
+
+```
 
 2. On ajoute l'utilisateur au groupe docker pour ne pas devoir faire du sudo continuellement.
 
-`̀ ̀ 
+```
 usermod -G docker $(whoami)
-`̀ ̀ 
+```
 
 Et enfin se relogguer
 
@@ -29,11 +30,12 @@ Et enfin se relogguer
 
 se placer dans le répertoire development/ puis lancer docker-compose
 On fixe la version de compose
-`̀ ̀ 
+```
 curl -L https://github.com/docker/compose/releases/download/1.7.1/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
-`̀ ̀ 
+```
 ### Préparation du dockerfile
-`̀ ̀ 
+
+```
 FROM debian:jessie
 
 ENV ANSIBLE_VERSION 2.1
@@ -65,9 +67,10 @@ RUN ssh-keygen -q -t rsa -N '' -f /home/ansible/.ssh/id_rsa && \
 ENV HOME /home/ansible
 
 WORKDIR /usr/local/ansible/orchestrator/
-`̀ ̀ 
+```
+
 ### Configuration de docker compose
-`̀ ̀ 
+```
 ---
 version: '2'
 networks:
@@ -105,33 +108,33 @@ services:
     privileged: true
     cap_add:
       - ALL
-`̀ ̀ 
+```
 
 ### manipulation de docker-compose
 
 #### Démarrage des instances
 
-`̀ ̀ 
+```
 docker-compose up -d 
-`̀ ̀ 
+```
 
 #### Arrêt des instances
 
-`̀ ̀ 
+```
 docker-compose down
-`̀ ̀ 
+```
 
 ### Vérifier le démarrage des instances
 
-`̀ ̀ 
+```
 docker ps
-`̀ ̀ 
+```
 
 ### Accéder à ses instances docker
 
-`̀ ̀ 
+```
 docker exec -it lamphc bash
-`̀ ̀ 
+```
 
 ## Test unitaire avec Kitchen:
 
