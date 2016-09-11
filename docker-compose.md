@@ -1,15 +1,19 @@
 * [environement de devellopement pour Ansible avec Docker](#environement-de-devellopement-pour-Ansible-avec-Docker)
 * [docker](#docker)
-* [Préparation du dockerfile](#Préparation-du-dockerfile)
+* [Installation de docker](#Installation-de-docker)
 * [docker-compose](#docker-compose)
+* [Installation de docker-compose](#Installation-de-docker-compose)
+* [Préparation du dockerfile](#Préparation-du-dockerfile)
 * [Configuration de docker-compose](#Configuration-de-docker-compose)
 * [Vérifier le démarrage des instances](#Vérifier-le-démarrage-des-instances)
 * [Accéder à ses instances](#Accéder-à-ses-instances)
 
-## environement de devellopement pour Ansible avec Docker
+# environement de devellopement pour Ansible avec Docker
 
 
-### docker
+## docker
+
+### Installation de docker
 
 1. On install la dernière version de docker
 
@@ -26,7 +30,9 @@ usermod -G docker $(whoami)
 
 Et enfin se relogguer
 
-### docker-compose
+## docker-compose
+
+### Installation de docker-compose
 
 se placer dans le répertoire development/ puis lancer docker-compose
 On fixe la version de compose
