@@ -15,14 +15,14 @@
 
 ### Installation de docker
 
-1. On install la dernière version de docker
+On install la dernière version de docker
 
 ```
 wget -qO- https://get.docker.com/ | sh
 
 ```
 
-2. On ajoute l'utilisateur au groupe docker pour ne pas devoir faire du sudo continuellement.
+On ajoute l'utilisateur au groupe docker pour ne pas devoir faire du sudo continuellement.
 
 ```
 usermod -G docker $(whoami)
