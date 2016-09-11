@@ -1,5 +1,8 @@
 * [environement de devellopement pour Ansible avec Docker](#environement-de-devellopement-pour-Ansible-avec-Docker)
-  * [docker](#docker)
+* [docker](#docker)
+  * [Préparation du dockerfile](#Préparation-du-dockerfile)
+* [docker-compose](#docker-compose)
+  * [Configuration de docker-compose](#Configuration-de-docker-compose)
 
 ## environement de devellopement pour Ansible avec Docker
 
@@ -27,7 +30,7 @@ On fixe la version de compose
 `̀ ̀ 
 curl -L https://github.com/docker/compose/releases/download/1.7.1/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
 `̀ ̀ 
-### mettre en place le dockerfile
+### Préparation du dockerfile
 `̀ ̀ 
 FROM debian:jessie
 
@@ -61,7 +64,7 @@ ENV HOME /home/ansible
 
 WORKDIR /usr/local/ansible/orchestrator/
 `̀ ̀ 
-### configuration de docker compose
+### Configuration de docker-compose
 `̀ ̀ 
 ---
 version: '2'
