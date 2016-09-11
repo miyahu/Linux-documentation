@@ -2,7 +2,7 @@
 * [docker](#docker)
 * [Préparation du dockerfile](###Préparation-du-dockerfile)
 * [docker-compose](#docker-compose)
-* [Configuration de docker-compose](###Configuration-de-docker"-"compose)
+* [Configuration de docker-compose](###Configuration-de-docker-compose)
 
 ## environement de devellopement pour Ansible avec Docker
 
@@ -64,7 +64,7 @@ ENV HOME /home/ansible
 
 WORKDIR /usr/local/ansible/orchestrator/
 `̀ ̀ 
-### Configuration de docker-compose
+### Configuration de docker compose
 `̀ ̀ 
 ---
 version: '2'
