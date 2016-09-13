@@ -1,20 +1,18 @@
-* [environement de devellopement pour Ansible avec Docker](#environement-de-devellopement-pour-Ansible-avec-Docker)
-* [docker](#docker)
-* [Installation de docker](#Installation-de-docker)
-* [docker-compose](#docker-compose)
-* [Installation de docker compose](#Installation-de-docker-compose)
-* [Préparation du dockerfile](#Préparation-du-dockerfile)
-* [Configuration de docker-compose](#Configuration-de-docker-compose)
-* [Vérifier le démarrage des instances](#Vérifier-le-démarrage-des-instances)
-* [Accéder à ses instances](#Accéder-à-ses-instances)
-* [Débugger docker-compose](#Débugger-docker-compose)
-
 # environement de devellopement pour Ansible avec Docker
-
+* [docker](#docker)
+* [installation de docker](#installation-de-docker)
+* [docker-compose](#docker-compose)
+* [installation de docker compose](#installation-de-docker-compose)
+* [préparation du dockerfile](#préparation-du-dockerfile)
+* [configuration de docker-compose](#configuration-de-docker-compose)
+* [vérifier le démarrage des instances](#vérifier-le-démarrage-des-instances)
+* [accéder à ses instances](#accéder-à-ses-instances)
+* [débugger docker-compose](#débugger-docker-compose)
+* [test unitaire avec kitchen](#test-unitaire-avec-kitchen)
 
 ## docker
 
-### Installation de docker
+### installation de docker
 
 On install la dernière version de docker
 
@@ -34,7 +32,7 @@ Et enfin se relogguer
 ## docker-compose
 gg
 
-### Installation de docker compose
+### installation de docker-compose
 
 se placer dans le répertoire development/ puis lancer docker-compose
 On fixe la version de compose
@@ -77,7 +75,7 @@ ENV HOME /home/ansible
 WORKDIR /usr/local/ansible/orchestrator/
 ```
 
-### Configuration de docker compose
+### configuration de docker compose
 ```
 ---
 version: '2'
@@ -120,39 +118,31 @@ services:
 
 ### manipulation de docker-compose
 
-#### Démarrage des instances
+#### démarrage des instances
 
 ```
 docker-compose up -d 
 ```
 
-#### Arrêt des instances
+#### arrêt des instances
 
 ```
 docker-compose down
 ```
 
-### Vérifier le démarrage des instances
+### vérifier le démarrage des instances
 
 ```
 docker ps
 ```
 
-### Accéder à ses instances docker
+### accéder à ses instances docker
 
 ```
 docker exec -it lamphc bash
 ```
 
-## Test unitaire avec Kitchen:
-
-Actuellement les tests sont effectués sur le gitlab, lors d'un commit (trigger) 
-
-Les tests sont utilisés sur les rôles et non sur les archis (actuellement s'entends).
-
-Ils est prévus à terme de lancer les tests sur sa machine local ...
-
-## Débugger docker-compose
+## débugger docker-compose
 
 le lancer en avant-plan 
 ```
@@ -171,5 +161,13 @@ puis rebuilder la stack avec un
 docker-compose up -d
 ```
 
+
+## test unitaire avec Kitchen
+
+Actuellement les tests sont effectués sur le gitlab, lors d'un commit (trigger) 
+
+Les tests sont utilisés sur les rôles et non sur les archis (actuellement s'entends).
+
+Ils est prévus à terme de lancer les tests sur sa machine local ...
 
 
