@@ -2,7 +2,7 @@
 * [docker](#docker)
 * [Installation de docker](#Installation-de-docker)
 * [docker-compose](#docker-compose)
-* [Installation de docker-compose](#Installation-de-docker-compose)
+* [Installation de docker compose](#Installation-de-docker-compose)
 * [Préparation du dockerfile](#Préparation-du-dockerfile)
 * [Configuration de docker-compose](#Configuration-de-docker-compose)
 * [Vérifier le démarrage des instances](#Vérifier-le-démarrage-des-instances)
@@ -34,7 +34,7 @@ Et enfin se relogguer
 ## docker-compose
 gg
 
-### Installation de docker-compose
+### Installation de docker compose
 
 se placer dans le répertoire development/ puis lancer docker-compose
 On fixe la version de compose
