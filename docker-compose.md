@@ -6,7 +6,7 @@
 * [préparation du dockerfile](#préparation-du-dockerfile)
 * [configuration de docker-compose](#configuration-de-docker-compose)
 * [vérifier le démarrage des instances](#vérifier-le-démarrage-des-instances)
-* [accéder à ses instances](#accéder-à-ses-instances)
+* [accéder à ses instances docker](#accéder-à-ses-instances-docker)
 * [débugger docker-compose](#débugger-docker-compose)
 * [test unitaire avec kitchen](#test-unitaire-avec-kitchen)
 
