@@ -7,6 +7,7 @@
 * [Configuration de docker-compose](#Configuration-de-docker-compose)
 * [Vérifier le démarrage des instances](#Vérifier-le-démarrage-des-instances)
 * [Accéder à ses instances](#Accéder-à-ses-instances)
+* [Débugger docker-compose](#Débugger-docker-compose)
 
 # environement de devellopement pour Ansible avec Docker
 
@@ -149,4 +150,25 @@ Actuellement les tests sont effectués sur le gitlab, lors d'un commit (trigger)
 Les tests sont utilisés sur les rôles et non sur les archis (actuellement s'entends).
 
 Ils est prévus à terme de lancer les tests sur sa machine local ...
+
+## Débugger docker-compose
+
+le lancer en avant-plan 
+```
+docker-compose up
+```
+et observer la suite.
+
+Si une image docker à une anomalie, la supprimer 
+
+```
+sudo docker ps -a |awk '/NOM DE L'IMAGE/ {print$1}'
+```
+puis rebuilder la stack avec un 
+
+```
+docker-compose up -d
+```
+
+
 
