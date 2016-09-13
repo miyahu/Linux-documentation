@@ -32,8 +32,9 @@ usermod -G docker $(whoami)
 Et enfin se relogguer
 
 ## docker-compose
+gg
 
-## Installation de docker-compose
+### Installation de docker-compose
 
 se placer dans le répertoire development/ puis lancer docker-compose
 On fixe la version de compose
