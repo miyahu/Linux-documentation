@@ -31,7 +31,6 @@ usermod -G docker $(whoami)
 Et enfin se relogguer
 
 ## docker-compose
-gg
 
 ### installation de docker-compose
 
