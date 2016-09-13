@@ -7,6 +7,7 @@
 * [configuration de docker-compose](#configuration-de-docker-compose)
 * [vérifier le démarrage des instances](#vérifier-le-démarrage-des-instances)
 * [accéder à ses instances docker](#accéder-à-ses-instances-docker)
+* [commiter les modifications effectuées dans l'instance](#commiter-les-modifications-effectuées-dans-l'instance)
 * [débugger docker-compose](#débugger-docker-compose)
 * [test unitaire avec kitchen](#test-unitaire-avec-kitchen)
 
@@ -141,6 +142,19 @@ docker ps
 ```
 docker exec -it lamphc bash
 ```
+### commiter les modifications effectuées dans l'instance
+
+Je veux rendre pérenne une modification effectuée dans l'instance
+
+```
+sudo docker commit 'ID CONTAINER' 'nom du commit'
+```
+
+```
+Je pourrais ensuite l'utiliser avec un 
+```
+
+sudo docker run 'nom du commit'
 
 ## débugger docker-compose
 
