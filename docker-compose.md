@@ -145,12 +145,19 @@ docker exec -it lamphc bash
 
 Je veux rendre pérenne une modification effectuée dans l'instance
 
+Je commit les modifs avec :
+
 ```
 sudo docker commit 'ID CONTAINER' 'nom du commit'
 ```
 
+je vérifie la présence de la nouvelle image avec 
 ```
-Je pourrais ensuite l'utiliser avec un 
+sudo docker images
+```
+
+```
+Je le démarre avec un 
 ```
 
 sudo docker run 'nom du commit'

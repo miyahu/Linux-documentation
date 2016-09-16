@@ -3,6 +3,7 @@
 * [ad-hoc MaJ de sécurite](#ad-hoc-MaJ-de-securite)
 * [copier des données - local vers distant](#copier-des-données-local-vers-distant)
 * [récupérer des fichiers distant](#récupérer-des-fichiers-distant)
+* [installation des rôles de galaxy](#installation-des-rôles-de-galaxy)
 
 
 ## passer les variables d ansible.cfg en variables d envirronement
@@ -90,5 +91,10 @@ failed /root/build/cryptography
 # bonnes pratiques AWH 
 
 - templates : créer des répertoires par 
+
+## installation des rôles de galaxy
+```
+ansible-galaxy -r requirements.yml install -p roles/
+```
 
 
