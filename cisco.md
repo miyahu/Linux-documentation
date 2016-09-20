@@ -83,6 +83,70 @@ interface Port-channel3
 end
 ```
 
+Côté Linux
+
+```
+auto bond0
+iface bond0 inet manual
+    slaves eth0 eth1
+    bond_mode 4
+    bond-xmit-hash-policy layer3+4
+    bond_miimon 100
+    bond_downdelay 200
+    bond_updelay 200
+    bond-lacp-rate fast
+```
+
+On vérifie le status
+
+```
+cat /proc/net/bonding/bond0
+Down Delay (ms): 200
+
+802.3ad info
+LACP rate: fast
+Min links: 0
+Aggregator selection policy (ad_select): stable
+System priority: 65535
+System MAC address: 1c:98:ec:19:31:44
+Active Aggregator Info:
+        Aggregator ID: 1
+        Number of ports: 2
+        Actor Key: 9
+        Partner Key: 3
+        Partner Mac Address: 00:1e:7a:56:16:c0
+
+Slave Interface: eth0
+MII Status: up
+Speed: 1000 Mbps
+Duplex: full
+Link Failure Count: 0
+Permanent HW addr: 1c:98:ec:19:31:44
+Slave queue ID: 0
+Aggregator ID: 1
+Actor Churn State: none
+Partner Churn State: none
+Actor Churned Count: 0
+Partner Churned Count: 1
+details actor lacp pdu:
+    system priority: 65535
+    system mac address: 1c:98:ec:19:31:44
+    port key: 9
+    port priority: 255
+    port number: 1
+    port state: 63
+details partner lacp pdu:
+    system priority: 32768
+    system mac address: 00:1e:7a:56:16:c0
+    oper key: 3
+    port priority: 32768
+    port number: 16
+    port state: 61
+...
+```
+
+
+
 ### peter la gueule à un port channel
 
 ```
