@@ -35,10 +35,54 @@ show mac address-table | inc 3146
 
 ### mettre en place un port channel
 
-
+Voir la conf 
 ```
 show etherchannel summary
 ```
+
+exemple concret :
+
+Pour les ports
+```
+show run int Gi1/15
+Building configuration...
+
+Current configuration : 359 bytes
+!
+interface GigabitEthernet1/15
+ description hyp3:eth0
+ switchport access vlan 254
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 254
+ switchport trunk allowed vlan 61,254
+ switchport mode trunk
+ switchport nonegotiate
+ channel-group 3 mode active
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+ spanning-tree guard root
+end
+```
+
+pour le po
+```
+show run int po3
+Building configuration...
+
+Current configuration : 270 bytes
+!
+interface Port-channel3
+ description hyp3 via Gi1/15 et Gi1/16
+ switchport
+ switchport access vlan 254
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 254
+ switchport trunk allowed vlan 61,254
+ switchport mode trunk
+ switchport nonegotiate
+end
+```
+
 ### peter la gueule à un port channel
 
 ```
