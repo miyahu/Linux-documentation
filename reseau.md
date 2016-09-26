@@ -1,4 +1,5 @@
 * [tunnel gre sur Debian](#tunnel-gre-sur-Debian)
+* [récupérer l'adresse mac d'une interface] (#récupérer-l'adresse-mac-d'une-interface)
 
 ## tunnel gre sur Debian
 ```
@@ -9,3 +10,9 @@ auto gre0
         pre-up ip link set gre0 multicast on
         post-down ip tunnel del gre1
 ```
+
+## récupérer l'adresse mac d'une interface
+```
+ethtool -P eth3
+```
+

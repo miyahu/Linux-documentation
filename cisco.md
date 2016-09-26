@@ -2,7 +2,7 @@
 * [trouver les informations de connexion au switch à partir d'un serveur](#trouver-les-informations-de-connexion-au-switch-a partir-d-un-serveur)
 * [trouver quelle mac est associée à un port] (#trouver-quelle-mac-est-associée-à-un-port) 
 * [mettre en place un port channel] (#mettre-en-place-un-port-channel)
-* [peter la gueule à un port channel] (#peter-la-gueule-à-un-port-channel)
+* [péter la gueule à un port channel] (#péter-la-gueule-à-un-port-channel)
 
 ### trouver les informations de connexion au switch à partir d'un serveur
 
@@ -145,9 +145,7 @@ details partner lacp pdu:
 ...
 ```
 
-
-
-### peter la gueule à un port channel
+### péter la gueule à un port channel
 
 ```
 conf t 
