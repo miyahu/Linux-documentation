@@ -3,6 +3,7 @@
 * [trouver quelle mac est associée à un port] (#trouver-quelle-mac-est-associée-à-un-port) 
 * [mettre en place un port channel] (#mettre-en-place-un-port-channel)
 * [péter la gueule à un port channel] (#péter-la-gueule-à-un-port-channel)
+* [troubleshooting de po] (#troubleshooting-de-po)
 
 ### trouver les informations de connexion au switch à partir d'un serveur
 
@@ -151,4 +152,89 @@ details partner lacp pdu:
 conf t 
 int po3
 no interface port-channel 3
+```
+
+### troubleshooting de po
+
+```
+Group: 3 
+----------
+Group state = L2 
+Ports: 2   Maxports = 16
+Port-channels: 1 Max Port-channels = 16
+Protocol:   LACP
+Minimum Links: 0
+        Ports in the group:
+        -------------------
+Port: Gi0/13
+------------
+
+Port state    = Up Mstr Assoc In-Bndl 
+Channel group = 3           Mode = Active          Gcchange = -
+Port-channel  = Po3         GC   =   -             Pseudo port-channel = Po3
+Port index    = 0           Load = 0x00            Protocol =   LACP
+
+Flags:  S - Device is sending Slow LACPDUs   F - Device is sending fast LACPDUs.
+        A - Device is in active mode.        P - Device is in passive mode.
+
+Local information:
+                            LACP port     Admin     Oper    Port        Port
+Port      Flags   State     Priority      Key       Key     Number      State
+Gi0/13    SA      bndl      32768         0x3       0x3     0x10E       0x3D  
+
+Partner's information:
+
+                  LACP port                        Admin  Oper   Port    Port
+Port      Flags   Priority  Dev ID          Age    key    Key    Number  State
+Gi0/13    SA      255       001e.c9b2.3e5b  15s    0x0    0x11   0x2     0x3D  
+
+Age of the port in the current state: 0d:00h:10m:41s
+
+Port: Gi0/28
+------------
+
+Port state    = Up Mstr Assoc In-Bndl 
+Channel group = 3           Mode = Active          Gcchange = -
+Port-channel  = Po3         GC   =   -             Pseudo port-channel = Po3
+Port index    = 0           Load = 0x00            Protocol =   LACP
+
+Flags:  S - Device is sending Slow LACPDUs   F - Device is sending fast LACPDUs.
+        A - Device is in active mode.        P - Device is in passive mode.
+
+Local information:
+                            LACP port     Admin     Oper    Port        Port
+Port      Flags   State     Priority      Key       Key     Number      State
+Gi0/28    SA      bndl      32768         0x3       0x3     0x11D       0x3D  
+
+Partner's information:
+
+                  LACP port                        Admin  Oper   Port    Port
+Port      Flags   Priority  Dev ID          Age    key    Key    Number  State
+Gi0/28    SA      255       001e.c9b2.3e5b  23s    0x0    0x11   0x1     0x3D  
+
+Age of the port in the current state: 0d:00h:10m:41s
+
+        Port-channels in the group: 
+        ---------------------------
+
+Port-channel: Po3    (Primary Aggregator)
+
+------------
+
+Age of the Port-channel   = 0d:00h:17m:06s
+Logical slot/port   = 2/3          Number of ports = 2
+HotStandBy port = null 
+Port state          = Port-channel Ag-Inuse 
+Protocol            =   LACP
+Port security       = Disabled
+
+Ports in the Port-channel: 
+
+Index   Load   Port     EC state        No of bits
+------+------+------+------------------+-----------
+  0     00     Gi0/13   Active             0
+  0     00     Gi0/28   Active             0
+
+Time since last port bundled:    0d:00h:11m:48s    Gi0/28
+Time since last port Un-bundled: 0d:00h:12m:02s    Gi0/13
 ```
