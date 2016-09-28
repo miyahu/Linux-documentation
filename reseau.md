@@ -1,5 +1,6 @@
 * [tunnel gre sur Debian](#tunnel-gre-sur-Debian)
 * [récupérer l'adresse mac d'une interface] (#récupérer-l'adresse-mac-d'une-interface)
+* [voir les vlan chargés par interface] (#voir-les-vlan-chargés-par-interface)
 
 ## tunnel gre sur Debian
 ```
@@ -16,3 +17,14 @@ auto gre0
 ethtool -P eth3
 ```
 
+## voir les vlan chargés par interface
+
+```
+cat /proc/net/vlan/config
+VLAN Dev name    | VLAN ID
+Name-Type: VLAN_NAME_TYPE_RAW_PLUS_VID_NO_PAD
+bond0.61       | 61  | bond0
+bond0.216      | 216  | bond0
+bond0.355      | 355  | bond0
+bond0.356      | 356  | bond0 
+```
