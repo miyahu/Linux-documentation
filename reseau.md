@@ -1,3 +1,5 @@
+
+* [obtenir son ip externe] (#obtenir-son-ip-externe)
 * [tunnel gre sur Debian](#tunnel-gre-sur-Debian)
 * [récupérer l'adresse mac d'une interface] (#récupérer-l'adresse-mac-d'une-interface)
 * [voir les vlan chargés par interface] (#voir-les-vlan-chargés-par-interface)
@@ -27,4 +29,9 @@ bond0.61       | 61  | bond0
 bond0.216      | 216  | bond0
 bond0.355      | 355  | bond0
 bond0.356      | 356  | bond0 
+```
+## obtenir son ip externe
+
+```
+curl 'https://api.ipify.org?format=txt'
 ```
