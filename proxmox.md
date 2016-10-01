@@ -1,6 +1,7 @@
 * [quitter minicom](#quitter minicom)
 * [convertir un disque raw en qcow](#convertir-un-disque-raw-en-qcow)   
 * [monter un qcow](#monter-un-qcow) 
+* [créer un container](#créer-un-container) 
 
 ### rediriger tous les ports VNC d'une  VM vers un port unique
 
@@ -92,3 +93,10 @@ Enfin on monte la partition qui nous intéresse
 et enfin déconnecter le périphérique nbd0
 
 `qemu-nbd --disconnect /dev/nbd0̀
+
+## créer un container
+
+```
+pct create 102 /var/lib/vz/template/cache/debian-8.0-standard_8.4-1_amd64.tar.gz -password
+```
+
