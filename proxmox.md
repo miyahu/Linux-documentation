@@ -2,6 +2,8 @@
 * [convertir un disque raw en qcow](#convertir-un-disque-raw-en-qcow)   
 * [monter un qcow](#monter-un-qcow) 
 * [créer un container](#créer-un-container) 
+* [ajouter une interface à un container](#ajouter-une-interface-à-un-container) 
+* [Mettre son container sur Internet](#mettre-son-container-sur-internet) 
 
 ### rediriger tous les ports VNC d'une  VM vers un port unique
 
@@ -99,4 +101,30 @@ et enfin déconnecter le périphérique nbd0
 ```
 pct create 102 /var/lib/vz/template/cache/debian-8.0-standard_8.4-1_amd64.tar.gz -password
 ```
+
+## ajouter une interface à un container
+```
+pct set 100 -net0 name=eth0,bridge=vmbr0,ip=192.168.15.147/24,gw=192.168.15.1
+```
+
+## mettre son container sur internet
+
+Ajouter cela dans le fichier interface
+```
+auto vmbr1
+iface vmbr1 inet static
+        address  10.10.0.1/24
+        bridge_ports eth1
+        bridge_stp off
+        bridge_fd 0
+```
+Puis
+
+```
+iptables -t nat -A POSTROUTING -o vmbr0 -j SNAT --to-source 163.172.217.110
+apt-get install iptables-persistent
+iptables-save >  /etc/iptables/rules.v4
+```
+
+
 
