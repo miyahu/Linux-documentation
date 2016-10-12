@@ -4,6 +4,7 @@
 * [créer un container](#créer-un-container) 
 * [ajouter une interface à un container](#ajouter-une-interface-à-un-container) 
 * [Mettre son container sur Internet](#mettre-son-container-sur-internet) 
+* [modifier l'interface d'une vm](#modifier-l'interface-d'une-vm) 
 
 ### rediriger tous les ports VNC d'une  VM vers un port unique
 
@@ -126,5 +127,8 @@ apt-get install iptables-persistent
 iptables-save >  /etc/iptables/rules.v4
 ```
 
+### modifier l'interface d'une vm
 
-
+```
+qm set 103 -net0 virtio=BA:07:E0:D3:B4:B3,bridge=vmbr1
+```

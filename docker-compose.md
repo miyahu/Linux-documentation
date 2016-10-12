@@ -158,9 +158,10 @@ sudo docker images
 
 ```
 Je le démarre avec un 
-```
 
+```
 sudo docker run 'nom du commit'
+```
 
 ## débugger docker-compose
 
