@@ -5,6 +5,7 @@
 * [voir les connexions activent] (#voir-les-connexions-activent)
 * [voir les connexions activent par interface] (#voir-les-connexions-activent-par-interface)
 * [visualiser la policy d'un volume] (#visualiser-la-policy-d'un-volume)
+* [trouver l'ip du client associée à un volume ] (#trouver-l'ip-du-client-associée-à-un-volume )
 
 ### lister les vservers
 
@@ -73,4 +74,19 @@ CLUSTERCT01::volume> show -vserver pris-ct -volume pnfs1 -fields policy
 vserver   volume  policy     
 --------- ------- ---------- 
 pris-ct pnfs1 pris-ct0
+```
+
+### trouver l'ip du client associée à un volume 
+
+L'ip n'est pas associé à un *volume*, juste à une *lif*
+
+il faut chercher, avec comme clé, le nom de la *lif*
+
+```
+network connections active show -vserver mut-ct -remote-ip 10.0.16*
+Vserver    Interface              Remote
+Name       Name:Local Port        Host:Port                    Protocol/Service
+---------- ---------------------- ---------------------------- ----------------
+Node: CLUSTERCT04-04
+mut-ct     riv_lif0_37:2049      10.0.16.14:1002             TCP/nfs
 ```
