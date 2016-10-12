@@ -5,7 +5,8 @@
 * [voir les connexions activent] (#voir-les-connexions-activent)
 * [voir les connexions activent par interface] (#voir-les-connexions-activent-par-interface)
 * [visualiser la policy d'un volume] (#visualiser-la-policy-d'un-volume)
-* [trouver l'ip du client associée à un volume ] (#trouver-l'ip-du-client-associée-à-un-volume )
+* [trouver l'ip du client associée à un volume] (#trouver-l'ip-du-client-associée-à-un-volume)
+* [voir les montages côté netapp] (#voir-les-montages-côté-netapp)
 
 ### lister les vservers
 
@@ -89,4 +90,16 @@ Name       Name:Local Port        Host:Port                    Protocol/Service
 ---------- ---------------------- ---------------------------- ----------------
 Node: CLUSTERCT04-04
 mut-ct     riv_lif0_37:2049      10.0.16.14:1002             TCP/nfs
+```
+
+### voir les montages côté netapp
+
+Junction Path
+
+```
+volume show -vserver prisa-ct  -junction                           
+                                Junction                            Junction
+Vserver   Volume       Language Active    Junction Path             Path Source
+--------- ------------ -------- --------  ------------------------- -----------
+prisa-ct pmnfs1   fr.UTF-8 true      /vol/pmnfs1           RW_volume
 ```
