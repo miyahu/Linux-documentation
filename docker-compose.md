@@ -10,6 +10,7 @@
 * [commiter les modifications effectuées dans l'instance](#commiter-les-modifications-effectuées-dans-l'instance)
 * [débugger docker-compose](#débugger-docker-compose)
 * [test unitaire avec kitchen](#test-unitaire-avec-kitchen)
+* [supprimer une image](#supprimer-une-image)
 
 ## docker
 
@@ -191,5 +192,11 @@ Actuellement les tests sont effectués sur le gitlab, lors d'un commit (trigger)
 Les tests sont utilisés sur les rôles et non sur les archis (actuellement s'entends).
 
 Ils est prévus à terme de lancer les tests sur sa machine local ...
+
+### supprimer une image
+
+```
+sudo docker rmi -f "IMAGE ID"
+```
 
 
