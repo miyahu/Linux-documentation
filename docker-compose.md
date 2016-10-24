@@ -152,26 +152,28 @@ sudo docker commit 'ID CONTAINER' 'nom du commit'
 ```
 
 je vérifie la présence de la nouvelle image avec 
+
 ```
 sudo docker images
 ```
 
-```
 Je le démarre avec un 
 
 ```
 sudo docker run 'nom du commit'
 ```
 
-## débugger docker-compose
+### débugger docker-compose
 
 le lancer en avant-plan 
+
 ```
 docker-compose up
 ```
-et observer la suite.
 
-Si une image docker à une anomalie, la supprimer 
+puis observer la suite.
+
+Si une image docker a une anomalie, la supprimer 
 
 ```
 sudo docker ps -a |awk '/NOM DE L'IMAGE/ {print$1}'
@@ -182,8 +184,7 @@ puis rebuilder la stack avec un
 docker-compose up -d
 ```
 
-
-## test unitaire avec Kitchen
+### test unitaire avec kitchen
 
 Actuellement les tests sont effectués sur le gitlab, lors d'un commit (trigger) 
 
