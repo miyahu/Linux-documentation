@@ -1,4 +1,4 @@
-* [ajouter un vlan à uin trunk existant](#ajouter-un-vlan-a-un-trunk-existant)
+* [ajouter un vlan à un trunk existant](#ajouter-un-vlan-a-un-trunk-existant)
 * [trouver les informations de connexion au switch à partir d'un serveur](#trouver-les-informations-de-connexion-au-switch-a partir-d-un-serveur)
 * [trouver quelle mac est associée à un port] (#trouver-quelle-mac-est-associée-à-un-port) 
 * [mettre en place un port channel] (#mettre-en-place-un-port-channel)
