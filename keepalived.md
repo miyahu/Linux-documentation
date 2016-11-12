@@ -62,3 +62,26 @@ TCP  10.0.0.240:8130 wlc
 ```  
 ipvsadm -L -n --connection
 ```  
+
+### théorie
+
+#### real_server vs sorry_server
+Le sorry_server n'est utilisé qu'en cas de perte du real_server, il travaille donc avec ce dernier en mode actif/passif.
+Le sorry_server ne devrait présenter qu'une page de maintenance, la ventilation des requêtes ne doit se faire que sur les real_server.
+
+Utiliser un real_server comme sorry_server est assez bête, car ne noeud n'est pratiquement jamais déclenché ...
+
+#### modes de travail
+
+deux modes possibles :
+* vrrp : avec HA de VIP
+* virtual server : avec NAT et VIP
+
+Et les deux sont mixés chez AWM 
+
+
+##### rafraichissement des adresses mac 
+
+Deux solution :
+* arping vers les serveurs
+* vmac pour le partage de mac !!!
