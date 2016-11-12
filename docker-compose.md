@@ -10,6 +10,7 @@
 * [commiter les modifications effectuées dans l'instance](#commiter-les-modifications-effectuées-dans-l'instance)
 * [débugger docker-compose](#débugger-docker-compose)
 * [test unitaire avec kitchen](#test-unitaire-avec-kitchen)
+* [supprimer une image](#supprimer-une-image)
 
 ## docker
 
@@ -152,25 +153,28 @@ sudo docker commit 'ID CONTAINER' 'nom du commit'
 ```
 
 je vérifie la présence de la nouvelle image avec 
+
 ```
 sudo docker images
 ```
 
-```
 Je le démarre avec un 
+
+```
+sudo docker run 'nom du commit'
 ```
 
-sudo docker run 'nom du commit'
-
-## débugger docker-compose
+### débugger docker-compose
 
 le lancer en avant-plan 
+
 ```
 docker-compose up
 ```
-et observer la suite.
 
-Si une image docker à une anomalie, la supprimer 
+puis observer la suite.
+
+Si une image docker a une anomalie, la supprimer 
 
 ```
 sudo docker ps -a |awk '/NOM DE L'IMAGE/ {print$1}'
@@ -181,13 +185,18 @@ puis rebuilder la stack avec un
 docker-compose up -d
 ```
 
-
-## test unitaire avec Kitchen
+### test unitaire avec kitchen
 
 Actuellement les tests sont effectués sur le gitlab, lors d'un commit (trigger) 
 
 Les tests sont utilisés sur les rôles et non sur les archis (actuellement s'entends).
 
 Ils est prévus à terme de lancer les tests sur sa machine local ...
+
+### supprimer une image
+
+```
+sudo docker rmi -f "IMAGE ID"
+```
 
 

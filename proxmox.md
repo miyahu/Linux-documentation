@@ -4,6 +4,8 @@
 * [créer un container](#créer-un-container) 
 * [ajouter une interface à un container](#ajouter-une-interface-à-un-container) 
 * [Mettre son container sur Internet](#mettre-son-container-sur-internet) 
+* [modifier l'interface d'une vm](#modifier-l'interface-d'une-vm) 
+* [envoyer sendkey] (#envoyer-sendkey)
 
 ### rediriger tous les ports VNC d'une  VM vers un port unique
 
@@ -125,5 +127,14 @@ iptables -t nat -A POSTROUTING -o vmbr0 -j SNAT --to-source 163.172.217.110
 apt-get install iptables-persistent
 ```
 
+### modifier l'interface d'une vm
 
+```
+qm set 103 -net0 virtio=BA:07:E0:D3:B4:B3,bridge=vmbr1
+```
 
+### envoyer sendkey
+Pour flusher les caches
+```
+qm sendkey 100  Alt+Sys+s
+```
