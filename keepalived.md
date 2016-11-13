@@ -85,3 +85,8 @@ Et les deux sont mixés chez AWM
 Deux solution :
 * arping vers les serveurs
 * vmac pour le partage de mac !!!
+
+#### routage des requête avec fwmark
+Cas d'utilisations
+* router certains blocs d'IP vers un serveur spécifique ex chinois
+* rediriger une IP attaquante vers une page de maintenance
