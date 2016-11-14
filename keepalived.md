@@ -63,10 +63,59 @@ TCP  10.0.0.240:8130 wlc
 ipvsadm -L -n --connection
 ```  
 
+### théorie
 
-### Notify 
+#### real_server vs sorry_server
+Le sorry_server n'est utilisé qu'en cas de perte de tous les real_servers, il travaille donc avec ce derniers en mode actif/passif.
+Le sorry_server ne devrait présenter qu'une page de maintenance, la ventilation des requêtes ne devant se faire que sur les real_servers.
 
-```  
-notify_master "/usr/local/scripts/conntrackd-state.sh primary ; /usr/local/scripts/awh-puppet/arp_refresh_sleep.sh ; logger -t "awh keepalived status" MASTER"
-notify_backup "logger -t "awh keepalived status" BACKUP"
-```  
+Utiliser un real_server comme sorry_server est assez bête, car ne noeud n'est pratiquement jamais déclenché ...
+
+Si l'on veut utiliser une ferme avec des membres actif/passif, utiliser plutôt wrr avec une grosse différence de poids par exemple. 
+
+#### modes de travail
+
+deux modes possibles :
+* vrrp : avec HA de VIP
+* virtual server : avec NAT et VIP
+
+Et les deux sont mixés chez AWM 
+
+
+#### rafraichissement des adresses mac 
+
+Deux solutions :
+* arping vers les serveurs
+* vmac pour le partage de mac !!!
+
+#### routage des requête avec fwmark
+Cas d'utilisations :
+* router certains blocs d'IP vers un serveur spécifique ex chinois
+* rediriger une IP attaquante vers une page de maintenance
+
+#### quelques options 
+
+##### delay loop
+
+# L'etat de santé des real_servers est vérifié toutes les 5 secondes
+
+`delay_loop 5`
+
+##### nopreempt
+
+(from linux maganzine)
+
+nopreempt permet d'empêcher la bascule vers le maître par défaut en cas de retour à la normale de celui-ci.
+
+##### lb_algo
+
+
+* rr = round robin
+* wrr = weighted round robin
+* lc = least connection (I like this one the best!)
+* wlc = weighted least connection scheduling>
+* sh = shortest expected delay
+* dh = destination hashing
+* lblc = locality based least connection
+
+

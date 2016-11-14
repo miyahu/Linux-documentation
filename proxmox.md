@@ -125,7 +125,6 @@ Puis
 ```
 iptables -t nat -A POSTROUTING -o vmbr0 -j SNAT --to-source 163.172.217.110
 apt-get install iptables-persistent
-iptables-save >  /etc/iptables/rules.v4
 ```
 
 ### modifier l'interface d'une vm
