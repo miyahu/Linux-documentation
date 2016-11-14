@@ -62,3 +62,11 @@ TCP  10.0.0.240:8130 wlc
 ```  
 ipvsadm -L -n --connection
 ```  
+
+
+### Notify 
+
+```  
+notify_master "/usr/local/scripts/conntrackd-state.sh primary ; /usr/local/scripts/awh-puppet/arp_refresh_sleep.sh ; logger -t "awh keepalived status" MASTER"
+notify_backup "logger -t "awh keepalived status" BACKUP"
+```  
