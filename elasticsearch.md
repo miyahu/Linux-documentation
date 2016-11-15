@@ -20,6 +20,7 @@
 * [supprimer d'anciennes donnés](#supprimer-d'anciennes-donnés)
 * [cluster.routing.allocation.disk.watermark](#cluster.routing.allocation.disk.watermark)
 * [This can result in part of the JVM being swapped out. Increase RLIMIT_MEMLOCK ](#This-can-result-in-part-of-the-JVM-being-swapped-out.-Increase-RLIMIT_MEMLOCK)
+* [where expected to be resolved to a single node] (#where-expected-to-be-resolved-to-a-single-node)
 
 <http://soat.developpez.com/articles/elasticsearch/>
 
@@ -387,4 +388,15 @@ https://www.elastic.co/guide/en/elasticsearch/reference/current/disk-allocator.h
 ## This can result in part of the JVM being swapped out. Increase RLIMIT_MEMLOCK 
 
 Ajout MAX_LOCKED_MEMORY=unlimited dans /etc/init.d/elasticsearch
+
+### where expected to be resolved to a single node
+
+message 
+```
+where expected to be resolved to a single node
+```
+
+Vérifier qu'il n'y a pas plusieurs instances en cours sur le node
+
+
 
