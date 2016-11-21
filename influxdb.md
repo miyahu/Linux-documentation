@@ -3,6 +3,7 @@
 * [obtenir le nom des séries stocké](#obtenir-le-nom-des-séries-stockés)
 * [exemple de requêtes](#exemple-de-requêtes)
 * [exemple de requêtes en select](#exemple-de-requêtes-en-select)
+* [supprimer les series d'un host] (#supprimer-les-series-d'un-host)
 
 
 ### un peu de théorie
@@ -41,4 +42,11 @@ encore mieux
 
 ```
 select * from apache_value  where time > now() - 1h limit 1000;
+```
+
+### supprimer les series d'un host
+cas d'un tag Collectd 
+  
+```
+DROP SERIES WHERE host = 'dnslvs2'
 ```
