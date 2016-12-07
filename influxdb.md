@@ -3,6 +3,10 @@
 * [obtenir le nom des séries stocké](#obtenir-le-nom-des-séries-stockés)
 * [exemple de requêtes](#exemple-de-requêtes)
 * [exemple de requêtes en select](#exemple-de-requêtes-en-select)
+* [supprimer les series d'un host] (#supprimer-les-series-d'un-host)
+* [obtenir les tags associés à une mesure] (#obtenir-les-tags-associés-à-une-mesure)
+* [connaitre le contenu d'un tag] (#connaitre-le-contenu-d'un-tag)
+* [afficher les 5 derniers résultats pour l'instance eth0 et la métriques interface_rx] (#afficher-les-5-derniers-résultats-pour-l'instance-eth0-et-la-métriques-interface_rx)
 
 
 ### un peu de théorie
@@ -41,4 +45,37 @@ encore mieux
 
 ```
 select * from apache_value  where time > now() - 1h limit 1000;
+```
+
+### supprimer les series d'un host
+En utilisant un tag Collectd 
+  
+```
+DROP SERIES WHERE host = 'dnslvs2'
+```
+
+### obtenir les tags associés à une mesure
+
+Pour la mesure **interface_rx** par exemple : 
+
+```
+SHOW TAG KEYS FROM "interface_rx"
+```
+
+### connaitre le contenu d'un tag
+
+```
+SHOW TAG VALUES FROM "interface_rx" WITH KEY = "instance"
+```
+
+### afficher les 5 derniers résultats pour l'instance eth0 et la métriques interface_rx 
+
+```
+select * from interface_rx where instance =~ /eth0/ limit 5
+```
+
+### afficher les métriques avec une clé par host
+
+```
+show tag values with key = host limit 5
 ```
