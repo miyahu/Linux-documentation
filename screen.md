@@ -4,6 +4,7 @@
 * [charger un screenrc] (#charger-un-screenrc)
 * [terminer une instance] (#terminer-une-instance)
 * [relire la conf d'une instance] (#relire-la-conf-d'une-instance)
+* [reload sans kill le screen] (#reload-sans-kill-le-screen)
 
 référence : http://aperiodic.net/screen/quick_reference
 ### renommer un onglet
@@ -34,3 +35,7 @@ screen -c .screenrc-pouetpouet -S pouetpouet
 ### relire la conf d'une instance 
 
 `Ctrl+a puis :source ~/.screenrc`
+
+### reload sans kill le screen
+
+`Ctrl + a + : source ~/.screenrc`
