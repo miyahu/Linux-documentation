@@ -109,7 +109,6 @@ nopreempt permet d'empêcher la bascule vers le maître par défaut en cas de re
 
 ##### lb_algo
 
-
 * rr = round robin
 * wrr = weighted round robin
 * lc = least connection (I like this one the best!)
