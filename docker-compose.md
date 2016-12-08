@@ -11,6 +11,7 @@
 * [débugger docker-compose](#débugger-docker-compose)
 * [test unitaire avec kitchen](#test-unitaire-avec-kitchen)
 * [supprimer une image](#supprimer-une-image)
+* [supprimer une interface] (#supprimer-une-interface)
 
 ## docker
 
@@ -199,4 +200,12 @@ Ils est prévus à terme de lancer les tests sur sa machine local ...
 sudo docker rmi -f "IMAGE ID"
 ```
 
+### supprimer une interface
 
+lister les interfaces avec 
+
+`docker network ls`
+
+Puis supprimer celle désiré avec *rm*, exemple
+
+`docker network rm e31b7cdb5395` 

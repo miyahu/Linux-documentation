@@ -7,6 +7,7 @@
 * [visualiser la policy d'un volume] (#visualiser-la-policy-d'un-volume)
 * [trouver l'ip du client associée à un volume] (#trouver-l'ip-du-client-associée-à-un-volume)
 * [voir les montages côté netapp] (#voir-les-montages-côté-netapp)
+* [remonter l'arborescence] (#remonter-l'arborescence)
 
 ### lister les vservers
 
@@ -103,3 +104,7 @@ Vserver   Volume       Language Active    Junction Path             Path Source
 --------- ------------ -------- --------  ------------------------- -----------
 prisa-ct pmnfs1   fr.UTF-8 true      /vol/pmnfs1           RW_volume
 ```
+
+### remonter l'arborescence
+
+utiliser *.."
