@@ -6,6 +6,7 @@
 * [Mettre son container sur Internet](#mettre-son-container-sur-internet) 
 * [modifier l'interface d'une vm](#modifier-l'interface-d'une-vm) 
 * [envoyer sendkey] (#envoyer-sendkey)
+* [retirer le thin provisioning] (#retirer-le-thin-provisioning)
 
 ### rediriger tous les ports VNC d'une  VM vers un port unique
 
@@ -138,3 +139,7 @@ Pour flusher les caches
 ```
 qm sendkey 100  Alt+Sys+s
 ```
+
+### retirer le thin provisioning
+
+`qemu-img convert -o  preallocation=full -f qcow2 -O qcow2  vm-100-disk-1.qcow2 test.qcow2`
