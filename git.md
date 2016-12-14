@@ -3,6 +3,7 @@
 * [poussez sa branche pour un merge](#poussez-sa-branche-pour-un-merge)
 * [pull de sa branche a partir de la master](#pull-de-sa-branche-a-partir-de-la-master)
 * [voir le diff entre deux commits] (#voir-le-diff-entre-deux-commits)
+* [créer une branche à la volée] (#créer-une-branche-à-la-volée)
 
 ## Doc gitlab
 http://docs.gitlab.com/ee/workflow/workflow.html
@@ -60,3 +61,8 @@ git config --global user.email pouet@gruik.fr
 obtenir le nom des commit avec `git log`
 puis afficher le diff avec
 `git diff 9d9d1d1943f23e975f4779505adde05f54f18949 efb0404b06f0665dd1f548a142c1429afefa19b6`
+
+
+### créer une branche à la volée
+
+`git fetch origin master:mafeature`
