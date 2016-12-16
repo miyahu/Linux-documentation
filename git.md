@@ -66,3 +66,25 @@ puis afficher le diff avec
 ### créer une branche à la volée
 
 `git fetch origin master:mafeature`
+
+
+En faite idéalement :
+
+1. tu créer une branch qui sera ta feature a partir du master de l'origin :
+git fetch origin master:mafeature
+
+2. tu va dessus
+git checkout mafeature
+
+3. tu tafff et tu commit pour valider.
+
+4 tu fusionne tes commis pour éviter les commits genre "test test test ...." pour a voir un commit qui est un sens 🙂
+
+git rebase -i origin/master
+>squash tout les commits (sauf le premier)
+> tu réécrit ton message cf : gitchangelog
+5. tu push ta branch pour un merge;
+git push origin mafeature
+
+oui, le gitignore ce git
+tant qu'il n'est pas commité, il ne s'applique pas pour les prochain commit
