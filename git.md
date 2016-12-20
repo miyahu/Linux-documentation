@@ -4,6 +4,8 @@
 * [pull de sa branche a partir de la master](#pull-de-sa-branche-a-partir-de-la-master)
 * [voir le diff entre deux commits] (#voir-le-diff-entre-deux-commits)
 * [créer une branche à la volée] (#créer-une-branche-à-la-volée)
+* [supprimer une modification sur un fichier gité mais commité] (#supprimer-une-modification-sur-un-fichier-gité-mais-commité)
+* [supprimer un commit non pushé] (#supprimer-un-commit-non-pushé)
 
 ## Doc gitlab
 http://docs.gitlab.com/ee/workflow/workflow.html
@@ -88,3 +90,11 @@ git push origin mafeature
 
 oui, le gitignore ce git
 tant qu'il n'est pas commité, il ne s'applique pas pour les prochain commit
+
+### supprimer une modification sur un fichier gité mais commité
+
+`git checkout -- data/system/all/hosts.j2`
+
+### supprimer un commit non pushé
+
+`git reset --hard HEAD~1`

@@ -93,6 +93,14 @@ failed /root/build/cryptography
 - templates : créer des répertoires par 
 
 ## installation des rôles de galaxy
+
+ajout d'un repo :
+```
+- src: https://github.com/geerlingguy/ansible-role-solr/archive/3.4.1.tar.gz
+  version: master
+  name: solr
+```
+installation du rôle
 ```
 ansible-galaxy -r requirements.yml install -p roles/
 ```
