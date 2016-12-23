@@ -10,6 +10,7 @@
 * [commiter les modifications effectuées dans l'instance](#commiter-les-modifications-effectuées-dans-l'instance)
 * [débugger docker-compose](#débugger-docker-compose)
 * [test unitaire avec kitchen](#test-unitaire-avec-kitchen)
+* [supprimer un container](#supprimer-un-container)
 * [supprimer une image](#supprimer-une-image)
 * [supprimer une interface] (#supprimer-une-interface)
 
@@ -193,6 +194,20 @@ Actuellement les tests sont effectués sur le gitlab, lors d'un commit (trigger)
 Les tests sont utilisés sur les rôles et non sur les archis (actuellement s'entends).
 
 Ils est prévus à terme de lancer les tests sur sa machine local ...
+
+### supprimer un container
+
+Tout d'abord, le stopper
+
+`docker stop "mon conteneur"`
+
+trouver son id
+
+`docker ps -a | grep  "mon conteneur" | awk '{print$1}'`
+
+et enfin, le supprimer
+
+`docker rm 'id'`
 
 ### supprimer une image
 
