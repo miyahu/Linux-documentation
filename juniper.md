@@ -1,4 +1,5 @@
 * [retour arrière sur une modif avant commit](#retour-arrière-sur-une-modif-avant-commit)
+* [vérifier si un vlan est présent] (#vérifier-si-un-vlan-est-présent)
 
 ### retour arrière sur une modif avant commit
 
@@ -34,3 +35,9 @@ puis commit
 ``
 commit
 ```
+
+### vérifier si un vlan est présent
+
+Faire un 
+
+`show vlans` 

@@ -4,6 +4,7 @@
 * [mettre en place un port channel] (#mettre-en-place-un-port-channel)
 * [péter la gueule à un port channel] (#péter-la-gueule-à-un-port-channel)
 * [troubleshooting de po] (#troubleshooting-de-po)
+* [ajout de vlan] (#[ajout-de-vlan) 
 
 ### trouver les informations de connexion au switch à partir d'un serveur
 
@@ -238,3 +239,12 @@ Index   Load   Port     EC state        No of bits
 Time since last port bundled:    0d:00h:11m:48s    Gi0/28
 Time since last port Un-bundled: 0d:00h:12m:02s    Gi0/13
 ```
+
+### ajout de vlan
+Pour le vlan 101 par exemple
+```
+conf t
+vlan 101
+name "description"
+```
+

@@ -1,3 +1,5 @@
+* [copier coller dans l'espace] [#copier-coller-dans-l'espace)
+
 ### Logs en couleurs
 ```
 apt -y  install less ccze
@@ -13,3 +15,9 @@ tailf kern.log | ccze -A | less -R
 C'est plus écolo 
 
 `gunzip -c syslog.1.gz | less`
+
+### copier coller dans l'espace
+
+http://unix.stackexchange.com/questions/22494/copy-file-to-xclip-and-paste-to-firefox
+
+`alias n3='xclip -selection clipboard -i ~/Bureau/mdpadmin.txt'`
