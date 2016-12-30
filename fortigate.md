@@ -1,8 +1,13 @@
+* [ressources] (#ressource)
 * [obtenir le status du cluster] (#obtenir-le-status-du-cluster)
 * [accéder au second noeud d'un cluster] (#accéder-au-second-noeud-d'un-cluster)
 * [options et terminologie] (#options-et-terminologie)
 * [faire un top] (#faire-un-top)
 * [faire un ping] (#faire-un-ping)
+
+### ressources
+* https://itsecworks.com/2011/07/18/fortigate-basic-troubleshooting-commands/
+* https://www.iphouse.com/debugging-ipsec-vpns-in-fortigate/
 
 ### obtenir le status du cluster
 
