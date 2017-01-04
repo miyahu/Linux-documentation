@@ -6,6 +6,8 @@
 * [créer une branche à la volée] (#créer-une-branche-à-la-volée)
 * [supprimer une modification sur un fichier gité mais commité] (#supprimer-une-modification-sur-un-fichier-gité-mais-commité)
 * [supprimer un commit non pushé] (#supprimer-un-commit-non-pushé)
+* [connaitre l'historique des modifications d'un fichier] (#connaitre-l'historique-des-modifications-d'un-fichier)
+* [pousser un commit en particulier] (#pousser un commit en particulier)
 
 ## Doc gitlab
 http://docs.gitlab.com/ee/workflow/workflow.html
@@ -98,3 +100,11 @@ tant qu'il n'est pas commité, il ne s'applique pas pour les prochain commit
 ### supprimer un commit non pushé
 
 `git reset --hard HEAD~1`
+
+### connaitre l'historique des modifications d'un fichier
+
+`git log -p group_vars/ppdweb/rsyslog.yml`
+
+### pousser un commit en particulier
+
+`git push origin  fb459a826f7fc1d80f88d3e05ffe723790b8977c:mabranch`
