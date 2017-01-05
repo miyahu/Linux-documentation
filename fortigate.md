@@ -4,6 +4,7 @@
 * [options et terminologie] (#options-et-terminologie)
 * [faire un top] (#faire-un-top)
 * [faire un ping] (#faire-un-ping)
+* [faire une recherche en cli] (#faire-une-recherche-en-cli)
 
 ### ressources
 * https://itsecworks.com/2011/07/18/fortigate-basic-troubleshooting-commands/
@@ -29,3 +30,7 @@
 ### faire un ping
 
 `execute  ping 8.8.8.8`
+
+### faire une recherche en cli
+
+`show | grep -A 3 -B 3  monvserver`
