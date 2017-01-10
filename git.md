@@ -108,3 +108,11 @@ tant qu'il n'est pas commité, il ne s'applique pas pour les prochain commit
 ### pousser un commit en particulier
 
 `git push origin  fb459a826f7fc1d80f88d3e05ffe723790b8977c:mabranch`
+
+### retourner un fichier à un commit donné
+
+retrouver le n° de commit
+`git log mon_fichier`
+
+revenir dessus
+`git checkout b13b7485887dfe655fbf03a30476c91228b9e7ea`
