@@ -34,3 +34,10 @@
 ### faire une recherche en cli
 
 `show | grep -A 3 -B 3  monvserver`
+
+### autoriser l'accès vers une VIP interne
+
+Si la VIP est sur LAN1
+
+il faut autoriser les connections venant de LAN1 à aller sur LAN1 vers la VIP
+Puis autoriser les connections de LAN2 vers LAN1 vers la VIP
