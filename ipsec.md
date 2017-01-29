@@ -51,3 +51,7 @@ udp        0      0 0.0.0.0:4500            0.0.0.0:*                           
 udp        0      0 0.0.0.0:500             0.0.0.0:*                           14783/charon    
 udp6       0      0 :::4500                 :::*                                14783/charon    
 udp6       0      0 :::500                  :::*                                14783/charon
+
+
+### doc
+http://linoxide.com/how-tos/ipsec-vpn-gateway-gateway-using-strongswan/

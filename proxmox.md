@@ -7,6 +7,7 @@
 * [modifier l'interface d'une vm](#modifier-l'interface-d'une-vm) 
 * [envoyer sendkey] (#envoyer-sendkey)
 * [retirer le thin provisioning] (#retirer-le-thin-provisioning)
+* [tuning] (#tuning)
 
 ### rediriger tous les ports VNC d'une  VM vers un port unique
 
@@ -143,3 +144,33 @@ qm sendkey 100  Alt+Sys+s
 ### retirer le thin provisioning
 
 `qemu-img convert -o  preallocation=full -f qcow2 -O qcow2  vm-100-disk-1.qcow2 test.qcow2`
+
+### péter la gueule d'un cluster
+```
+systemctl stop pve-cluster.service 
+systemctl stop pvedaemon.service 
+systemctl stop pvestatd.service 
+mv /var/lib/pve-cluster{,.old}
+mv  /etc/corosync/corosync.conf{,.old}
+```
+puis restart des services
+
+### tuning
+
+#### ksm
+
+status démarrage
+
+`service ksmtuned status`
+vérif
+`watch cat /sys/kernel/mm/ksm/pages_sharing`
+
+modif du fichier de conf
+
+`vi /etc/ksmtuned.conf `
+
+#### zram
+Mettre une swappiness à 0 
+et activer zram pour éviter les oomkill ?
+
+https://wiki.debian.org/ZRam
