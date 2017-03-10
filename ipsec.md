@@ -55,3 +55,56 @@ udp6       0      0 :::500                  :::*                                
 
 ### doc
 http://linoxide.com/how-tos/ipsec-vpn-gateway-gateway-using-strongswan/
+
+## informations importantes
+
+### les rôles 
+
+* initiator (celui qui "propose" le tunnel je pense)
+* responder
+
+Le responder a des facilités pour debugger la connexion, à l'inverse de l'initiator
+
+### les modes
+ 
+* main mode (phase 1)
+* quick mode (phase 2)
+
+### les steps
+
+http://www.ciscopress.com/articles/article.asp?p=24833&seqNum=6
+
+http://ptgmedia.pearsoncmg.com/images/chap1_1587050331/elementLinks/01fig15.gif
+
+###  SRX vers strongswan
+
+generating IKE_AUTH response 1 [ N(INVAL_SYN) ou ipsec  ID INITIATOR  
+
+Attention, les leftid et rightid correspondent au peer id, s'ils ne correspondent pas des deux côtés (strong et srx), le tunnel ne s'établit pas
+commenter les left et rightid puis les remplacer par des Ip dans le fichier "secrets"
+
+Conf côté strongswan
+
+```
+config setup
+        
+conn agarik
+        left=33.150.201.25
+        leftsubnet=10.0.22.0/24
+        right=117.174.134.249
+        rightsubnet=192.168.0.208/28
+        ike=aes256-sha1-modp1024
+        esp=3des-md5
+        auto=start
+        authby=secret
+        keyexchange=ikev1
+        ikelifetime=24h
+        keylife=24h
+        mobike=no
+        rekey=yes
+```
+
+
+
+
+

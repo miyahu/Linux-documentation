@@ -8,6 +8,8 @@
 * [exemple de load balancer http] (#exemple-de-load-balancer-http)
 * [troubleshooting] (#troubleshooting)
 * [comment exclure dans la console de log web] (#comment-exclure-dans-la-console-de-log-web)
+* [les tunnels ipsec tombent] (#les-tunnels-ipsec-tombent)
+* [configuration des routes statiques] (#configuration-des-routes-statiques)
 
 
 
@@ -79,6 +81,38 @@ end
 
 http://kb.fortinet.com/kb/viewContent.do?externalId=FD30038
 
+Lister les  gateway IKE (phase 1):
+
+diag vpn ike gateway list
+
+Lister les tunnels (phase 2) :
+
+diag vpn tunnel list
+
+exemple :
+
+diag vpn ike gateway list et récupérer le nom de la phase 1
+diag vpn ike log filter name <phase1-name> 
+diag debug app ike -1
+diag debug enable
+
+
 ### comment exclure dans la console de log web
  
 ajouter un ! devant le motif à exclure..
+
+### les tunnels ipsec tombent
+
+http://cookbook.fortinet.com/ipsec-vpn-troubleshooting/
+
+The VPN tunnel goes down frequently.
+
+If your VPN tunnel goes down often, check the Phase 2 settings and either increase the Keylife value or enable Autokey Keep Alive.
+
+http://kb.fortinet.com/kb/documentLink.do?externalID=12069
+
+`set keepalive  enable`
+
+### configuration des routes statiques
+
+`config router static`
