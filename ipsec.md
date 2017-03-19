@@ -7,7 +7,7 @@ config setup
         # strictcrlpolicy=yes
         # uniqueids = no
 
-conn levesinet-scalway
+conn lenet-scal
  authby=secret
  left=37.16.21.7
  leftsubnet=10.1.0.0/16
@@ -23,7 +23,7 @@ conn levesinet-scalway
 
 
 include /var/lib/strongswan/ipsec.conf.inc
-37.16.21.7 212.47.22.4  PSK  "tagada"
+37.16.21.7 212.47.22.4  PSK  "tag"
 
 testing
 
@@ -39,7 +39,6 @@ net.ipv4.conf.all.send_redirects = 0
 root@newtonlin:~# nmap -P0 -sU -p 500,4500   212.47.22.4
 
 Starting Nmap 6.47 ( http://nmap.org ) at 2016-12-11 12:28 CET
-Nmap scan report for 48-228-47-212.rev.cloud.scaleway.com (212.47.22.4)
 Host is up (1.3s latency).
 PORT     STATE         SERVICE
 500/udp  open          isakmp
@@ -88,8 +87,8 @@ Conf côté strongswan
 ```
 config setup
         
-conn agarik
-        left=33.150.201.25
+conn aahr
+        left=33.50.201.25
         leftsubnet=10.0.22.0/24
         right=117.174.134.249
         rightsubnet=192.168.0.208/28
@@ -103,6 +102,19 @@ conn agarik
         mobike=no
         rekey=yes
 ```
+
+
+IKE : montage du tunnel
+IPSEC : tunnel finaux
+
+charondebug=all # ikev2
+plutodebug=all # ikev1
+
+strictcrlpolicy = yes ou no
+
+## analyse du trafic (déencapsulation)
+
+https://wiki.strongswan.org/projects/strongswan/wiki/CorrectTrafficDump
 
 
 

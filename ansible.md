@@ -4,6 +4,7 @@
 * [copier des données - local vers distant](#copier-des-données-local-vers-distant)
 * [récupérer des fichiers distant](#récupérer-des-fichiers-distant)
 * [installation des rôles de galaxy](#installation-des-rôles-de-galaxy)
+* [unsupported parameter for module: gather_timeout] (#unsupported parameter for module: gather_timeout)
 
 
 ## passer les variables d ansible.cfg en variables d envirronement
@@ -105,4 +106,6 @@ installation du rôle
 ansible-galaxy -r requirements.yml install -p roles/
 ```
 
+### unsupported parameter for module: gather_timeout
 
+Vous avez certainement deux versions différentes d'ansibles, une installée avec Debian l'autre avec PIP  
