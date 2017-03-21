@@ -116,6 +116,21 @@ strictcrlpolicy = yes ou no
 
 https://wiki.strongswan.org/projects/strongswan/wiki/CorrectTrafficDump
 
+### strongswan 2 strongswan en host2host
+```
+conn tructruc
+        leftid=@2exi.com
+        right=192.154.235.164
+        rightid=@ns42.tux.com
+        auto=start
+        ike=3des-md5-modp1024
+        ikelifetime=28800s
+        keyexchange=ikev2
+        esp=3des-md5
+```
+et
+~
+
 
 
 
