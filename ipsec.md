@@ -128,10 +128,3 @@ conn tructruc
         keyexchange=ikev2
         esp=3des-md5
 ```
-et
-~
-
-
-
-
-
