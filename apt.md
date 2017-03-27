@@ -1,3 +1,5 @@
+* [le script de post-remove empêche la suppresion d'un paquet] (#le-script-de-post-remove-empêche-la-suppresion-d'un-paquet)
+
 ### Forcer la version backport d'un paquet
 Le -t correspond à target release
 ```
@@ -21,5 +23,9 @@ elasticsearch                                   hold
 ### voir la liste des clés chargées
 `apt-key list`
 
+### le script de post-remove empêche la suppresion d'un paquet
 
+allez dans /var/lib/dpkg/info/ puis éditer le script de post-install à problème ex 
+util-linux.postinst, y insérer un exit 0 en début de fichier.
+relancer le remove.
 
