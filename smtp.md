@@ -32,3 +32,20 @@ exemple pout debugger un problème
 === Connection closed with remote host.
 ```
 
+### Postfix
+
+From : http://www.linuxlasse.net/linux/howtos/Blacklist_and_Whitelist_with_Postfix
+
+check_client__restrictions
+Blocks by client IP, Client IP Range or Hostname 
+
+smtpd_helo_restrictions
+Blocks by ehlo Hostname
+
+check_sender__restrictions
+Block by sender e-mail address (In the FROM field) 
+
+smtpd_recipient_restrictions
+Block by sender e-mail address (In the RECP field) 
+
+
