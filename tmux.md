@@ -4,6 +4,7 @@
 * [spliter](#spliter)
 * [scritp de lancement](#scritp-de-lancement)
 * [tmux.conf](#tmux.conf)
+* redessiner l'écran
 
 ## changer l'organisation des panels
 `Ctrl+b+espace`
@@ -144,4 +145,11 @@ set -g message-fg colour232
 set -g message-bg colour166
 
 # }
+```
+
+### redessiner l'écran
+
+Lorsque que l'on est à l'exterieur
+```
+tmux attach -d
 ```

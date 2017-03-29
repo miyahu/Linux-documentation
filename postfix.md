@@ -10,3 +10,10 @@ https://www.linode.com/docs/email/postfix/configure-spf-and-dkim-in-postfix-on-d
 ```
 useradd -m -d /var/spool/vmail -s /bin/false -u 999 -g vmail vmail
 ```
+
+### stats sur postscreen
+
+```
+ python postscreen_stats.py -f /var/log/mail.log --geofile=../GeoLiteCity.dat --mapdest=/var/www/html/report.html
+```
+

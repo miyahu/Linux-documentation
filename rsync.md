@@ -9,3 +9,9 @@ en plus
 * --preallocate : alloue avant d'écrire
 * --delete-after : supprime après transfert (et pas avant)
 * --partial : garde les fichiers partiellement transférés (en cas de coupure)
+
+
+###  migration cyrus-imap
+```
+rsync -avPz --delete-after /sauvegardes/cyrus-spool/mail 163.172.214.190:/var/spool/cyrus/
+```

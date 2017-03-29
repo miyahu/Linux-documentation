@@ -10,12 +10,15 @@
 * [comment exclure dans la console de log web] (#comment-exclure-dans-la-console-de-log-web)
 * [les tunnels ipsec tombent] (#les-tunnels-ipsec-tombent)
 * [configuration des routes statiques] (#configuration-des-routes-statiques)
+* [comprendre les vpn events] (#comprendre-les-vpn-events)
 
 
 
 ### ressources
 * https://itsecworks.com/2011/07/18/fortigate-basic-troubleshooting-commands/
 * https://www.iphouse.com/debugging-ipsec-vpns-in-fortigate/
+
+https://itsecworks.com/2012/03/22/debugging-fortigate-vpns/
 
 ### obtenir le status du cluster
 
@@ -116,3 +119,7 @@ http://kb.fortinet.com/kb/documentLink.do?externalID=12069
 ### configuration des routes statiques
 
 `config router static`
+
+### comprendre les vpn events
+
+Astuces: le Cookie permet de suivre les évenements d'une session
