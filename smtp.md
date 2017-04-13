@@ -1,4 +1,7 @@
 * [couteau suisse smtp] 
+* 
+* tester la validitée des d'un smtp 
+
 
 ### couteau suisse smtp
 
@@ -48,4 +51,6 @@ Block by sender e-mail address (In the FROM field)
 smtpd_recipient_restrictions
 Block by sender e-mail address (In the RECP field) 
 
+### http://www.appmaildev.com/en/dkim
 
+http://www.appmaildev.com/en/dkim

@@ -12,3 +12,8 @@ C'est ambigüe, mais il ne faut pas utiliser "start" mais create !!!
 Started domain server1
 ```
 
+### accéder à la console
+
+```
+xm console monguest
+```
