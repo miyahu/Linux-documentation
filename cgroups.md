@@ -77,7 +77,7 @@ cgset -r cpu.shares=512  muninlimited
 apt install cgroup-tools
 ```
 
-#### Configuration du service
+#### Configuration du service cgrulesengd
 
 Venant de https://forum.dug.net.pl/viewtopic.php?pid=299664
 
@@ -101,12 +101,36 @@ ExecStart=/usr/sbin/cgrulesengd -n -Q
 WantedBy=sysinit.target
 EOF
 ```
+#### Configuration du service cgroupconfigd
+
+```
+cat > /etc/systemd/system/cgconfigd.service <<EOF
+[Unit]
+Description=Control Group configuration service
+Documentation=man:cgconfigparser man:cgclear
+ConditionDirectoryNotEmpty=/sys/fs/cgroup/
+ConditionPathIsReadWrite=/etc/cgconfig.conf
+DefaultDependencies=no
+Before=basic.target shutdown.target
+After=local-fs.target
+Conflicts=shutdown.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/sbin/cgconfigparser -l /etc/cgconfig.conf -s 1664
+ExecStop=/usr/sbin/cgclear -l /etc/cgconfig.conf -e
+
+[Install]
+WantedBy=sysinit.target
+EOF
+```
 
 #### Activation et démarrage
 
 ```
-systemctl enable cgrulesengd
-systemctl enable cgrulesengd
+systemctl enable cgrulesengd cgconfigd
+systemctl start cgrulesengd cgconfigd
 ```
 
 ### les limites dans systemd
