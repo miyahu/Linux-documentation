@@ -13,6 +13,8 @@
 * [supprimer un container](#supprimer-un-container)
 * [supprimer une image](#supprimer-une-image)
 * [supprimer une interface] (#supprimer-une-interface)
+* [debugging docker] (#debugging-docker)
+* [debugging docker] (#debugging-docker)
 
 ## docker
 
@@ -224,3 +226,19 @@ lister les interfaces avec
 Puis supprimer celle désiré avec *rm*, exemple
 
 `docker network rm e31b7cdb5395` 
+
+### debugging docker
+
+```
+docker logs "mon instance"
+```
+
+```
+docker inespect "mon instance"
+```
+
+### build avec un docker spécifique
+
+```
+docker build -f ./Dockerfile-grafana .
+```
