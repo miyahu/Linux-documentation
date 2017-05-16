@@ -40,3 +40,7 @@ press Esc
 Give it a second to work.
 ```
 " For everything else, use a tab width of 4 space chars.
+
+### revenir en avant
+
+Ctrl+r

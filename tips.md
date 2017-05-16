@@ -61,6 +61,6 @@ rename -v 's/\.-\.|\.\./-/g' *
 ```
 rename -v 'y/A-Z/a-z/' * 
 ```
-
+### beaucoup d'inode partition 
 
 

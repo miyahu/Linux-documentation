@@ -108,3 +108,35 @@ prisa-ct pmnfs1   fr.UTF-8 true      /vol/pmnfs1           RW_volume
 ### remonter l'arborescence
 
 utiliser *.."
+
+### voir les junction path
+
+CLUSTERCT01::> volume show -vserver mut-cl -volume cls* -junction
+```
+                                Junction                            Junction
+Vserver   Volume       Language Active    Junction Path             Path Source
+--------- ------------ -------- --------  ------------------------- -----------
+mut-cl    clsnfs1   fr.UTF-8 true      /vol/clsnfs1           RW_volume
+```
+
+### snapmirror
+
+vérifier le status des snapmirrors
+
+```
+snapmirror show
+```
+Le status effectif ne doit apparaître que sur le replica
+
+Utilisez aussi 
+
+```
+snapmirror show-history
+```
+
+###  Error: command failed: Failed to create or determine if a junction exists within volume "mutep_root". Error occurred with the remaining junction path of "/vol/.." for the given path of "/vol/.." Reason: Junction create failed (2)
+
+Il faut créer le volume /vol avec
+```
+qtree create -vserver mut-ep -qtree vol -volume mutep_root
+```

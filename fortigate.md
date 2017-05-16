@@ -47,13 +47,8 @@ https://itsecworks.com/2012/03/22/debugging-fortigate-vpns/
 
 ### autoriser l'accès vers une VIP interne
 
-Si la VIP est sur LAN1
-
-#il faut autoriser les connections venant de LAN1 à aller sur LAN1 vers la VIP
-#Puis autoriser les connections de LAN2 vers LAN1 vers la VIP
-
-en vérité il faut : mettre set match-vip enable 
-
+il faut : mettre set match-vip enable 
+il faut mettre une règle dédié
 
 ### exemple de load balancer http
 

@@ -14,7 +14,8 @@
 * [supprimer une image](#supprimer-une-image)
 * [supprimer une interface] (#supprimer-une-interface)
 * [debugging docker] (#debugging-docker)
-* [debugging docker] (#debugging-docker)
+* [build avec un docker spécifique] (#build-avec-un-docker-spécifique)
+* [supprimer un paquet d'image] (#supprimer-un-paquet-d'image)
 
 ## docker
 
@@ -241,4 +242,10 @@ docker inespect "mon instance"
 
 ```
 docker build -f ./Dockerfile-grafana .
+```
+
+### supprimer un paquet d'image
+
+```
+for i in $(docker image ls | awk '{print$1}' | grep development_)  ; do docker image rm  $i ; done
 ```
