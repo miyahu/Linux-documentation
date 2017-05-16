@@ -2,6 +2,9 @@
 * [limiter le nombre de processus avec systemd] (#limiter-le-nombre-de-processus-avec-systemd)
 * [exemple d'allocations dynamique] (#exemple-d'allocations-dynamique)
 * [cgconfig] (#cgconfig)
+* [les limites dans systemd] (#les-limites-dans-systemd)
+* [lister les groupes] (#lister-les-groupes)
+* [visualiser les paramètres d'un groupe] (#visualiser-les-paramètres-d'un-groupe)
 
 ### visualiser l'usage des control groups 
 ```
@@ -66,4 +69,92 @@ group muninlimited {
 
 ```
 cgset -r cpu.shares=512  muninlimited
+```
+
+### daemoniser le tous
+
+```
+apt install cgroup-tools
+```
+
+#### Configuration du service
+
+Venant de https://forum.dug.net.pl/viewtopic.php?pid=299664
+
+```
+cat > /etc/systemd/system/cgrulesengd.service <<EOF
+[Unit]
+Description=CGroup Rules Engine
+Documentation=man:cgrulesengd
+ConditionPathIsReadWrite=/etc/cgrules.conf
+DefaultDependencies=no
+Requires=cgconfig.service
+Before=basic.target shutdown.target
+After=local-fs.target cgconfig.service
+Conflicts=shutdown.target
+
+[Service]
+Type=simple
+ExecStart=/usr/sbin/cgrulesengd -n -Q
+
+[Install]
+WantedBy=sysinit.target
+EOF
+```
+
+#### Activation et démarrage
+
+```
+systemctl enable cgrulesengd
+systemctl enable cgrulesengd
+```
+
+### les limites dans systemd
+
+de https://forum.dug.net.pl/viewtopic.php?pid=299664
+
+```
+Nice=
+IOSchedulingClass=
+IOSchedulingPriority=
+CPUShares=
+StartupCPUShares=
+TasksMax=
+MemoryLimit=
+BlockIOWeight=
+OOMScoreAdjust=
+```
+
+### lister les groupes
+
+```
+cgutil tree
+/
+   +system.slice
+   |   `cgconfig.service
+   `muninlimited
+```
+
+### visualiser les paramètres d'un groupe
+
+```
+cgget -a /muninlimited
+/muninlimited:
+cpu.shares: 800
+cpuacct.usage_percpu: 23934238891739 20729344018147 19515163339508 18385692525500
+cpuacct.stat: user 7297755
+        system 890094
+cpuacct.usage: 82564438774894
+blkio.throttle.io_serviced: 202:3 Read 9
+        202:3 Write 0
+        202:3 Sync 0
+        202:3 Async 9
+        202:3 Total 9
+        202:2 Read 70266
+        202:2 Write 80
+        202:2 Sync 80
+        202:2 Async 70266
+        202:2 Total 70346
+        Total 70355
+...
 ```
