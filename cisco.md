@@ -6,6 +6,19 @@
 * [troubleshooting de po] (#troubleshooting-de-po)
 * [ajout de vlan] (#[ajout-de-vlan) 
 
+
+### passer un port en trunk
+
+retirer 
+```bash
+switchport mode access
+```
+ajouter
+```bash
+switchport mode trunk
+```
+
+
 ### trouver les informations de connexion au switch à partir d'un serveur
 
 `/var/cache/cdpr/switch.info`

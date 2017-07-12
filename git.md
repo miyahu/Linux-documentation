@@ -1,5 +1,5 @@
-[cloner une branche spécifique d'un repo]: #cloner
-* [cloner une branche spécifique d'un repo][cloner]
+* [git et les branches] (#git-et-les-branches)
+* [cloner une branche spécifique d'un repo] (#cloner-une-branche-spécifique-d'un-repo)
 * [poussez sa branche pour un merge](#poussez-sa-branche-pour-un-merge)
 * [pull de sa branche a partir de la master](#pull-de-sa-branche-a-partir-de-la-master)
 * [voir le diff entre deux commits] (#voir-le-diff-entre-deux-commits)
@@ -8,36 +8,38 @@
 * [supprimer un commit non pushé] (#supprimer-un-commit-non-pushé)
 * [connaitre l'historique des modifications d'un fichier] (#connaitre-l'historique-des-modifications-d'un-fichier)
 * [pousser un commit en particulier] (#pousser un commit en particulier)
+* [retourner un fichier à un commit donné] (#retourner-un-fichier-à-un-commit-donné)
 
 ## Doc gitlab
 http://docs.gitlab.com/ee/workflow/workflow.html
 
+### git et les branches
 
-### voir la branche actuelle
+#### voir la branche actuelle
 ```
 git branch
 * master
 ```
-### Créer une nouvelle branche s'appellant "pilotage" 
+#### Créer une nouvelle branche s'appellant "pilotage" 
 `git branch pilotage`
-### y aller
+#### y aller
 `git checkout pilotage`
-### vérifier sa position
+#### vérifier sa position
+qu'on soit  bien sur la nouvelle branche 
 ```
 git branch
-* master
-  pilotage
+    master
+*  pilotage
 ```
-On n'est bien sur la nouvelle branche 
-### setter les variables utilisateurs 
+#### setter les variables utilisateurs
 ```
 git config --global user.name "Pouet Pouet"
 git config --global user.email pouet@gruik.fr
 ```
-### commiter les modifs
+#### commiter les modifs
 `git commit -m "add varnish steering(pilotage)"`
-### enfin les pousser
-`git push`
+#### enfin les pousser
+`git push origin pilotage`
 ### cloner une branche spécifique d'un repo
 `git clone -b release2.0.0  git@git.ateway.fr:ansibleroles/aw-apache.git`
 

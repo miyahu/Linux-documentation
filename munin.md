@@ -70,3 +70,20 @@ spawn-fcgi et systemd
 ### erreur dynazoom
 
 Ajouter Allow from all à la directive /munin-cgi/munin-cgi-graph
+
+### Troubleshoot local
+
+```bash
+munin-run df
+```
+
+```bash
+munin-run df config
+```
+
+### Troubleshoot remote
+
+```bash
+munin-run df
+```
+

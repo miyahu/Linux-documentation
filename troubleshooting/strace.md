@@ -140,6 +140,34 @@ Description des appels systèmes rencontrés :
 * open, openat, creat : open and possibly create a file
 * stat, fstat, lstat, fstatat : get file status
 
+#### Analyse mémoire
+
+Un fichier est ouvert sur le descripteur 4
+```
+open("/etc/aker/hosts.json", O_RDONLY) = 4
+```
+Une réservation mémoire est effectuée
+```
+mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7f36a23e4000
+```
+Le programme se positionne en début de fichier
+```
+lseek(4, 0, SEEK_CUR)    = 0
+```
+puis le lit
+```
+ read(4, "{\n\t\"groups\": [\n\t\t\"lnxadmins\",\n\t\t\"dbadmins\"\n\t],\n\t\"users\": [{\n\t\t\t\"username\": \"anazmy\",\n\t\t\t\"keyfile\": \"~/.ssh/id_rsa\",\n\t\t\t\"groups\": [\"lnxadmins\"]\n\t\t},\n\t\t{\n\t\t\t\"username\": \"jsmith\",\n\t\t\t\"keyfile\": \"~/.ssh/id_rsa\",\n\t\t\t\"groups\": [\"dbadmins\"]\n\t\t}\n\t],\n\t\"hosts\": [{\n\t\t\t\"name\": \"web1.ipa.example\",\n\t\t\t\"hostname\": \"web1.ipa.example\",\n\t\t\t\"port\": \"22\",\n\t\t\t\"key\": \"~/.ssh/id_rsa\",\n\t\t\t\"groups\": [\n\t\t\t\t\"lnxadmins\"\n\t\t\t]\n\t\t},\n\t\t{\n\t\t\t\"name\": \"web2.ipa.example\",\n\t\t\t\"hostname\": \"web2.ipa.example\",\n\t\t\t\"port\": \"22\",\n\t\t\t\"key\": \"~/.ssh/id_rsa\",\n\t\t\t\"groups\": [\n\t\t\t\t\"lnxadmins\"\n\t\t\t]\n\t\t},\n\t\t{\n\t\t\t\"name\": \"db1.ipa.example\",\n\t\t\t\"hostname\": \"db1.ipa.example\",\n\t\t\t\"port\": \"22\",\n\t\t\t\"key\": \"~/.ssh/id_rsa\",\n\t\t\t\"groups\": [\n\t\t\t\t\"lnxadmins\",\n\t\t\t\t\"dbadmins\"\n\t\t\t]\n\t\t},\n\t\t{\n\t\t\t\"name\": \"db2.ipa.example\",\n\t\t\t\"hostname\": \"db2.ipa.example\",\n\t\t\t\"port\": \"22\",\n\t\t\t\"key\": \"~/.ssh/id_rsa\",\n\t\t\t\"groups\": [\n\t\t\t\t\"lnxadmins\",\n\t\t\t\t\"dbadmins\"\n\t\t\t]\n\t\t}\n\t]\n}\n", 4096) = 903
+```
+Le fichier est clos
+```
+4950  12:44:07 close(4)                 = 0
+```
+l'accès mémoire fermé
+```
+4950  12:44:07 munmap(0x7f36a23e4000, 4096) = 0
+```
+
+
 ## Second lab de démonstration 
 
 ### Obtenir des statistiques sur les appels systèmes.
