@@ -93,4 +93,7 @@ tcp        0      0 10.0.132.53:4444        10.0.132.52:26898       ESTABLISHED 
 tcp6       0      0 :::4444                 :::*                    L
 ```
 
+#### Optimisation MySQL
 
+En cas de jointure (JOIN), MySQL va créer un fichier temporaire dans /tmp.
+On peut alors monter un tmpfs dans /tmp ou faire passer en ram les fichiers temporaire de jointure
