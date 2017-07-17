@@ -80,3 +80,31 @@ Utiliser hatop et vérifier
 
 ### stats haproxy 1.5
 `echo "show stat" | socat /run/haproxy/admin.sock stdio | awk -F ',' '{print"frontend:"$1" backend:"$2" status:"$18" qcur:"$3" qmax:"$4" scur:"$5" smax:"$6}'`
+
+### error 504 
+
+augmenter les valeurs des times out
+
+server et ou client
+
+### analyser les logs
+
+https://cbonte.github.io/haproxy-dconv/1.7/configuration.html#8.5
+
+Exemple 
+```
+May 23 11:33:49 cprdweb02 haproxy[14889]: 10.0.12.24 - - [23/May/2017:09:33:49 +0000] "GET /entree.min.js HTTP/1.1" 200 12873 "" "" 14987 723 "http" "toto" "toto" 0 0 0 34 34 ---- 25 25 10 11 0 0 0 "" "" "https://www.google.fr/search?ei=1gEkWaPsHYL2aNnVv3A&q=gruik" "Mozilla/5.0 (Linux; Android 5.1.1; SM-G361F Build/LMY48B) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.132 Mobile Safari/537.36" "tralala" 
+```
+
+La présence du sH nous indique 
+
+```
+sH   The "timeout server" stroke before the server could return its
+          response headers. This is the most common anomaly, indicating too
+          long transactions, probably caused by server or database saturation.
+          The immediate workaround consists in increasing the "timeout server"
+          setting, but it is important to keep in mind that the user experience
+          will suffer from these long response times. The only long term
+          solution is to fix the application.
+```
+

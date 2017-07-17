@@ -19,6 +19,10 @@ innodb_force_recovery = 1
 
 # Galera
 
+## installation
+
+https://www.percona.com/doc/percona-xtradb-cluster/5.7/verify.html
+
 ## troubleshooting
 
 Ressources
