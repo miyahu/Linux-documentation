@@ -118,3 +118,9 @@ http://kb.fortinet.com/kb/documentLink.do?externalID=12069
 ### comprendre les vpn events
 
 Astuces: le Cookie permet de suivre les évenements d'une session
+
+### troubleshooting règle fw
+
+```
+diagnose sniffer packet any "host 10.255.228.41" 4
+```

@@ -70,6 +70,9 @@ spawn-fcgi et systemd
 ### erreur dynazoom
 
 Ajouter Allow from all à la directive /munin-cgi/munin-cgi-graph
+```bash 
+apt-get install libcgi-fast-perl
+```
 
 ### Troubleshoot local
 

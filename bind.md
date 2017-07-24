@@ -43,4 +43,18 @@ to
 ```
 /etc/bind/named.conf
 ```
+### troubleshooting de zone
+
+augmenter la verbositer 
+
+```
+rndc trace 
+```
+
+puis 
+
+```
+rndc reload
+```
+
 

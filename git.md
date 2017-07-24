@@ -117,4 +117,4 @@ retrouver le n° de commit
 `git log mon_fichier`
 
 revenir dessus
-`git checkout b13b7485887dfe655fbf03a30476c91228b9e7ea`
+`git checkout b13b7485887dfe655fbf03a30476c91228b9e7ea mon_fichier`
