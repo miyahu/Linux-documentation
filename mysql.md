@@ -97,3 +97,13 @@ tcp6       0      0 :::4444                 :::*                    L
 
 En cas de jointure (JOIN), MySQL va créer un fichier temporaire dans /tmp.
 On peut alors monter un tmpfs dans /tmp ou faire passer en ram les fichiers temporaire de jointure
+
+#### commandes MySQL
+
+COMMIT & ROLLBACK
+
+AUTOCOMMIT = commit auto des requêtes sans attendre la commande COMMIT
+
+#### tuto
+
+https://buzut.fr/optimiser-performances-de-mysql/
