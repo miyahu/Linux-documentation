@@ -98,12 +98,21 @@ tcp6       0      0 :::4444                 :::*                    L
 En cas de jointure (JOIN), MySQL va créer un fichier temporaire dans /tmp.
 On peut alors monter un tmpfs dans /tmp ou faire passer en ram les fichiers temporaire de jointure
 
-#### commandes MySQL
+###  connaitre le nombre d'enregistrements
 
-COMMIT & ROLLBACK
+ SELECT COUNT(*) FROM "ma table" ;
 
-AUTOCOMMIT = commit auto des requêtes sans attendre la commande COMMIT
 
-#### tuto
+Changement du query_cache_size ne change rien
 
-https://buzut.fr/optimiser-performances-de-mysql/
+SET GLOBAL query_cache_size = 134217728 ;
+
+
+UPDATE paragraphs_item SET revision_id='263375', bundle='field_ameli_paragraph_simple', field_name='field_ameli_paragraphs_blocks', archived='1'
+
+
+thread_cache_size = 16384
+
+#### profile
+
+

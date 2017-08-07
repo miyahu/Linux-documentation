@@ -139,6 +139,7 @@ Description des appels systèmes rencontrés :
 * sigaction, rt_sigaction : examine and change a signal action
 * open, openat, creat : open and possibly create a file
 * stat, fstat, lstat, fstatat : get file status
+* getpeername : Obtenir le nom d'un correspondant connecté sur une socket  
 
 #### Analyse mémoire
 
