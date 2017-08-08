@@ -107,3 +107,7 @@ AUTOCOMMIT = commit auto des requêtes sans attendre la commande COMMIT
 #### tuto
 
 https://buzut.fr/optimiser-performances-de-mysql/
+
+#### dump et restore très rapide
+
+Utiliser mydumper et myloader 
