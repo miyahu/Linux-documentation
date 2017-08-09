@@ -11,9 +11,64 @@
 
 ### un peu de théorie
 
+#### les ports 
 * port 8083, interface d'admin
 * port 8086, utilisez pour attaquer la web API 
 * port 8088, utilisez pour la mise en cluster
+
+### la structure
+
+#### SHOW MEASUREMENTS
+On doit pouvoir faire un parrallèle entre un MEASUREMENTS et une table SQL
+
+```
+tcpconns_value
+uptime_value
+users_value
+varnish_value
+vmem_in
+vmem_majflt
+vmem_minflt
+vmem_out
+vmem_value
+```
+
+
+
+#### l'équivalent de describe
+où tous les champs sont des tags (sauf le "time" qui n'apparaît pas )
+```
+SHOW TAG KEYS
+```
+Résultat
+```
+name: vmem_value
+----------------
+tagKey
+host
+type
+type_instance
+```
+#### parser 
+
+> select *  from vmem_value  where host='prdweb05' limit  5
+name: vmem_value
+----------------
+time                    host            type            type_instance           value
+1499472000959091000     prdweb05     vmpage_number   free_pages              699259
+1499472000959098000     prdweb05     vmpage_number   zone_inactive_anon      214892
+1499472000959104000     prdweb05     vmpage_number   zone_active_anon        1.733871e+06
+1499472000959111000     prdweb05     vmpage_number   zone_inactive_file      1.343551e+06
+1499472000959116000     prdweb05     vmpage_number   zone_active_file        956713
+
+#### show series 
+```
+show series from vmem_value limit 5
+key
+vmem_value,host=ctsfmtbdd01,type=vmpage_action,type_instance=dirtied
+vmem_value,host=ctsfmtbdd01,type=vmpage_action,type_instance=written
+vmem_value,host=ctsfmtbdd01,type=vmpage_number,type_instance=active_anon
+```
 
 ### obtenir le nom des métriques
 
