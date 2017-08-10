@@ -33,8 +33,6 @@ vmem_out
 vmem_value
 ```
 
-
-
 #### l'équivalent de describe
 où tous les champs sont des tags (sauf le "time" qui n'apparaît pas )
 ```
@@ -78,19 +76,8 @@ influx -database collectd --execute 'SHOW MEASUREMENTS
 
 ### obtenir le nom des séries stockés
 
-```use mydb```
+`show series` 
 
-`select * from /.*/ limit 1
-
-ou plutôt 
-
- `show series` 
-
-https://docs.influxdata.com/influxdb/v0.9/query_language/schema_exploration/
-
-encore mieux 
-
-`influx -database collectd --execute 'show series'`
 
 ### exemple de requêtes
 
@@ -134,3 +121,44 @@ select * from interface_rx where instance =~ /eth0/ limit 5
 ```
 show tag values with key = host limit 5
 ```
+
+### quelques commandes
+#### les mesues
+Voir toutes les mesures
+```
+show MEASUREMENTS
+```
+Voir certaines mesures
+```
+show MEASUREMENTS WITH MEASUREMENT =~ /swap/
+```
+Supprimer toutes les mesures
+
+https://stackoverflow.com/questions/38587898/in-influxdb-how-to-delete-all-measurements
+```
+use collectd
+DROP SERIES FROM /.*/
+```
+Voir les séries
+```
+show SERIES
+```
+#### les CQ
+Voir les CQ
+```
+show CONTINUOUS QUERIES
+```
+Supprimer les CQ
+```
+drop CONTINUOUS QUERY cq_basic_br4 ON collectd
+```
+#### les rétentions
+Voir les politiques de rententions
+```
+show RETENTION  POLICIES
+```
+Créer une politique de retention
+```
+CREATE RETENTION POLICY rp52w ON collectd DURATION 52w REPLICATION 1 DEFAULT
+```
+
