@@ -157,8 +157,15 @@ Voir les politiques de rententions
 ```
 show RETENTION  POLICIES
 ```
+ou
+```
+show RETENTION  POLICIES on collectd_a_6month
+```
 Créer une politique de retention
 ```
 CREATE RETENTION POLICY rp52w ON collectd DURATION 52w REPLICATION 1 DEFAULT
 ```
-
+Modifier une politique de retention
+```
+ALTER RETENTION POLICY default ON collectd_a_6month DURATION 26w REPLICATION 1 DEFAULT
+```
