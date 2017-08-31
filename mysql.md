@@ -113,6 +113,23 @@ UPDATE paragraphs_item SET revision_id='263375', bundle='field_ameli_paragraph_s
 
 thread_cache_size = 16384
 
-#### profile
+#### profiling
 
+To do
 
+### arrêt mysql
+
+Faire un
+``` bash
+mysqladmin shutdown
+```
+plutôt qu'un 
+``` bash
+service mysql stop
+``` 
+
+### ne pas limiter le nombre de thread
+
+``` bash
+innodb_thread_concurrency      = 0
+```
