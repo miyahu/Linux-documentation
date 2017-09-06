@@ -32,7 +32,7 @@ prompt avant suppression
 
 ### effectuer un diaporama d'images
 
-`feh -Z -D 5 images/*.png`
+`feh --auto-zoom --scale-down -Z -D 5 images/*.png`
 
 ### renommage en masse
 
@@ -64,3 +64,17 @@ rename -v 'y/A-Z/a-z/' *
 ### beaucoup d'inode partition 
 
 
+### Apache
+
+#### trouver les logs en fonction de la date et du code retour
+
+je recherche un code 50* en date du 14/08
+```
+awk '$10 ~ 50 && $5 ~ "14/Aug/2017" {print}'  other_vhosts_access.log 
+```
+
+### l'état des sockets pour un port donné
+
+```
+netstat -an|grep ":443"|awk '/tcp/ {print $6}'|sort -nr| uniq -c
+```

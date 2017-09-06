@@ -1,6 +1,6 @@
 * (supprimer des répertoire tout'en en excluant)
 
-### supprimer des répertoire tout'en en excluant
+### supprimer des répertoire tout tant en excluant
 
 http://stackoverflow.com/questions/4325216/rm-all-files-except-some
 
@@ -12,3 +12,9 @@ rm -ri !(tutu)
 rm : supprimer répertoire « tata » ? y
 rm : supprimer répertoire « titi » ? y
 ```
+
+### ventiler un vhost monolithique dans de multiples fichiers
+
+#### split sur motif
+csplit -f 'virtualhost-' -b '%03d.conf' my-monolithic-file  '/^ *<VirtualHost /' '{*}'
+

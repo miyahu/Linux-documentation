@@ -108,3 +108,24 @@ sH   The "timeout server" stroke before the server could return its
           solution is to fix the application.
 ```
 
+### afficher les status différents de normaux
+
+```bash
+awk '$28 !~ /----/ {print$12" "$28}'  /var/log/haproxy.log
+```
+
+### afficher les ressources avec le status CD
+
+```bash
+awk '$28 ~ /CD--/ {print"ip: "$6" ressources: "$12" status: "$28}'  /var/log/haproxy.log
+```
+
+```
+CD   The client unexpectedly aborted during data transfer. This can be
+          caused by a browser crash, by an intermediate equipment between the
+          client and haproxy which decided to actively break the connection,
+          by network routing issues between the client and haproxy, or by a
+          keep-alive session between the server and the client terminated first
+          by the client.
+
+```

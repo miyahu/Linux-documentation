@@ -11,9 +11,62 @@
 
 ### un peu de théorie
 
+#### les ports 
 * port 8083, interface d'admin
 * port 8086, utilisez pour attaquer la web API 
 * port 8088, utilisez pour la mise en cluster
+
+### la structure
+
+#### SHOW MEASUREMENTS
+On doit pouvoir faire un parrallèle entre un MEASUREMENTS et une table SQL
+
+```
+tcpconns_value
+uptime_value
+users_value
+varnish_value
+vmem_in
+vmem_majflt
+vmem_minflt
+vmem_out
+vmem_value
+```
+
+#### l'équivalent de describe
+où tous les champs sont des tags (sauf le "time" qui n'apparaît pas )
+```
+SHOW TAG KEYS
+```
+Résultat
+```
+name: vmem_value
+----------------
+tagKey
+host
+type
+type_instance
+```
+#### parser 
+
+> select *  from vmem_value  where host='prdweb05' limit  5
+name: vmem_value
+----------------
+time                    host            type            type_instance           value
+1499472000959091000     prdweb05     vmpage_number   free_pages              699259
+1499472000959098000     prdweb05     vmpage_number   zone_inactive_anon      214892
+1499472000959104000     prdweb05     vmpage_number   zone_active_anon        1.733871e+06
+1499472000959111000     prdweb05     vmpage_number   zone_inactive_file      1.343551e+06
+1499472000959116000     prdweb05     vmpage_number   zone_active_file        956713
+
+#### show series 
+```
+show series from vmem_value limit 5
+key
+vmem_value,host=ctsfmtbdd01,type=vmpage_action,type_instance=dirtied
+vmem_value,host=ctsfmtbdd01,type=vmpage_action,type_instance=written
+vmem_value,host=ctsfmtbdd01,type=vmpage_number,type_instance=active_anon
+```
 
 ### obtenir le nom des métriques
 
@@ -23,19 +76,8 @@ influx -database collectd --execute 'SHOW MEASUREMENTS
 
 ### obtenir le nom des séries stockés
 
-```use mydb```
+`show series` 
 
-`select * from /.*/ limit 1
-
-ou plutôt 
-
- `show series` 
-
-https://docs.influxdata.com/influxdb/v0.9/query_language/schema_exploration/
-
-encore mieux 
-
-`influx -database collectd --execute 'show series'`
 
 ### exemple de requêtes
 
@@ -78,4 +120,52 @@ select * from interface_rx where instance =~ /eth0/ limit 5
 
 ```
 show tag values with key = host limit 5
+```
+
+### quelques commandes
+#### les mesues
+Voir toutes les mesures
+```
+show MEASUREMENTS
+```
+Voir certaines mesures
+```
+show MEASUREMENTS WITH MEASUREMENT =~ /swap/
+```
+Supprimer toutes les mesures
+
+https://stackoverflow.com/questions/38587898/in-influxdb-how-to-delete-all-measurements
+```
+use collectd
+DROP SERIES FROM /.*/
+```
+Voir les séries
+```
+show SERIES
+```
+#### les CQ
+Voir les CQ
+```
+show CONTINUOUS QUERIES
+```
+Supprimer les CQ
+```
+drop CONTINUOUS QUERY cq_basic_br4 ON collectd
+```
+#### les rétentions
+Voir les politiques de rententions
+```
+show RETENTION  POLICIES
+```
+ou
+```
+show RETENTION  POLICIES on collectd_a_6month
+```
+Créer une politique de retention
+```
+CREATE RETENTION POLICY rp52w ON collectd DURATION 52w REPLICATION 1 DEFAULT
+```
+Modifier une politique de retention
+```
+ALTER RETENTION POLICY default ON collectd_a_6month DURATION 26w REPLICATION 1 DEFAULT
 ```
