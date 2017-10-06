@@ -120,6 +120,11 @@ awk '$28 !~ /----/ {print$12" "$28}'  /var/log/haproxy.log
 awk '$28 ~ /CD--/ {print"ip: "$6" ressources: "$12" status: "$28}'  /var/log/haproxy.log
 ```
 
+### n'affiche pas les PR/LR/SSL handshake failure
+```bash
+awk '$28 !~ /----|PR--|LR--/ && !/SSL handshake failure/ {print}'  haproxy.log.4 | less
+```
+
 ```
 CD   The client unexpectedly aborted during data transfer. This can be
           caused by a browser crash, by an intermediate equipment between the
@@ -129,3 +134,17 @@ CD   The client unexpectedly aborted during data transfer. This can be
           by the client.
 
 ```
+
+### insérer l'adresse IP du X-Forward-For dans les logs
+
+Ajouter \ %hr au log-format 
+
+```
+log-format %ci\ -\ [%T]\ %{+Q}r\ %ST\ %B\ %{+Q}hrl\ %hs
+```
+et capturer les 50 premier octets de l'entête X-Forward-For
+
+```
+capture request header X-Forwarded-For  len 50
+```
+
