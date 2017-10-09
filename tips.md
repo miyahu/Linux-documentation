@@ -78,3 +78,9 @@ awk '$10 ~ 50 && $5 ~ "14/Aug/2017" {print}'  other_vhosts_access.log
 ```
 netstat -an|grep ":443"|awk '/tcp/ {print $6}'|sort -nr| uniq -c
 ```
+
+### exclure un répertoire des copies
+
+```
+cp -av /opt/sshgate/!(logs) /var/backups/
+```
