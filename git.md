@@ -118,3 +118,12 @@ retrouver le n° de commit
 
 revenir dessus
 `git checkout b13b7485887dfe655fbf03a30476c91228b9e7ea mon_fichier`
+
+### retrouver une ancienne version de fichier
+
+Utiliser git log pour retrouver le commit qui nous intérèsse
+
+puis utiliser git show
+```
+git show 96ff0b28092a3f113f0f4e35730f54ea50042847:create_new_site.sh
+```
