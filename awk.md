@@ -16,3 +16,9 @@ done
 ```
 awk '/\w/  {print$1}' /tmp/ips.txt
 ```
+
+### executer une commande systeme avec awk 
+
+```
+egrep "^u0.*apps.fr" /etc/passwd | awk -F':' '{system("chown -R "$3":"$3 " " $6)}'
+```
