@@ -92,7 +92,7 @@ server et ou client
 https://cbonte.github.io/haproxy-dconv/1.7/configuration.html#8.5
 
 Exemple 
-```
+```bash
 May 23 11:33:49 cprdweb02 haproxy[14889]: 10.0.12.24 - - [23/May/2017:09:33:49 +0000] "GET /entree.min.js HTTP/1.1" 200 12873 "" "" 14987 723 "http" "toto" "toto" 0 0 0 34 34 ---- 25 25 10 11 0 0 0 "" "" "https://www.google.fr/search?ei=1gEkWaPsHYL2aNnVv3A&q=gruik" "Mozilla/5.0 (Linux; Android 5.1.1; SM-G361F Build/LMY48B) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.132 Mobile Safari/537.36" "tralala" 
 ```
 
@@ -108,24 +108,24 @@ sH   The "timeout server" stroke before the server could return its
           solution is to fix the application.
 ```
 
-### afficher les status différents de normaux
+#### afficher les status différents de normaux
 
 ```bash
 awk '$28 !~ /----/ {print$12" "$28}'  /var/log/haproxy.log
 ```
 
-### afficher les ressources avec le status CD
+#### afficher les ressources avec le status CD
 
 ```bash
 awk '$28 ~ /CD--/ {print"ip: "$6" ressources: "$12" status: "$28}'  /var/log/haproxy.log
 ```
 
-### n'affiche pas les PR/LR/SSL handshake failure
+#### n'affiche pas les PR/LR/SSL handshake failure
 ```bash
 awk '$28 !~ /----|PR--|LR--/ && !/SSL handshake failure/ {print}'  haproxy.log.4 | less
 ```
 
-```
+```bash
 CD   The client unexpectedly aborted during data transfer. This can be
           caused by a browser crash, by an intermediate equipment between the
           client and haproxy which decided to actively break the connection,
@@ -133,6 +133,12 @@ CD   The client unexpectedly aborted during data transfer. This can be
           keep-alive session between the server and the client terminated first
           by the client.
 
+```
+
+### afficher les codes 503 ainsi que leur status 
+
+```bash
+awk '$14 == 503 && $28 !~ /---/ {print" ressource: "$12 "hap status: "$28}'    /var/log/haproxy.log |less
 ```
 
 ### insérer l'adresse IP du X-Forward-For dans les logs
@@ -148,3 +154,31 @@ et capturer les 50 premier octets de l'entête X-Forward-For
 capture request header X-Forwarded-For  len 50
 ```
 
+### ressources avec le détails
+
+https://www.haproxy.com/blog/haproxy-log-customization/
+
+
+### Ezplication !!!
+
+1:  date et heure
+2:  nom du serveur traitant la requête
+3:  nom et pid du processus  traitant la requête
+4:  adresse IP du client direct
+9:  méthode      
+10: ressource appelée
+11: protocole et version     
+12: code retour
+13: code retour
+18: "frontend" utilisé
+19: "backend" utilisé
+20: "server" utilisé
+26: status hap du traitement de la requête
+36: domaine et ressource appelé
+37: user agent
+39: adresse IP extraite du X-Forwarded-For 
+
+
+```
+(1)2017-10-26T11:28:03.197542+02:00 (2)ctsprdweb01 (3)haproxy[2736]: (4)10.0.132.254 (5)- (6)- (7)[26/Oct/2017:09:28:02 (8)+0000] (9)"POST (10)/masseur-kinesitherapeute/exercice-liberal/facturation-remuneration/tarifs/tarifs (11)HTTP/1.1" (12)302 (13)503 (14)"" (15)"" (16)(168884 (17)821 (18)"public_http" (19)"apache" (20)"apache" (21)0 (22)0 (23)1 (24)225 (25)226 (26)---- (27)19 (28)19 (29)0 (30)1 (31)0 (32)0 (33)0 (34)"" (35)"" (36)"https://www.ameli.fr/masseur-kinesitherapeute/exercice-liberal/f" (37)"Mozilla/5.0 (Windows NT 6.1; rv:56.0) Gecko/20100101 Firefox/56.0" (38)"www.ameli.fr" (39)"105.159.133.89"
+```
