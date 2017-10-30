@@ -108,6 +108,32 @@ sH   The "timeout server" stroke before the server could return its
           solution is to fix the application.
 ```
 
+#### Encore..
+
+Session state at disconnection
+------------------------------
+status de la connexion, de 4 caractères en HTTP mode
+
+"On the first character, a code reporting the first event which caused the
+    session to terminate" 
+
+exemple, les probes fortigate par exemples
+```
+CD-- 
+```
+C : "the TCP session was unexpectedly aborted by the client"
+D : "the session was in the DATA phase"
+A
+exemple, les web scénarios Zabbix
+```
+LR--
+```
+L : "the session was locally processed by haproxy and was not passed to
+            a server. This is what happens for stats and redirects."
+R : "the proxy was waiting for a complete, valid REQUEST from the client
+            (HTTP mode only). Nothing was sent to any server."
+
+
 #### afficher les status différents de normaux
 
 ```bash
@@ -170,6 +196,7 @@ https://www.haproxy.com/blog/haproxy-log-customization/
 11: protocole et version     
 12: code retour
 13: code retour
+14:
 18: "frontend" utilisé
 19: "backend" utilisé
 20: "server" utilisé
