@@ -84,3 +84,16 @@ netstat -an|grep ":443"|awk '/tcp/ {print $6}'|sort -nr| uniq -c
 ```
 cp -av /opt/sshgate/!(logs) /var/backups/
 ```
+
+### strace de multiples PID
+
+```
+pgrep  php-fpm |sed 's/\([0-9]*\)/\-p \1/g' | sed ':a;N;$!ba;s/\n/ /g'
+```
+
+### trouver tous les fichiers manquant avec strace et awk
+
+```bash
+strace -v -f -t -s5000 -o /tmp/out -p $(pgrep monprocess) 
+awk -F '"' '/stat/ && /ENOENT/ {print$2}' /tmp/out > /tmp/filelist.txt
+```

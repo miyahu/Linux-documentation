@@ -19,6 +19,12 @@ awk '/\w/  {print$1}' /tmp/ips.txt
 
 ### executer une commande systeme avec awk 
 
-```
+```bash
 egrep "^u0.*apps.fr" /etc/passwd | awk -F':' '{system("chown -R "$3":"$3 " " $6)}'
+```
+
+### truc bizarre avec bash, awk et sed !!! ###
+
+```bash
+for i in *.conf ; do sed -e "/Use/ s/$/ $(awk '/Use/ {print$3}' $i)/" $i ; done
 ```
