@@ -127,3 +127,9 @@ puis utiliser git show
 ```
 git show 96ff0b28092a3f113f0f4e35730f54ea50042847:create_new_site.sh
 ```
+
+### ignorer des fichiers déjà ajouté (sans les supprimer)
+
+```bash
+git rm --cached
+```
