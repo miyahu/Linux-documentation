@@ -1,8 +1,6 @@
-[Afficher les pages en Draft](#Afficher les pages en Draft)
-
-[Baser l'ordonnancement des pages du menu sur un poid](#Baser l'ordonnancement des pages du menu sur un poid)
-
-[Exclure des pages du menu](#Exclure des pages du menu)
+*[Afficher les pages en Draft](#Afficher les pages en Draft)
+*[Baser l'ordonnancement des pages du menu sur un poid](#Baser l'ordonnancement des pages du menu sur un poid)
+*[Exclure des pages du menu](#Exclure des pages du menu)
 
 ### Afficher les pages en Draft
 ```bash
