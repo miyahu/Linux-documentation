@@ -91,7 +91,7 @@ cp -av /opt/sshgate/!(logs) /var/backups/
 pgrep  php-fpm |sed 's/\([0-9]*\)/\-p \1/g' | sed ':a;N;$!ba;s/\n/ /g'
 ```
 
-### trouver tous les fichiers manquant avec strace et awk
+### trouver tous les fichiers manquant avec strace et awk entre deux serveurs
 
 ```bash
 # strace
@@ -100,4 +100,37 @@ strace -v -f -t -s5000 -o /tmp/out -p $(pgrep monprocess)
 awk -F '"' '/stat/ && /ENOENT/ {print$2}' /tmp/out > /tmp/filelist.txt
 # suppression des lignes vides
 sed -i '/^$/d' /tmp/filelist.txt 
+# on balance sur un autre serveur et on test
+while read line ; do readlink $line && echo "Line: $line ok" ; done < /tmp/filelist.txt
+```
+
+### tree, exclure des éléments de l'arborescence 
+
+```bash
+tree -I static -I "exampleSite|images|static|modules|scss"  themes/light-hugo/
+themes/light-hugo/
+├── archetypes
+│   └── default.md
+├── build.sh
+├── layouts
+│   ├── 404.html
+│   ├── _default
+│   │   ├── list.html
+│   │   └── single.html
+│   ├── index.html
+│   ├── pages
+│   │   └── single.html
+│   ├── partials
+│   │   ├── footer.html
+│   │   ├── foot.html
+│   │   ├── header.html
+│   │   └── head.html
+│   └── post
+│       ├── single.html
+│       └── summary.html
+├── LICENSE
+├── README.md
+└── theme.toml
+
+6 directories, 16 files
 ```

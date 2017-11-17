@@ -121,3 +121,10 @@ E..4!.@.@.................6................
 ```
 le client acquite 
 ```
+
+
+### rotation avec tcpdump
+
+```bash
+tcpdump -i eth0 tcp and port 11762 or port 11763  -s0 -C10 -W 100M -w /tmp/out.pcap
+```
