@@ -1,5 +1,6 @@
 * [charger en mémoire le mot de passe ssh] (#charger-en-mémoire-le-mot-de-passe-ssh) 
 * [contrôle d'accès par ip] (#contrôle-d'accès-par-ip) 
+* [perf]
 
 ### charger en mémoire le mot de passe ssh
 
@@ -25,3 +26,7 @@ echo "get -a /media/*" | sftp -P2224 -l 2000 2.42.134.12
 /etc/hosts.allow:sshd: 9.85.27.13
 /etc/hosts.deny:sshd: ALL EXCEPT LOCAL
 ```
+
+### Tips
+
+http://blogs.perl.org/users/smylers/2011/08/ssh-productivity-tips.html
