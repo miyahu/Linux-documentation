@@ -1,7 +1,7 @@
 * [debugging] (#debugging)
 * [comprendre le debug rsyslog] (#comprendre-le-debug-rsyslog)
 * [troubleshooting] (#troubleshooting)
-### debugging
+## debugging
 
 `rsyslogd -dn`
 
@@ -11,9 +11,9 @@ Enfin , tentative de traduction plutôt
 
 
 9334.743622755:imudp.c        : imudp: epoll_wait() returned with 1 fds
-# reception d'un message en udp distant (émission par logger -t solr: testlocal)
+#### reception d'un message en udp distant (émission par logger -t solr: testlocal)
 9334.743659737:imudp.c        : imudp: recvmmsg returned 1
-# donnée reçues 
+#### donnée reçues 
 9334.743665149:imudp.c        : recv(5,36),acl:1,msg:<5>Jan 16 13:22:14 solr:: testlocal
 9334.743670733:imudp.c        : msg parser: flags 70, from '~NOTRESOLVED~', msg '<5>Jan 16 13:22:14 solr:: testlocal'
 9334.743674158:imudp.c        : parse using parser list 0x1032d50 (the default list).
@@ -22,12 +22,12 @@ Enfin , tentative de traduction plutôt
 9334.743701710:imudp.c        : Message will now be parsed by the legacy syslog parser (one size fits all... ;)).
 9334.743705414:imudp.c        : Parser 'rsyslog.rfc3164' returned 0
 9334.743708846:imudp.c        : imudp: recvmmsg returned -1
-# ajout à la queue
+#### ajout à la queue
 9334.743715889:imudp.c        : main Q: qqueueAdd: entry added, size now log 1, phys 1 entries
-# démarrage du worker
+#### démarrage du worker
 9334.743737433:imudp.c        : main Q: MultiEnqObj advised worker start
 
-# évaluation des conditions 
+#### évaluation des conditions 
 9334.744141324:main Q:Reg/w0  : if condition result is 0
 9334.744145364:main Q:Reg/w0  :     IF
 9334.744152110:main Q:Reg/w0  :         var 'syslogtag'
@@ -38,10 +38,10 @@ Enfin , tentative de traduction plutôt
 9334.744173859:main Q:Reg/w0  : rainerscript: var 4: 'solr:'
 9334.744175443:main Q:Reg/w0  : eval expr 0x1044980, return datatype 'S'
 9334.744177145:main Q:Reg/w0  : eval expr 0x10618a0, return datatype 'N'
-# correspondance trouvée
+#### correspondance trouvée
 9334.744178713:main Q:Reg/w0  : if condition result is 1
 9334.744180401:main Q:Reg/w0  :     ACTION 8 [builtin:omfile:?solre]
-#  appel du omfile
+####  appel du omfile
 9334.744185002:main Q:Reg/w0  : executing action 8
 9334.744186855:main Q:Reg/w0  : Called action, logging to builtin:omfile
 9334.744204245:main Q:Reg/w0  : dnscache: entry (nil) found
@@ -55,7 +55,7 @@ Enfin , tentative de traduction plutôt
 9334.744309063:main Q:Reg/w0  : actionCommitAll: action 8, state 1, nbr to commit 0 isTransactional 1
 9334.744310948:main Q:Reg/w0  : doTransaction: have commitTransaction IF, using that, pWrkrInfo 0x10842c0
 9334.744312850:main Q:Reg/w0  : entering actionCallCommitTransaction(), state: itx, actionNbr 8, nMsgs 1
-# logging to local 
+#### logging to local 
 9334.744314852:main Q:Reg/w0  : omfile: file to log to: /var/log/centralisation/2017/01/16/bst01/solr/2017-01-16-bst01-solr.log
 9334.744653803:main Q:Reg/w0  : file stream 2017-01-16-bst01-solr.log params: flush interval 0, async write 0
 9334.744664134:main Q:Reg/w0  : Added new entry 0 for file cache, file '/var/log/centralisation/2017/01/16/bst01/solr/2017-01-16-bst01-solr.log'.
@@ -66,15 +66,30 @@ Enfin , tentative de traduction plutôt
 9334.744679464:main Q:Reg/w0  : file '/var/log/centralisation/2017/01/16/bst01/solr/2017-01-16-bst01-solr.log' opened as #20 with mode 416
 9334.744685322:main Q:Reg/w0  : strm 0x7f38f000add0: opened file '/var/log/centralisation/2017/01/16/bst01/solr/2017-01-16-bst01-solr.log' for WRITE as 20
 
-## troubleshooting
+### troubleshooting
 #### pour les imfile
 vérifier que rsyslog scrute le fichier :
 Faire un losf dessus
-```
+```bash
 lsof -np 2573
 ...
 rsyslogd 2573 root    7r   REG              253,5        5        453 /var/log/mysql/mysql-error.log
 rsyslogd 2573 root    8r   REG              253,5       15        452 /var/log/mysql/mysql.log
 rsyslogd 2573 root    9r   REG              253,5        5        451 /var/log/mysql/mysql-slow.log
 ```
+## exclure une facility 
+
+Ajouter le nom de la *facility* suivi de ".none", exemple
+
+```bash
+*.=info;*.=notice;*.=warn;\
+       auth.none,authpriv.none;\
+       cron.none,daemon.none;\
+       mail.none,news.none          -/var/log/messages
+```
+
+## terminologie 
+
+
+
 
