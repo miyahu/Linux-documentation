@@ -18,3 +18,42 @@ rm : supprimer répertoire « titi » ? y
 #### split sur motif
 csplit -f 'virtualhost-' -b '%03d.conf' my-monolithic-file  '/^ *<VirtualHost /' '{*}'
 
+###
+
+```bash
+print_branch_name() {
+        if [ -z "$1" ]
+        then
+                curdir=`pwd`
+        else
+                curdir=$1
+        fi
+
+        if [ -d "$curdir/.hg" ]
+        then
+                echo -n " "
+                if [ -f  "$curdir/.hg/branch" ]
+                then
+                        cat "$curdir/.hg/branch"
+                else
+                        echo "default"
+                fi
+                return 0
+                elif [ -d "$curdir/.git" ]
+                then
+                        echo -n " "
+                        git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'
+                fi
+
+        # Recurse upwards
+        if [ "$curdir" == '/' ]
+        then
+                return 1
+        else
+                print_branch_name `dirname "$curdir"`
+        fi
+}
+
+        e=\\\033
+        export PS1="\[$e[1;36m\][\u@\h \t]\[$e[1;33m\]\$(print_branch_name) \[$e[0m\]\w\n\[$e[1;37m\]——> \[$e[0m\]"
+```
