@@ -150,6 +150,32 @@ set -g message-bg colour166
 ### redessiner l'écran
 
 Lorsque que l'on est à l'exterieur
-```
+```bash
 tmux attach -d
 ```
+
+### tmux pour administrer les serveurs
+
+```bash
+cat tmuxmoi.sh 
+tmux new-session -d -s 'cassandra'  -n 'cassandra1' 'ssh root@10.0.145.201' 
+tmux new-window -n 'cassandra2' 'ssh root@10.0.145.202'
+tmux new-window -n 'cassandra3' 'ssh root@10.0.145.203'
+tmux new-window -n 'kairos1' 'ssh root@10.0.145.204'
+
+tmux -2 attach-session -d
+```
+
+executer-le
+
+```bash
+bash tmuxmoi.sh
+```
+
+#### se réattacher
+
+```bash
+tmux attach
+```
+
+

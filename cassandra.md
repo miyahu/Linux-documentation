@@ -7,3 +7,5 @@ EOF
  apt update && apt install -y cassandra cassandra-tools
 
 
+### Obtenir la liste des keyspaces
+SELECT * FROM system_schema.keyspaces; 
