@@ -178,4 +178,22 @@ bash tmuxmoi.sh
 tmux attach
 ```
 
+### l'écran ne se "resize" pas
 
+Sortir du tmux puis lister les clients avec tmux list-client
+
+exemple
+```bash
+tmux list-client
+/dev/pts/0: HYP [187x56 xterm-256color] (utf8) 
+/dev/pts/158: SERVICES [90x21 xterm] (utf8) 
+```
+
+puis fermer les connexions clientes avec tmux detach-client
+
+exemple
+
+```bash
+tmux detach-client -t /dev/pts/158
+tmux detach-client -t /dev/pts/0
+```
