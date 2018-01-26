@@ -1,60 +1,28 @@
-##Littérature
+# Elasticsearch
 
-[Measure dns server response time with dig](#measure)
+## Littérature
 
-[create an anchor](#anchors-in-markdown) 
+* http://soat.developpez.com/articles/elasticsearch/
 
+* http://fr.slideshare.net/dadoonet/elasticsearch-devoxx-france-2012/
 
-
-* [Concepts](#concepts)
-* [Terminologie et architecture](#terminologie-et-architecture)
-* [Cas concret](#cas-concret)
-* [Roles et scalabilitee](#roles-et-scalabilitee)
-* [Un dessin qui vaut mille mots](#un-dessin-qui-vaut-mille-mots)
-
-* [Installation et configuration](#installation-et-configuration)
-* [Installation](#installation) 
-* [Mise en cluster](#mise-encluster)
-* [Sauvegarde](#sauvegarde)
-* [would have more than the allowed 10% free disk threshold](would-have-more-than-the-allowed-10%-free-disk-threshold#)
-* [supprimer d'anciennes donnés](#supprimer-d'anciennes-donnés)
-* [cluster.routing.allocation.disk.watermark](#cluster.routing.allocation.disk.watermark)
-* [This can result in part of the JVM being swapped out. Increase RLIMIT_MEMLOCK ](#This-can-result-in-part-of-the-JVM-being-swapped-out.-Increase-RLIMIT_MEMLOCK)
-* [where expected to be resolved to a single node] (#where-expected-to-be-resolved-to-a-single-node)
-
-<http://soat.developpez.com/articles/elasticsearch/>
-
-<http://fr.slideshare.net/dadoonet/elasticsearch-devoxx-france-2012>
-
-Réglage pour un standalone :
-* http://blog.lavoie.sl/2012/09/configure-elasticsearch-on-a-single-host.html
 
 ## concepts
 
 ### terminologie et architecture
 
-ElasticSearch est un moteur de recherche composé de :
 
--   un moteur d'indexation de documents
--   un moteur de recherche sur les index
+* noeud : une instance d’ElasticSearch
+* cluster : un ensemble de noeuds
+* index : un index est une collection de documents qui ont des caractéristiques similaires.
+* shards : partitions ou sont stockés les documents constituant un index, un index peut s'appuyer sur plus d'un shard.
+* replica : copie additionnel d'un index dans un cluster ElasticSearch
 
-<!-- -->
-
--   noeud : une instance d’ElasticSearch
--   cluster : un ensemble de noeuds
--   index : un index est une collection de documents qui ont des
-    caractéristiques similaires.
--   shards : partitions ou sont stockés les documents constituant un
-    index, un index peut s'appuyer sur plus d'un shard.
--   replica : copie additionnel d'un index dans un cluster ElasticSearch
-
-<!-- -->
-
--   partition primaire (primary shard) : qui correspond à la partition
+*  partition primaire (primary shard) : qui correspond à la partition
     élue principale dans l'ensemble du cluster. C'est là que se fait
     l'indexation par Lucene. Il n'y en a qu'une seule par shard dans
     l'ensemble du cluster ;
--   partition secondaire (secondary shard) : qui sont les partitions
+*   partition secondaire (secondary shard) : qui sont les partitions
     secondaires stockant les réplicas des partitions primaires.
 
 Par défaut, chaque index est répartie sur 5 shards primaires et 1
@@ -62,7 +30,7 @@ réplica.
 
 Rivières (Rivers) : permettent de "verser" des données dans ES.
 
--   le replicat et le Shard original ne peuvent pas être sur le même
+Le replicat et le Shard original ne peuvent pas être sur le même
     node
 
 ### cas concret
@@ -102,26 +70,27 @@ https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-node.htm
 https://www.elastic.co/assets/blt9ae0b9498554824c/cluster-topology.svg
 
 
-Installation et configuration
-=============================
+### Installation et configuration
 
-Installation
-------------
+#### Installation
 
-`echo "deb `[`http://packages.elastic.co/elasticsearch/1.6/debian`](http://packages.elastic.co/elasticsearch/1.6/debian)` stable main" > /etc/apt/sources.list.d/elastic.list`
-
-`apt install elasticsearch`\
-`systemctl enable elasticsearch`\
-`systemctl start elasticsearch`
+```bash
+echo "deb http://packages.elastic.co/elasticsearch/1.6/debian stable main" > /etc/apt/sources.list.d/elastic.list && \
+apt update && \
+apt install elasticsearch && \
+systemctl enable elasticsearch && \
+systemctl start elasticsearch 
+```
 
 Par défaut, un *node name* est généré dynamiquement par Elasticsearch
 
 Une dépendance à java est requise
 
-` apt install openjdk-8-jre-headless`
+```bash
+apt install openjdk-8-jre-headless
+```
 
-Mise en cluster
----------------
+#### Mise en cluster
 
 -   définir un *cluster.name* sur chacun des noeuds ex
 
@@ -149,6 +118,7 @@ master est down.
 
 ### scénarios testés
 
+```bash
   -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
   node 1                                              node 2                                              résultat
   --------------------------------------------------- --------------------------------------------------- ---------------------------------------------------------------------
@@ -161,6 +131,7 @@ master est down.
   node online + /test/test/5 -d '{"key2":"value 2"}   node online + /test/test/5 -d '{"key2":"value 2"}   ok après synchronisation, il prend la modification la plus récente\
                                                                                                           Pas d'actions manuelles requises
   -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+```
 
   : Conditions testées
 
@@ -183,48 +154,56 @@ Accès <http://localhost:9200/_plugin/HQ/>
 
 ### Bigdesk
 
-`cd /usr/share/elasticsearch/bin && \`\
-`./plugin -install lukas-vlcek/bigdesk`
 
-Accès <http://localhost:9200/_plugin/bigdesk/>
+```bash
+cd /usr/share/elasticsearch/bin && \
+./plugin -install lukas-vlcek/bigdesk
+```
 
-Exploitation
-============
+Accès http://localhost:9200/_plugin/bigdesk/
 
-Pilotage
---------
+## exploitation
 
 ###  Obtenir des stats approfondies
-`curl localhost:9200/_stats | python -m json.tool | less`
+
+```bash
+curl localhost:9200/_stats | python -m json.tool | less
+```
 
 ### Arrêt du cluster
 
-`curl -XPOST `http://localhost:9200/_shutdown`
+```bash
+curl -XPOST `http://localhost:9200/_shutdown
+```
 
 ### Status du cluster
 
-` curl `http://localhost:9200/_cluster/health?pretty`
+```bash
+curl "http://localhost:9200/_cluster/health?pretty"
+```
 
 ### Status des nodes
 
-```
- curl localhost:9200/_cat/nodes
+```bash
+curl localhost:9200/_cat/nodes
 prdlamp2 10.0.95.12 71 56 0.92 d m prdlamp2 
 prdlamp1 10.0.95.11 49 57 1.25 d * prdlamp1 
 test1    10.0.95.90  2 60 0.02 - - test1
 ```
+
 Explication :
-première colonne : nom du noeud
-seconde : adresse IP
-troisième : ??
-quatrième : ??
-cinquième : ??
-sixième : ??
-septième : "m" pour master elligible, "*" pour master effectif et - ??
+
+* première colonne : nom du noeud
+* seconde : adresse IP
+* troisième : ??
+* quatrième : ??
+* cinquième : ??
+* sixième : ??
+* septième : "m" pour master elligible, "*" pour master effectif et - ??
 
 ### état des index (indices)
 
-```
+```bash
 curl 'localhost:9200/_cat/indices?v'
 health status index                 pri rep docs.count docs.deleted store.size pri.store.size 
 green  open   village              1   1    2541204       364644    196.7mb         97.3mb 
@@ -247,22 +226,26 @@ Pour information :
  * store.size : store size of primaries & replicas 
  * pri.store.size : store size of primaries
 
-
-
 ### Status des shards (et replicas)
-```
+
+```bash
 curl http://localhost:9200/_cat/shards
 ```
+
 ### vérifier le mapping
 Mapping is the process of defining how a document, and the fields it contains, are stored and indexed
 
-̀ curl localhost:92009.collection/_mapping?prettu`e
+```bash
+curl localhost:92009.collection/_mapping?pretty
+```
 
-### obtenir la version d'ES
-`curl localhost:9200`
+### obtenir la version 
 
-Troubleshooting
----------------
+```bash
+curl localhost:9200
+```
+
+## Troubleshooting
 
 ### Elastichsearch est en rouge
 
@@ -398,5 +381,8 @@ where expected to be resolved to a single node
 
 Vérifier qu'il n'y a pas plusieurs instances en cours sur le node
 
+
+Réglage pour un standalone :
+* http://blog.lavoie.sl/2012/09/configure-elasticsearch-on-a-single-host.html
 
 
