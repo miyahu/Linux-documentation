@@ -4,12 +4,20 @@
 
 ### pas de réponse lors de forward
 
-vérifier que le serveur autoritaire répond suffisament rapidement
+1. vérifier que le serveur autoritaire répond suffisament rapidement
+2. possible problème config systemd pour supervisor, message bad "NODATA proof" dans les log et *****2(SERVFAIL)** dans les logs
 
-### tester la configuration
+
+### debugger lançant en verbose
 
 ```bash
-kresd -vc /etc/knot-resolver/kresd.conf
+kresd -a 163.172.217.110@53 -v -c /etc/knot-resolver/kresd.conf -f 3
+```
+
+### un démon pour init 
+
+```bash
+start-stop-daemon -b --start --quiet --exec /usr/sbin/kresd -- -a 163.172.217.110@53 -v -c /etc/knot-resolver/kresd.conf -f 3 /
 ```
 
 ### pilotage par socket de contrôle
