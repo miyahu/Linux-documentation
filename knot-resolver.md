@@ -2,7 +2,7 @@
 
 ## pilotage et troubleshooting
 
-### pas de réponse lors de forward
+### pas de réponse lors de forward
 
 1. vérifier que le serveur autoritaire répond suffisament rapidement
 2. possible problème config systemd pour supervisor, message bad "NODATA proof" dans les log et *****2(SERVFAIL)** dans les logs
