@@ -4,12 +4,22 @@
 
 ### /etc/systemd vs /usr/lib/systemd
 
-* /etc/systemd accueil les services personnaliser
+* /etc/systemd accueil les services personnalisés
 
-* /usr/lib/systemd accueil les services standard 
+* /lib/systemd accueil les services standard 
 
-### sysctl
-La commande 
-`sysctl  -p`
-ne prend en compte que le fichier sysctl.conf, pour prendre tous les chemins, utilisez
-`sysctl --system -p`
+### voir une "unit"
+
+```bash
+systemctl cat "unit"
+```
+
+### personnaliser une "unit" 
+
+```bash
+systemctl edit "unit"
+```
+
+puis ajouter ses éléments
+
+Ce fichier apparaitra dans **/etc/systemd/system/"unit.d"/override.conf**
