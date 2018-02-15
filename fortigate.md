@@ -11,6 +11,7 @@
 * [les tunnels ipsec tombent] (#les-tunnels-ipsec-tombent)
 * [configuration des routes statiques] (#configuration-des-routes-statiques)
 * [comprendre les vpn events] (#comprendre-les-vpn-events)
+* [comprendre le split tunneling] (#comprendre-le-split-tunneling)
 
 
 
@@ -124,3 +125,11 @@ Astuces: le Cookie permet de suivre les évenements d'une session
 ```
 diagnose sniffer packet any "host 10.255.228.41" 4
 ```
+
+### comprendre le split tunneling
+
+http://www.internet-computer-security.com/VPN-Guide/VPN-client-tunneling.html
+
+Il s'agit d'une fonction permettant au client VPN d'emprunter le chemin réseau habituel pour tout le trafic qui n'aurait pas comme destination les tunnels VPN 
+
+Pour permettre l'accès à différents réseaux, je pense qu'il faut utiliser plusieurs vpn (phase 1), il me semble difficile d'utiliser plus d'une phase2 
