@@ -44,3 +44,9 @@ Give it a second to work.
 ### revenir en avant
 
 Ctrl+r
+
+### le collage décale les lignes en yaml
+
+```bash
+set paste
+```
