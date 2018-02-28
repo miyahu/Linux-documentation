@@ -109,3 +109,11 @@ ansible-galaxy -r requirements.yml install -p roles/
 ### unsupported parameter for module: gather_timeout
 
 Vous avez certainement deux versions différentes d'ansibles, une installée avec Debian l'autre avec PIP  
+
+### debugging step by step
+
+http://docs.ansible.com/ansible/latest/playbooks_startnstep.html
+
+par exemple, je veux savoir quelle tâche créé un répertoire ?
+
+Il faut ouvrir un **watch ls**  sur le serveur cible puis exécuter le playbook avec l'option **--step** ex **ansible-playbook playbook/monplay.yml --step** 
