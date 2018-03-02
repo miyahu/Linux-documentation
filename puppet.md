@@ -2,6 +2,11 @@
 
 ## Installation
 
+Pré-requis
+
+
+Sur les agents, bien déclarer le nom pleinement qualifié du master (facter hostname + facter domain) !!!
+
 ### Server
 
 vérifier que le pid est supprimé 
@@ -27,4 +32,10 @@ Puis signer rapidement la requête de certif
 ```bash
 ```
 
+## appliquer un manifest en ligne de commande
 
+exemple pour le manifest site
+
+```bash
+puppet apply /etc/puppetlabs/code/environments/production/manifests/site.pp
+```
