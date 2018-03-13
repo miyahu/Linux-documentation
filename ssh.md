@@ -30,3 +30,19 @@ echo "get -a /media/*" | sftp -P2224 -l 2000 2.42.134.12
 ### Tips
 
 http://blogs.perl.org/users/smylers/2011/08/ssh-productivity-tips.html
+
+### transferer sa clef ssh
+
+vérifier que la clef est ben chargée dans le ssh-agent 
+```bash
+ssh-add -l
+```
+connectez-vous à une autre machine
+```bash
+ssh -A toto
+```
+revérifier
+```bash
+ssh-add -l
+```
+
