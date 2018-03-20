@@ -39,3 +39,24 @@ exemple pour le manifest site
 ```bash
 puppet apply /etc/puppetlabs/code/environments/production/manifests/site.pp
 ```
+
+## configuration
+
+### présentation de l'arborescence
+
+Le manifest
+
+```bash
+/etc/puppetlabs/code/environments/production/manifests/site.pp
+```
+
+appelle la classe **generals** définie dans cette arborescence
+
+```bash
+/etc/puppetlabs/code/environments/production/modules/generals/
+```
+
+#### manifest
+
+
+

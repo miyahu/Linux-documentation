@@ -35,6 +35,19 @@ pecl donwload libsodium
 bash dh-make-pecl --phpversion 5 --prefix php5-20100525- libsodium-1.0.2.tgz
 ```
 ### je génère les deb
-```
+
+```bash
 cd php5-20100525-libsodium-1.0.2 &&  ./debian/rules binary
 ```
+
+### points importants 
+
+Standards-Version dans debian/control : ce n'est pas la version du paquet mais la version du standard Debian.
+La version du paquet est incrémenté par la lecture du debian/changelog
+
+### recompiler un paquet 
+
+```bash
+dpkg-buildpackage -r -B
+```
+
