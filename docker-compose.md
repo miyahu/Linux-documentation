@@ -249,3 +249,10 @@ docker build -f ./Dockerfile-grafana .
 ```
 for i in $(docker image ls | awk '{print$1}' | grep development_)  ; do docker image rm  $i ; done
 ```
+
+### démarrer une première instance en montant des volumes
+
+
+```bash
+docker run -d -v/var/www/kanboard-docker/data:/var/www/app/data -v /var/www/kanboard-docker/plugins:/var/www/app/plugins --name kanboardamoaeuh -p 8083:80 -t kanboardamo
+```
