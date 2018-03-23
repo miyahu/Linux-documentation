@@ -6,6 +6,10 @@
 * [tmux.conf](#tmux.conf)
 * redessiner l'écran
 
+### redessiner l'écran à la connexion
+
+tmux a -d
+
 ## changer l'organisation des panels
 `Ctrl+b+espace`
 

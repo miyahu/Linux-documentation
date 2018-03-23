@@ -146,3 +146,9 @@ git show 96ff0b28092a3f113f0f4e35730f54ea50042847:create_new_site.sh
 ```bash
 git rm --cached
 ```
+
+### localement récupérer les commits de master
+
+```bash
+git pull . master 
+```
