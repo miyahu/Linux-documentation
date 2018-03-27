@@ -1,3 +1,9 @@
+# systemd
+
+## doc
+
+https://www.freedesktop.org/software/systemd/man/systemd.unit.html
+
 ### après avoir modifié un service systemd
 
 `systemctl daemon-reload`
@@ -23,3 +29,4 @@ systemctl edit "unit"
 puis ajouter ses éléments
 
 Ce fichier apparaitra dans **/etc/systemd/system/"unit.d"/override.conf**
+

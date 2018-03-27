@@ -131,3 +131,22 @@ root@instance-1:~# redis-cli -p 7000 cluster slots
       2) (integer) 7001
       3) "166147d04ed1b97e3ccb199c2476ba6179cc7703 
 ```
+
+### affinité basé sur une clé
+
+De base, les clés sont ventilées sur différents slots.
+```bash
+127.0.0.1:7001> set a "1"
+(error) MOVED 15495 10.240.0.7:7000
+127.0.0.1:7001> set b "1"
+(error) MOVED 3300 10.240.0.5:7000
+```
+Les accolades permettent de positionner un "drapeaux de routage" qui emmenera toute les clés ayant le même drapeau vers le même slot ex set toto{drapeau-de-routage} "1"
+
+Nous pouvons le constater ci-dessous
+```bash
+127.0.0.1:7001> set a{truc} "1"
+(error) MOVED 5509 10.240.0.6:7000
+127.0.0.1:7001> set b{truc} "1"
+(error) MOVED 5509 10.240.0.6:7000
+```

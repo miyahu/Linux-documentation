@@ -1,5 +1,7 @@
 * (supprimer des répertoire tout'en en excluant)
 
+# bash
+
 ### supprimer des répertoire tout tant en excluant
 
 http://stackoverflow.com/questions/4325216/rm-all-files-except-some
@@ -56,4 +58,10 @@ print_branch_name() {
 
         e=\\\033
         export PS1="\[$e[1;36m\][\u@\h \t]\[$e[1;33m\]\$(print_branch_name) \[$e[0m\]\w\n\[$e[1;37m\]——> \[$e[0m\]"
+```
+
+### export une fonction 
+
+```bash
+export -f nom_de_ma_fonction
 ```
