@@ -65,3 +65,15 @@ print_branch_name() {
 ```bash
 export -f nom_de_ma_fonction
 ```
+
+### renommer tous les .txt en .md
+
+```bash
+ for i in *.txt ; do mv -vi $i  ${i/txt/md} ; done
+```
+
+### fonction de backup
+
+```bash
+function cpb { ( test -d ~/workspace || mkdir ~/workspace ; test -z "$1" && echo "submit file or directory please"  ; cp -va -S "$( date +%F_%R-backup)"  --parents "$1" ~/workspace/$i ; ) };
+```
