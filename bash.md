@@ -75,5 +75,14 @@ export -f nom_de_ma_fonction
 ### fonction de backup
 
 ```bash
-function cpb { ( test -d ~/workspace || mkdir ~/workspace ; test -z "$1" && echo "submit file or directory please"  ; cp -va -S "$( date +%F_%R-backup)"  --parents "$1" ~/workspace/$i ; ) };
+cpb () 
+{ 
+    ( test -d ~/workspace || mkdir ~/workspace;
+    test -z "$1" && echo "submit file or directory please";
+    fullpath="$(dirname $(readlink -f "$1"))";
+    mydate="$(date +%F_%R-backup)";
+    fullpath="~/workspace/${mydate}-${fullpath#'/'}";
+    mkdir -p "$fullpath";
+    cp -va "$1" "$fullpath" )
+}
 ```

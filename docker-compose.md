@@ -257,8 +257,12 @@ for i in $(docker image ls | awk '{print$1}' | grep development_)  ; do docker i
 docker run -d -v/var/www/kanboard-docker/data:/var/www/app/data -v /var/www/kanboard-docker/plugins:/var/www/app/plugins --name kanboardamoaeuh -p 8083:80 -t kanboardamo
 ```
 ou
+
 ```bash
-docker run -d -v/var/www/kanboard-docker/data:/var/www/app/data -v /var/www/kanboard-docker/plugins:/var/www/app/plugins -v /var/www/kanboard-docker/data/config/config.php://var/www/app/data/config.php --name kanboardamoaeuh -p 8083:80 -t kanboardamo
+docker run -d -v/var/www/kanboard-docker/data:/var/www/app/data -v /var/www/kanboard-docker/plugins:/var/www/app/plugins -v /var/www/kanboard-docker/data/config/config.php:/var/www/app/data/config.php --name kanboardamoaeuh -p 8083:80 -t kanboardamo
+
+ docker run -d  --publish 8080:8080 dutchcoders/transfer.sh:latest --provider local --basedir /tmp/
+
 ```
 
 ### démarrer automatiquement un container au boot
