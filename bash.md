@@ -20,7 +20,7 @@ rm : supprimer répertoire « titi » ? y
 #### split sur motif
 csplit -f 'virtualhost-' -b '%03d.conf' my-monolithic-file  '/^ *<VirtualHost /' '{*}'
 
-###
+### un prompt de compète
 
 ```bash
 print_branch_name() {
@@ -70,6 +70,19 @@ export -f nom_de_ma_fonction
 
 ```bash
  for i in *.txt ; do mv -vi $i  ${i/txt/md} ; done
+```
+
+### code à étudier
+
+https://unix.stackexchange.com/questions/70966/how-to-suppress-bash-octal-number-interpretation-to-be-interpreted-as-decimal
+
+setting des variables à la volée
+
+```bash
+eval $(date +"h=%H m=%M")
+h=${h#0}
+m=${m#0}
+echo say "$h hours and $m minutes"
 ```
 
 ### fonction de backup
