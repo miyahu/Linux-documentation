@@ -23,6 +23,12 @@
          * [retrouver une ancienne version de fichier](#retrouver-une-ancienne-version-de-fichier)
          * [ignorer des fichiers déjà ajouté (sans les supprimer)](#ignorer-des-fichiers-déjà-ajouté-sans-les-supprimer)
 
+# git
+
+## principe et remarque
+
+ne jamais créer de branche en production, car losque l'on va dessus, c'est celle-ci qui devient active
+
 ## Doc gitlab
 http://docs.gitlab.com/ee/workflow/workflow.html
 

@@ -60,3 +60,13 @@ appelle la classe **generals** d√©finie dans cette arborescence
 
 
 
+## exploitation
+
+### d√sactiver un agent sans couper le service
+
+```bash
+ puppet agent --disable
+```
+
+
+
