@@ -29,3 +29,10 @@ allez dans /var/lib/dpkg/info/ puis éditer le script de post-install à problè
 util-linux.postinst, y insérer un exit 0 en début de fichier.
 relancer le remove.
 
+### virer les paquets rc
+
+https://linuxprograms.wordpress.com/2010/05/12/remove-packages-marked-rc/
+
+### figer des paquets
+
+apt-mark hold "nom du paquet"

@@ -235,7 +235,7 @@ docker logs "mon instance"
 ```
 
 ```
-docker inespect "mon instance"
+docker inspect "mon instance"
 ```
 
 ### build avec un docker spécifique
@@ -263,6 +263,11 @@ docker run -d -v/var/www/kanboard-docker/data:/var/www/app/data -v /var/www/kanb
 
  docker run -d  --publish 8080:8080 dutchcoders/transfer.sh:latest --provider local --basedir /tmp/
 
+```
+ou
+
+```bash
+docker run --name myunboundamo -d -p 53:53/udp -v /etc/unbound/unbound.conf.d/forward.conf:/opt/unbound/etc/unbound/forward.conf:ro --restart=always mvance/unbound:latest
 ```
 
 ### démarrer automatiquement un container au boot

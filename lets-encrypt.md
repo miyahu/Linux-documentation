@@ -14,3 +14,24 @@ www.letsencrypt.org)"
 ```bash
 /usr/bin/acmetool want mail.architux.com webmail.archi.com opendns.com imap.archi.com
 ```
+
+### acmetool
+
+acmetool status pour voir les chemins et d'éventuel erreur
+
+### le challenge dns
+
+https://opportunis.me/letsencrypt-dns-challenge/
+
+https://serverfault.com/questions/750902/how-to-use-lets-encrypt-dns-challenge-validation
+
+en premier lieu, le lancer à la main 
+
+certbot -d www.mugairyu.fr --manual --preferred-challenges dns certonly
+
+puis déployer l'enregistrement TXT donné sur les serveurs DNS
+
+recharger et vérifier
+
+dig -t TXT _acme-challenge.www.mugairyu.fr @163.172.214.190
+
