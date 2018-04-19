@@ -48,3 +48,22 @@ Ctrl+r
 ```bash
 set paste
 ```
+
+### ouvrir un fichier sur la première occurence d'une recherche
+
+http://www.tech-recipes.com/rx/3162/open-vim-editor-to-first-occurrence-of-search-term/
+
+```bash
+vi +/searchterm filename
+``
+
+###  avec curseur sur la ligne 
+
+https://ensiwiki.ensimag.fr/index.php?title=Vimrc_minimal#Auto_folding_des_fonctions
+
+```bash
+set  cursorline
+```
+
+
+

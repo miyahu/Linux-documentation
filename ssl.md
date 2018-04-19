@@ -7,3 +7,4 @@ https://www.sslshopper.com/article-most-common-openssl-commands.html
 `echo | openssl s_client -connect localhost:443 2>/dev/null | openssl x509 -noout -dates`
 
 
+

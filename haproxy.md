@@ -209,3 +209,7 @@ https://www.haproxy.com/blog/haproxy-log-customization/
 ```
 (1)2017-10-26T11:28:03.197542+02:00 (2)ctsprdweb01 (3)haproxy[2736]: (4)10.0.132.254 (5)- (6)- (7)[26/Oct/2017:09:28:02 (8)+0000] (9)"POST (10)/masseur-kinesitherapeute/exercice-liberal/facturation-remuneration/tarifs/tarifs (11)HTTP/1.1" (12)302 (13)503 (14)"" (15)"" (16)(168884 (17)821 (18)"public_http" (19)"apache" (20)"apache" (21)0 (22)0 (23)1 (24)225 (25)226 (26)---- (27)19 (28)19 (29)0 (30)1 (31)0 (32)0 (33)0 (34)"" (35)"" (36)"https://www.ameli.fr/masseur-kinesitherapeute/exercice-liberal/f" (37)"Mozilla/5.0 (Windows NT 6.1; rv:56.0) Gecko/20100101 Firefox/56.0" (38)"www.ameli.fr" (39)"105.159.133.89"
 ```
+
+### haproxy sous docker 
+
+https://hub.docker.com/_/haproxy/

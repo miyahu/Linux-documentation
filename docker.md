@@ -265,7 +265,6 @@ docker run -d -v/var/www/kanboard-docker/data:/var/www/app/data -v /var/www/kanb
 
 ```
 ou
-
 ```bash
 docker run --name myunboundamo -d -p 53:53/udp -v /etc/unbound/unbound.conf.d/forward.conf:/opt/unbound/etc/unbound/forward.conf:ro --restart=always mvance/unbound:latest
 ```
@@ -290,3 +289,31 @@ Le -t permet de spécifier un nom dans le dépôt local d'images
 ```bash
 docker build -t hashicorp/vault .
 ```
+
+### récupération d'une image
+
+```bash
+ docker pull debian:buster
+```
+
+### reload d'un service dockerisé
+
+```bash
+docker kill -s HUP my-running-haproxy
+```
+
+### trouvé les volumes lié à un container
+
+https://stackoverflow.com/questions/30133664/how-do-you-list-volumes-in-docker-containers
+
+```bash
+docker inspect -f '{{ .Mounts }}'
+```
+
+exemple
+
+```bash
+docker inspect -f '{{ .Mounts }}'  3cb30a45e151
+[{bind  /media/minio /data   true rprivate} {bind  /mnt/config /root/.minio   true rprivate}]
+```
+
