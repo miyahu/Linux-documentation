@@ -83,12 +83,11 @@ cat /etc/dehydrated/domains.txt
 cat /etc/dehydrated/hooks/knot.sh
 #!/usr/bin/env bash
 
-set -x
 set -e
 set -u
 set -o pipefail
 
-NSUPDATE="knsupdate -d -k /etc/letsencrypt/scripts/knot.key"
+NSUPDATE="knsupdate -k /etc/letsencrypt/scripts/knot.key"
 DNSSERVER="127.0.0.1 5353"
 TTL=1
 
@@ -119,14 +118,14 @@ exit 0
 
 ### kôté knot..
 
-Ajouter les sous domaines acme_-challenge 
+Ajouter les sous domaines acme_-challenge..
 
 ```bash
 ...
 acl:
 ...
   - id: update_acl
-    address: 0.0.0.0/0
+    address: 127.0.0.1
     action: update
     key: mykey
 ...
@@ -164,7 +163,13 @@ _acme-challenge.architux.com.   300     NS      ns7.architux.com.
 ```
 puis lancer le test défini plus haut
 
+et mettre le cron de renew
 
+```bash
+cat /etc/cron.d/dehydrated 
+51 3 * * * root /usr/bin/dehydrated -c --config /etc/dehydrated/config
+```
 
+pensez à relancer les services pour prise en compte du nouveau certificat
 
-
+Utilisez *****deploy_cert** du hook pour cela par exemple
