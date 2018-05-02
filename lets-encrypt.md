@@ -19,6 +19,10 @@ www.letsencrypt.org)"
 
 acmetool status pour voir les chemins et d'éventuel erreur
 
+### certbot avec dns et wildcard
+
+/usr/local/bin/certbot  --server https://acme-v02.api.letsencrypt.org/directory -d *.mugairyu.fr --manual --preferred-challenges dns certonly
+
 ### le challenge dns
 
 https://opportunis.me/letsencrypt-dns-challenge/
@@ -29,9 +33,60 @@ en premier lieu, le lancer à la main
 
 certbot -d www.mugairyu.fr --manual --preferred-challenges dns certonly
 
-puis déployer l'enregistrement TXT donné sur les serveurs DNS
+* déployer l'enregistrement TXT donné sur le master DNS
+* update du serial
+* sur le slave, forcer le transfert avec
+```bash
+knotc  zone-retransfer mugairyu.fr
+```
+
+Press Enter to Continue
+Waiting for verification...
+Cleaning up challenges
+
+IMPORTANT NOTES:
+ - Congratulations! Your certificate and chain have been saved at:
+   /etc/letsencrypt/live/www.mugairyu.fr/fullchain.pem
+   Your key file has been saved at:
+   /etc/letsencrypt/live/www.mugairyu.fr/privkey.pem
+   Your cert will expire on 2018-07-19. To obtain a new or tweaked
+   version of this certificate in the future, simply run certbot
+   again. To non-interactively renew *all* of your certificates, run
+   "certbot renew"
+ - If you like Certbot, please consider supporting our work by:
+
+   Donating to ISRG / Let's Encrypt:   https://letsencrypt.org/donate
+   Donating to EFF:                    https://eff.org/donate-le
+
+
+
+
+
 
 recharger et vérifier
 
 dig -t TXT _acme-challenge.www.mugairyu.fr @163.172.214.190
+
+
+### les wildcards
+
+Il faut utiliser acmev2
+
+### dehydrated
+
+En premier
+
+```bash
+/usr/bin/dehydrated --register --accept-terms
+```
+
+ensuite
+
+```bash
+dehydrated  -c -f  /etc/dehydrated/config
+```
+
+#### pour debugguer
+
+ajouter -d lors de l'appel à knsuupdate
 

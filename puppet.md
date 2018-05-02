@@ -62,11 +62,24 @@ appelle la classe **generals** dÃ©finie dans cette arborescence
 
 ## exploitation
 
-### dÃsactiver un agent sans couper le service
+### désactiver un agent sans couper le service
 
 ```bash
  puppet agent --disable
 ```
+
+### retirer un agent puppet
+
+```bash
+puppet cert list --all | grep "node name"
+```
+
+puis le retirer
+
+```bash
+puppet cert clean "node name"
+```
+
 
 
 

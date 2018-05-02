@@ -65,5 +65,29 @@ https://ensiwiki.ensimag.fr/index.php?title=Vimrc_minimal#Auto_folding_des_fonct
 set  cursorline
 ```
 
+### naviguer dans du markdown
+
+Voom est une sorte de générateur d'index dynamique
+
+Installer l'extension vim-voom
+
+```bash
+apt install vim-voom
+```
+
+l'activer
+
+```bash
+vim-addons install voom
+```
+et enfin l'utiliser
+
+```bash
+:Voom markdown
+```
+Utiliser *Entrée* pour naviguer
+
+
+
 
 
