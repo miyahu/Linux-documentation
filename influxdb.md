@@ -166,6 +166,12 @@ Créer une politique de retention
 CREATE RETENTION POLICY rp52w ON collectd DURATION 52w REPLICATION 1 DEFAULT
 ```
 Modifier une politique de retention
-```
+```bash
 ALTER RETENTION POLICY default ON collectd_a_6month DURATION 26w REPLICATION 1 DEFAULT
+```
+
+### limiter et trier les résultat
+
+```bash
+select * from tail_value ORDER BY time ASC limit 5
 ```

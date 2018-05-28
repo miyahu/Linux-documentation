@@ -87,6 +87,9 @@ et enfin l'utiliser
 ```
 Utiliser *Entrée* pour naviguer
 
+### correction orthographique
+
+:spe "word" pour ajouter un mot au dictionnaire
 
 
 

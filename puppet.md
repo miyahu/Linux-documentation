@@ -80,6 +80,19 @@ puis le retirer
 puppet cert clean "node name"
 ```
 
+### lancer puppet agent en dry run
+
+```bash
+puppet agent -t --noop
+```
+
+### tester à partir d'un autre environnement
+
+ex test
+
+```bash
+puppet agent --noop --environment test -t
+```
 
 
 
