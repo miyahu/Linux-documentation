@@ -94,5 +94,11 @@ ex test
 puppet agent --noop --environment test -t
 ```
 
+### module 
 
+Exemple d'installation de module :
+
+```bash
+puppet module install puppetlabs-apt --version 4.5.1
+```
 
