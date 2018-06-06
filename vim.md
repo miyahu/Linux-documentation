@@ -49,6 +49,11 @@ Ctrl+r
 set paste
 ```
 
+### incrémenter un nombre ou le décrémenter
+
+Ctrl+A
+Ctrl+X
+
 ### ouvrir un fichier sur la première occurence d'une recherche
 
 http://www.tech-recipes.com/rx/3162/open-vim-editor-to-first-occurrence-of-search-term/
