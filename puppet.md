@@ -14,6 +14,14 @@ v√©rifier que le pid est supprim√©
 /var/run/puppetlabs/puppetserver/puppetserver.pid
 ```
 
+#### enregistrer l'agent
+
+https://puppet.com/docs/pe/2017.3/installing/installing_agents.html#concept-710
+
+1. bien configurer l'agent puis le lancer
+2. attendre quelques minutes et faire un  `puppet cert list` sur le master
+3. le nom du node devrait apparaÓtre, l'enregistrer avec un `puppet cert sign "nom avec fqdn"
+
 #### ssl
 
 d√©marrer le master
@@ -94,7 +102,9 @@ ex test
 puppet agent --noop --environment test -t
 ```
 
-### module 
+### modules
+
+#### Installation
 
 Exemple d'installation de module :
 
@@ -102,3 +112,27 @@ Exemple d'installation de module :
 puppet module install puppetlabs-apt --version 4.5.1
 ```
 
+#### CrÈation
+
+https://puppet.com/docs/pdk/1.x/pdk.html
+https://puppet.com/docs/pdk/1.x/pdk_creating_modules.html
+https://puppet.com/docs/puppet/5.5/bgtm.html
+
+```bash
+# installation de pdk
+apt install  pdk
+
+puppet module generate architux-haproxy
+```
+
+### le facteur (facter)
+
+https://stackoverflow.com/questions/45825601/puppet-facter-how-to-set-custom-facts-from-yaml-file
+
+1. pousser votre fact dans /opt/puppetlabs/facter/ 
+2. ajouter export FACTERLIB=/opt/puppetlabs/facter/ puis "sourcer-le"
+3. ln -s /opt/puppetlabs/facter/ /etc/
+
+Les facts en rb vont dans /opt/puppetlabs/facter/
+
+les fichier yaml iront eux dans /opt/puppetlabs/facter/facts.d/
