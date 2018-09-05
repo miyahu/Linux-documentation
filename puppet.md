@@ -136,3 +136,24 @@ https://stackoverflow.com/questions/45825601/puppet-facter-how-to-set-custom-fac
 Les facts en rb vont dans /opt/puppetlabs/facter/
 
 les fichier yaml iront eux dans /opt/puppetlabs/facter/facts.d/
+
+## modules
+
+### changement de fichier entrainant un redémarrage de service 
+
+Utilisez "notify  => Service['nom du service']"
+
+```bash
+file { '/etc/haproxy/haproxy.cfg':
+              ensure  => present,
+              content => file("haproxy/${nodename}/etc/haproxy/haproxy.cfg"),
+              notify  => Service['haproxy']
+            }
+service { 'haproxy':
+              ensure  => running,
+              enable  => true,
+              restart => 'haproxy -c -f /etc/haproxy/haproxy.cfg && service haproxy reload',
+              require => File['/etc/haproxy/haproxy.cfg'],
+            }
+```
+
