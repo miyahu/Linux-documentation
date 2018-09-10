@@ -159,13 +159,11 @@ service { 'haproxy':
 
 ### héritage de classe
 
-https://puppet.com/docs/puppet/4.10/lang_classes.html#inheritance
-
+Où l'on utilise le mot clé "inherits" pour faire hériter 3 classes d'un classe de base :
 
 Exemple : https://fr.slideshare.net/PuppetLabs/roles-talk
 
-Où l'on utilise le mot clé "inherits" pour faire hériter 3 classes d'un classe de base.
-
+https://puppet.com/docs/puppet/4.10/lang_classes.html#inheritance
 
 ```bash
 class apache {
@@ -180,3 +178,8 @@ class apache::ssl inherits apache {
   }
 }
 ```
+
+Le +> se substitue au => pour signifier que la nouvelle valeur s'ajoute à l'ancienne :
+
+anciennes valeurs : Package['httpd']
+Nouvelles valeurs après ajouts : Package['httpd'] File['apache.pem'], File['httpd.conf']
