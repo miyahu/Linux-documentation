@@ -183,3 +183,26 @@ Le +> se substitue au => pour signifier que la nouvelle valeur s'ajoute à l'anci
 
 anciennes valeurs : Package['httpd']
 Nouvelles valeurs après ajouts : Package['httpd'] File['apache.pem'], File['httpd.conf']
+
+### tags
+
+Le tag des fonctions.
+ 
+Le tag sert à appeller uniquement la classe correspondant au nom du tag, l'idée étant pour une opération manuel, d'éviter d'appeller l'ensemble des classes.
+
+Comme Ansible puppet support les tags, il faut le spécifier dans la classe (au début sera parfait), exemple
+
+```bash
+class apache::specifique inherits apache {
+  tag 'apache-specifique'
+  ..
+}
+```
+Puis le tag est appelé ainsi
+
+```bash
+~# puppet agent -t --tag apache-specifique
+```
+
+Il existe aussi le tag des metaparamètres
+
