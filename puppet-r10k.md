@@ -26,15 +26,14 @@ Suppression des modules
 r10k puppetfile purge
 ```
 
-
 ## Les modules
 
-## directive
+### Directive
 
 moduledir:
 spécifie où seront installés les modules issues du *Puppetfile*
 
-#### Type de modules et sources
+#### Type de modules et sources
 
 * forge
 * git 
@@ -46,14 +45,14 @@ si la version n'est pas fixé, la dernière sera téléchargée
 
 1. les mettres sur git (en tant que dépôt et non en tant que sous répertoire sinon, cela ne marche pas).
 
-Ce placer dans la copie du dépôt git de r10k, ajouter la ligne qui va bien au Puppetfile
+2. Ce placer dans la copie du dépôt git de r10k, ajouter la ligne qui va bien au Puppetfile
 
 ```bash
 mod 'apache',
   :git => 'https://github.com/ronron22/puppet-module-apache' 
 ```
 
-Ajouter puis commiter sur le dépôt distant, vérifiez que la branche de travail soit bien celle voulue.
+3. Ajouter puis commiter sur le dépôt distant, vérifiez que la branche de travail soit bien celle voulue.
 
 puis, sur le serveur **Puppet** lancer
 
