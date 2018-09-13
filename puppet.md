@@ -4,7 +4,6 @@
 
 PrÃ©-requis
 
-
 Sur les agents, bien dÃ©clarer le nom pleinement qualifiÃ© du master (facter hostname + facter domain) !!!
 
 ### Server
@@ -206,3 +205,34 @@ Puis le tag est appelé ainsi
 
 Il existe aussi le tag des metaparamètres
 
+### afficher la config du client puppet
+
+```bash
+puppet config print
+```
+
+## Sauvegarde des éléments modifiés
+
+Sur le client sur lesquels sont appliqués les .pp, les éléments modifiés sont automatiquement sauvegardés ici :
+
+puppet config print | grep clientbucketdir
+clientbucketdir = /var/cache/puppet/clientbucket
+
+### lister les éléments sauvegardés
+
+```bash
+puppet filebucket --local list
+557435b41c7835c8c50390341c398e4e 2018-09-13 16:02:24 /tmp/gruik
+```
+
+### afficher un élément sauvegardé
+
+```bash
+puppet filebucket --local get 557435b41c7835c8c50390341c398e4e
+gruik!
+```
+
+
+
+
+/var/cache/puppet/clientbucket/
