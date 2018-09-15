@@ -1,5 +1,47 @@
 # Puppet
 
+Il faut voir **Puppet** comme un outils de mise en conformité des configurations et des contenus.
+
+## Impératif vs déclaratif
+
+Si le code demande (les procédures) à l'interpréteur (puppet) quoi, comment et quand le faire , il s'agit d'un code impératif.
+Si le code se contente de demander à l'interpréteur ce qu'il veut obtenir comme résultat, il s'agit d'un code déclaratif.
+
+## variables
+
+Elles commencent par une minuscule ou un soulignement (underscore) et doit contenir les lettres en minuscules, des nombres et des soulignements.
+
+### Voir le type de variable
+
+```bash
+include stdlib
+$nametype = type_of( $my_name ) 
+$numtype  = type_of( $num_token ) 
+```
+
+### variable avec here document
+
+```bash
+$message_text = @("END")
+Dear ${user},
+	Your password is ${password}.
+END
+```
+
+## Les facts
+
+### lister les facts avec puppet 
+
+```bash
+puppet facts find
+```
+
+### mots réservés
+
+and, att, node, true, import default etc..
+
+
+
 ## Installation
 
 PrÃ©-requis
