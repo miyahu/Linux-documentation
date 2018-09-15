@@ -28,17 +28,90 @@ Dear ${user},
 END
 ```
 
-## Les facts
+### les hashs
 
-### lister les facts avec puppet 
+Il est possible d'ajouter ou retirer des entrées d'un hash, exemple
 
 ```bash
-puppet facts find
+$name			= [ 'adolph hitler', 'george bush', 'mere theresa ]
+$name_with_fix	= $name - 'mere theresa'
+```
+
+### opérateurs de comparaison
+
+les habituelles, plus :
+
+* pour les amateurs de python 
+
+```bash
+ 'Pinochet' in 'Bad person : Hitler, Bush, Pinochet'
+ 'Bamby' !in 'Bad person : Hitler, Bush, Pinochet'
+```
+
+Exemple
+
+```bash
+$bad_person = ['Hitler', 'George Bush', 'Bambie']
+
+if ('Bambie' in $bad_person) {
+	notify { 'is_bambie':
+		message => "Oui !!!"
+	}
+}
+else {
+	notify { 'is_bambie':
+		message => "Non !!!"
+	}
+}
 ```
 
 ### mots réservés
 
 and, att, node, true, import default etc..
+
+### les opérateurs conditionnels
+
+* if/elsif/else
+* unless/else 
+* case
+* selecteur
+
+L'opérateur permet de faire des trucs sympa du genre
+
+case $osfamily {
+	'redhat'				{ include yum }
+	'debian'				{ include apt }
+	'debian-ubuntu' { include apt }
+	'windows'				{ include garbage }
+}
+
+## Les facts
+
+### lister les facts avec puppet 
+
+```bash
+puppet facts --render-as yaml
+```
+
+### utilisation des facts dans les ressources
+
+```bash
+notify { 'greeting':
+  message => "Am i virtual ? ${is_virtual}"
+}
+```
+
+rendu
+
+```bash
+Notice: Am i virtual ? false
+```
+
+### Les fonctions
+
+En Puppet 5.5
+
+https://puppet.com/docs/puppet/5.5/function.html
 
 
 
