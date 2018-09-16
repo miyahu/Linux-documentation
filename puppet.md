@@ -2,12 +2,12 @@
 
 Il faut voir **Puppet** comme un outils de mise en conformité des configurations et des contenus.
 
-## Impératif vs déclaratif
+## Impératif vs déclaratif
 
 Si le code demande (les procédures) à l'interpréteur (puppet) quoi, comment et quand le faire , il s'agit d'un code impératif.
 Si le code se contente de demander à l'interpréteur ce qu'il veut obtenir comme résultat, il s'agit d'un code déclaratif.
 
-## variables
+## Variables
 
 Elles commencent par une minuscule ou un soulignement (underscore) et doit contenir les lettres en minuscules, des nombres et des soulignements.
 
@@ -19,7 +19,7 @@ $nametype = type_of( $my_name )
 $numtype  = type_of( $num_token ) 
 ```
 
-### variable avec here document
+### Variable avec here document
 
 ```bash
 $message_text = @("END")
@@ -28,7 +28,7 @@ Dear ${user},
 END
 ```
 
-### les hashs
+### Les hashs
 
 Il est possible d'ajouter ou retirer des entrées d'un hash, exemple
 
@@ -37,7 +37,7 @@ $name			= [ 'adolph hitler', 'george bush', 'mere theresa ]
 $name_with_fix	= $name - 'mere theresa'
 ```
 
-### opérateurs de comparaison
+### Opérateurs de comparaison
 
 les habituelles, plus :
 
@@ -65,11 +65,11 @@ else {
 }
 ```
 
-### mots réservés
+### Mots réservés
 
 and, att, node, true, import default etc..
 
-### les opérateurs conditionnels
+### Les opérateurs conditionnels
 
 * if/elsif/else
 * unless/else 
@@ -87,13 +87,13 @@ case $osfamily {
 
 ## Les facts
 
-### lister les facts avec puppet 
+### Lister les facts avec puppet 
 
 ```bash
 puppet facts --render-as yaml
 ```
 
-### utilisation des facts dans les ressources
+### Utilisation des facts dans les ressources
 
 ```bash
 notify { 'greeting':
@@ -113,7 +113,10 @@ En Puppet 5.5
 
 https://puppet.com/docs/puppet/5.5/function.html
 
+## Ordre d'application 
 
+before => Type['deploywebroot']
+require => Type['/etc/apache2/apache.conf']
 
 ## Installation
 
@@ -128,7 +131,7 @@ vÃ©rifier que le pid est supprimÃ©
 /var/run/puppetlabs/puppetserver/puppetserver.pid
 ```
 
-#### enregistrer l'agent
+#### Enregistrer l'agent
 
 https://puppet.com/docs/pe/2017.3/installing/installing_agents.html#concept-710
 
@@ -136,7 +139,7 @@ https://puppet.com/docs/pe/2017.3/installing/installing_agents.html#concept-710
 2. attendre quelques minutes et faire un  `puppet cert list` sur le master
 3. le nom du node devrait apparaître, l'enregistrer avec un `puppet cert sign "nom avec fqdn"
 
-#### ssl
+#### Ssl
 
 dÃ©marrer le master
 
@@ -154,7 +157,7 @@ Puis signer rapidement la requÃªte de certif
 ```bash
 ```
 
-## appliquer un manifest en ligne de commande
+## Appliquer un manifest en ligne de commande
 
 exemple pour le manifest site
 
@@ -162,9 +165,17 @@ exemple pour le manifest site
 puppet apply /etc/puppetlabs/code/environments/production/manifests/site.pp
 ```
 
-## configuration
+## Vérifier la syntaxe des pp
 
-### prÃ©sentation de l'arborescence
+La validation est un peu con, méfiez-vous quand même..
+
+```bash
+puppet parser validate mon.pp 
+```
+
+## Configuration
+
+### Présentation de l'arborescence
 
 Le manifest
 
@@ -178,19 +189,17 @@ appelle la classe **generals** dÃ©finie dans cette arborescence
 /etc/puppetlabs/code/environments/production/modules/generals/
 ```
 
-#### manifest
+#### Manifest
 
+## Exploitation
 
-
-## exploitation
-
-### désactiver un agent sans couper le service
+### Désactiver un agent sans couper le service
 
 ```bash
  puppet agent --disable
 ```
 
-### retirer un agent puppet
+### Retirer un agent puppet
 
 ```bash
 puppet cert list --all | grep "node name"
@@ -239,7 +248,7 @@ apt install  pdk
 puppet module generate architux-haproxy
 ```
 
-### le facteur (facter)
+### Le facteur (facter)
 
 https://stackoverflow.com/questions/45825601/puppet-facter-how-to-set-custom-facts-from-yaml-file
 
@@ -251,9 +260,9 @@ Les facts en rb vont dans /opt/puppetlabs/facter/
 
 les fichier yaml iront eux dans /opt/puppetlabs/facter/facts.d/
 
-## modules
+## Modules
 
-### changement de fichier entrainant un redémarrage de service 
+### Changement de fichier entrainant un redémarrage de service 
 
 Utilisez "notify  => Service['nom du service']"
 
@@ -271,7 +280,7 @@ service { 'haproxy':
             }
 ```
 
-### héritage de classe
+### Héritage de classe
 
 Où l'on utilise le mot clé "inherits" pour faire hériter 3 classes d'un classe de base :
 
@@ -298,7 +307,7 @@ Le +> se substitue au => pour signifier que la nouvelle valeur s'ajoute à l'anci
 anciennes valeurs : Package['httpd']
 Nouvelles valeurs après ajouts : Package['httpd'] File['apache.pem'], File['httpd.conf']
 
-### tags
+### Tags
 
 Le tag des fonctions.
  
@@ -320,7 +329,7 @@ Puis le tag est appelé ainsi
 
 Il existe aussi le tag des metaparamètres
 
-### afficher la config du client puppet
+### Afficher la config du client puppet
 
 ```bash
 puppet config print
@@ -333,21 +342,17 @@ Sur le client sur lesquels sont appliqués les .pp, les éléments modifiés sont au
 puppet config print | grep clientbucketdir
 clientbucketdir = /var/cache/puppet/clientbucket
 
-### lister les éléments sauvegardés
+### Lister les éléments sauvegardés
 
 ```bash
 puppet filebucket --local list
 557435b41c7835c8c50390341c398e4e 2018-09-13 16:02:24 /tmp/gruik
 ```
 
-### afficher un élément sauvegardé
+### Afficher un élément sauvegardé
 
 ```bash
 puppet filebucket --local get 557435b41c7835c8c50390341c398e4e
 gruik!
 ```
-
-
-
-
 /var/cache/puppet/clientbucket/
