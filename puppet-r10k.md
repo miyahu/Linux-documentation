@@ -61,3 +61,22 @@ r10k deploy  environment -p
 ```
 
 Cette commande descendra le nouveau module
+
+### laisser des modules locaux
+
+Ajouter 
+
+```bash
+mod 'local_module', :local => true
+```
+
+au Puppetfile
+
+puis créer le répertoire vide *local_module* dans modules, puis y placer ses modules
+
+Adapter le path des modules dans environnement.conf :
+
+```bash
+modulepath = modules:site:modules/local_module:$basemodulepath
+```
+

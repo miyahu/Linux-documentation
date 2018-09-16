@@ -107,7 +107,13 @@ rendu
 Notice: Am i virtual ? false
 ```
 
-### Les fonctions
+### La synchronisation des plugins et facts avec pluginsync
+
+https://puppet.com/blog/introduction-pluginsync
+
+Lors de l'execution des jobs, l'agent puppet récupère les plugins et facts du puppet master
+
+## Les fonctions
 
 En Puppet 5.5
 
@@ -191,6 +197,18 @@ appelle la classe **generals** dÃ©finie dans cette arborescence
 
 #### Manifest
 
+##### dépendances entre modules
+
+Je veux que le module php execute la classe accounts avant de lancer le service
+
+J'ajoute
+
+```bash
+ require => Class["accounts"] 
+```
+
+dans service.pp du module php
+
 ## Exploitation
 
 ### Désactiver un agent sans couper le service
@@ -244,7 +262,12 @@ https://puppet.com/docs/puppet/5.5/bgtm.html
 ```bash
 # installation de pdk
 apt install  pdk
+pdk new module
+```
 
+ou 
+
+```bash
 puppet module generate architux-haproxy
 ```
 
