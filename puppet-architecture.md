@@ -2,7 +2,7 @@
 
 ## Profile, rôle vs Hiera ou comment ventiler les données
 
-Hiera hébergerait les variables et n'appellerais aux maximum les rôles. L'appelle des classes serait hérité des rôles selectionnés
+Hiera n'hébergerait que les variables les appels aux rôles. Les appels aux classes serait hérités des profiles eux-même appelés par les rôles. 
 
 Exemple :
 
@@ -44,7 +44,7 @@ class:
 ...
 ```
 
-On ne touche pas aux rôles hiera
+On ne touche pas aux rôles hiera (rôles correspondant aux facts et nom les rôles *modules*)
 
 ```bash
 ~# cat iswebserver.yaml
@@ -63,6 +63,7 @@ On créé un rôle **web** appellant le profile **apache**
 ~# cat site/role/manifests/web.pp
 class role::web inherits base {
 	include profile::apache
+...
 }
 ```
 
@@ -72,5 +73,6 @@ On créé un profile **apache** incluant le module apache
 ~# cat site/profile/manifests/apache.pp
 class profile::apache inherits profile {
 	include apache
+...
 }
 ```
