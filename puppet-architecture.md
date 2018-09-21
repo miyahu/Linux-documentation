@@ -1,0 +1,75 @@
+
+Profile, rôle vs Hiera ou comment ventiler les données
+
+Hiera hébergerait les variables et n'appellerais aux maximum les rôles. L'appelle des classes serait hérité des rôles selectionnés
+
+Exemple :
+
+## Avant
+
+Tous est dans hiera, l'appel des classes et les variables.
+
+```bash
+~# cat server1.yaml
+---
+class:
+  - apache
+...
+```
+
+```bash
+~# cat iswebserver.yaml
+---
+apache::enable: true
+apache:vhosts_list:
+	- toto.com
+	- titi.com
+	- tagada.com
+...
+```
+ et c'est tout
+
+### Après
+
+plus compliqué mais plus souple et clair, on mixe hiera, les profiles et les roles. Hiera n'hébergeant pratiquement plus que les variables et les appels aux rôles. 
+
+On appelle le role Puppet
+
+```bash
+~# cat server1.yaml
+---
+class:
+  - role::web
+...
+```
+
+On ne touche pas aux rôles hiera
+
+```bash
+~# cat iswebserver.yaml
+---
+apache::enable: true
+apache:vhosts_list:
+	- toto.com
+	- titi.com
+	- tagada.com
+...
+```
+On créé un rôle **web** appellant le profile **apache**
+
+
+```bash
+~# cat site/role/manifests/web.pp
+class role::web inherits base {
+	include profile::apache
+}
+```
+
+On créé un profile **apache** incluant le module apache
+
+```bash
+~# cat site/profile/manifests/apache.pp
+class profile::apache inherits profile {
+	include apache
+}
+```
