@@ -1,11 +1,12 @@
+# Puppet architecture
 
-Profile, rôle vs Hiera ou comment ventiler les données
+## Profile, rôle vs Hiera ou comment ventiler les données
 
 Hiera hébergerait les variables et n'appellerais aux maximum les rôles. L'appelle des classes serait hérité des rôles selectionnés
 
 Exemple :
 
-## Avant
+### Avant
 
 Tous est dans hiera, l'appel des classes et les variables.
 
@@ -29,7 +30,7 @@ apache:vhosts_list:
 ```
  et c'est tout
 
-### Après
+### Après
 
 plus compliqué mais plus souple et clair, on mixe hiera, les profiles et les roles. Hiera n'hébergeant pratiquement plus que les variables et les appels aux rôles. 
 
