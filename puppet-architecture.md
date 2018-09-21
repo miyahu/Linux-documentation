@@ -1,8 +1,8 @@
 # Puppet architecture
 
-## Profile, rôle vs Hiera ou comment ventiler les données
+## Profile, rôle et Hiera ou comment dissocier (à peu près) le code des données
 
-L'idée est Hiera n'hébergerait que les variables et les appels aux rôles (data). Les appels aux classes (code) serait hérités des profiles eux-même appelés par les rôles. 
+L'idée la suivante, Hiera n'hébergerait que les variables et les appels aux rôles (data). Les appels aux classes (code) serait hérités des profiles eux-même appelés par les rôles. 
 
 Exemple :
 
