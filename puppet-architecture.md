@@ -118,11 +118,11 @@ Nous aurons trois rôles puppet :
 
 et enfin nous définirons les profiles suivants :
 
-1. haproxy1  
+* haproxy1  
   appellant les classes :  
-  1. haproxy
-  2. backup haproxy
-  3. supervision haproxy
+  * haproxy
+  * backup haproxy
+  * supervision haproxy
 2. varnish1  
   appellant les classes :  
   1. varnish
