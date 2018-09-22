@@ -81,6 +81,8 @@ class profile::apache inherits profile {
 
 Ma société s'appelle zonama, elle vend des produits en ligne tel des livres, des films etcetera..
 
+### Définition des stacks
+
 Maintenant imaginons quelle mette en oeuvre les trois types de stacks de serveur suivantes :
 
 1. haproxy, varnish, apache, memcache et php-fpm  
@@ -94,27 +96,38 @@ Cette stack s'appelle **zonamaslr**
 
 Répartis sur les environnements suivants :
 
-1. production alias **prd**
-2. préproduction alias **ppd**
-3. recette alias **rct**
+### Définition des environnements 
+
+* production alias **prd**
+* préproduction alias **ppd**
+* recette alias **rct**
 
 Chaque environnement aura des valeurs de configuration différentes même s'ils font appelles aux mêmes composants.  
 
+### Nommage serveur
+
 Le nom complet d'un de mes serveurs web de production sera donc **zonamaprdweb3**, celui d'un serveur mysql de préprod sera **zonamappdsql2** et enfin celui d'un serveur solr de recette sera **zonamaarctslr4** 
 
-#### Voici comment nous  gérerions cette architecture avec Puppet.
+### Voici comment nous  gérerions cette architecture avec Puppet.
 
-Nous aurons trois environnements Puppet :
+Nous aurons aussi trois environnements :
 
 * production
 * préproduction
 * recette
 
-Nous aurons trois rôles puppet :
+```bash
+ls /etc/puppetlabs/code/environments/
+production  preproduction recette
+```
 
-1. zonamaweb
-2. zonamasql
-3. zonamaslr
+Nous aurons aussi trois rôles puppet :
+
+* zonamaweb
+* zonamasql
+* zonamaslr
+
+### Composition des profiles et relations avec les classes 
 
 et enfin nous définirons les profiles suivants :
 
@@ -159,6 +172,9 @@ et enfin nous définirons les profiles suivants :
   * agent de sauvegarde
   * agent de supervision
 
+
+### Relation entre rôles et profiles 
+
 Le rôle zonamaweb appellera les profiles
 
 * base
@@ -202,7 +218,7 @@ La hierarchie Hiera ressemblant à ça (exemple avec l'en de production) :
     path: "os/family/%{facts.os.family}.yaml"
 
   - name: "Per environnement"
-    path: "env/production/true.yaml"
+    path: "env/environnement.yaml"
     #  héberge les valeurs spécifique à l'environnement
     # quelque soit le service
 

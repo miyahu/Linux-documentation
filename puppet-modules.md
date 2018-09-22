@@ -1,7 +1,8 @@
+# Modules
 
 ## Hiera dans les modules
 
-créer un fichier hiera.yaml pour définir la hierachie
-créer un dossier date
-dans ce dossier créer les entrées de hiera
-modifier le fichier metadata.json  
+1. créer un fichier hiera.yaml pour définir la hierachie
+2. créer un dossier date
+3. dans ce dossier créer les entrées de hiera
+4. modifier le fichier metadata.json  
