@@ -16,7 +16,7 @@ knot::config::service_name: 'knot'
 
 mais cette solution à un gout amer.. 
 
-Voici la solution : dans la classe, appelez l'espace de nom complet
+En voici une autre, dans la classe, appelez l'espace de nom complet
 
 ```bash 
 $service_name   = hiera('knot::service::service_name'),
