@@ -123,41 +123,41 @@ et enfin nous définirons les profiles suivants :
   * haproxy
   * backup haproxy
   * supervision haproxy
-2. varnish1  
+* varnish1  
   appellant les classes :  
-  1. varnish
-  2. backup varnish
-  3. supervision varnish
-3. apache1  
+  * varnish
+  * backup varnish
+  * supervision varnish
+* apache1  
   appellant les classes :  
-  1. apache
-  2. backup apache
-  3. supervision apache
-4. php-fpm1  
+  * apache
+  * backup apache
+  * supervision apache
+* php-fpm1  
   appellant les classes :  
-  1. php-fpm
-  2. backup php-fpm
-  3. supervision php-fpm
-5. memcached1  
+  * php-fpm
+  * backup php-fpm
+  * supervision php-fpm
+* memcached1  
   appellant les classes :  
-  1. memcached
-  2. backup memcached
-  3. supervision memcached
-6. mysql1  
+  * memcached
+  * backup memcached
+  * supervision memcached
+* mysql1  
   appellant les classes :  
-  1. mysql
-  2. backup mysql
-  3. supervision mysql
-7. solr1  
+  * mysql
+  * backup mysql
+  * supervision mysql
+* solr1  
   appellant les classes :  
-  1. solr
-  2. backup solr
-  3. supervision solr
-8. base1  
+  * solr
+  * backup solr
+  * supervision solr
+* base1  
   appellant les classes :  
-  1. base
-  2. agent de sauvegarde
-  3. agent de supervision
+  * base
+  * agent de sauvegarde
+  * agent de supervision
 
 Le rôle zonamaweb appellera les profiles
 
