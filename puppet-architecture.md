@@ -105,7 +105,7 @@ Chaque environnement aura des valeurs de configuration différentes même s'ils 
 
 Le nom complet d'un de mes serveurs web de production sera donc **zonamaprdweb3**, celui d'un serveur mysql de préprod sera **zonamappdsql2** et enfin celui d'un serveur solr de recette sera **zonamaarctslr4** 
 
-Voici comment nous gérerons au travers de Puppet
+#### Voici comment nous  gérerions cette architecture avec Puppet.
 
 Nous aurons trois environnements Puppet :
 
