@@ -83,11 +83,16 @@ Ma société s'appelle zonama, elle vend des produits en ligne tel des livres, d
 
 Maintenant imaginons quelle mette en oeuvre les trois types de stacks de serveur suivantes :
 
-1. haproxy, varnish, apache, memcache et php-fpm. 
+1. haproxy, varnish, apache, memcache et php-fpm
+
 Cette stack s'appelle **zonamaweb**
+
 2. mysql
+
 Cette stack s'appelle **zonamasql**
+
 3. solr
+
 Cette stack s'appelle **zonamaslr**
 
 Répartis sur les environnements suivants :
