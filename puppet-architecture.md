@@ -191,6 +191,7 @@ Nous créerons les externals facts suivants :
 
 La hierarchie Hiera ressemblant à ça (exemple avec l'en de production) :
 
+```bash
   - name: "Per-node data (yaml version)"
     path: "nodes/%{::trusted.certname}.yaml"
 
@@ -213,4 +214,4 @@ La hierarchie Hiera ressemblant à ça (exemple avec l'en de production) :
 
   - name: "Is solr server"
     path: "roles/issolr/true.yaml"
-
+```
