@@ -103,7 +103,7 @@ Répartis sur les environnements suivants :
 
 Chaque environnement aura des valeurs de configuration différentes même s'ils font appelles aux mêmes composants.  
 
-Le nom complet d'un de mes serveurs web de production sera donc **zonamaprdweb3**, celui d'un serveur mysql de préprod sera **zonamappdsql2** et enfin celui d'un serveur solr de recette sera **zonamarctslr4** 
+Le nom complet d'un de mes serveurs web de production sera donc **zonamaprdweb3**, celui d'un serveur mysql de préprod sera **zonamappdsql2** et enfin celui d'un serveur solr de recette sera **zonamaarctslr4** 
 
 Voici comment nous gérerons au travers de Puppet
 
