@@ -118,42 +118,42 @@ Nous aurons trois rôles puppet :
 
 et enfin nous définirons les profiles suivants :
 
-1. haproxy1
+1. haproxy1  
   appellant les classes :
   1. haproxy
   2. backup haproxy
   3. supervision haproxy
-2. varnish1
+2. varnish1  
   appellant les classes :
   1. varnish
   2. backup varnish
   3. supervision varnish
-3. apache1
+3. apache1  
   appellant les classes :
   1. apache
   2. backup apache
   3. supervision apache
-4. php-fpm1
+4. php-fpm1  
   appellant les classes :
   1. php-fpm
   2. backup php-fpm
   3. supervision php-fpm
-5. memcached1
+5. memcached1  
   appellant les classes :
   1. memcached
   2. backup memcached
   3. supervision memcached
-6. mysql1
+6. mysql1  
   appellant les classes :
   1. mysql
   2. backup mysql
   3. supervision mysql
-7. solr1
+7. solr1  
   appellant les classes :
   1. solr
   2. backup solr
   3. supervision solr
-8. base1
+8. base1  
   appellant les classes :
   1. base
   2. agent de sauvegarde
