@@ -1,5 +1,21 @@
 # Hiera
 
+## configuration hiera (hiera.yaml)
+
+**Tous changement dans ce fichier doit être suivi d'un rechargement Puppet**
+
+#### comment interroger hiera5
+
+```bash 
+puppet lookup "variable"
+```
+
+Ou **class::var**
+
+```bash 
+puppet lookup ntp::service_name
+```
+
 #### comment appeller une variable d'un espace de nom différent
 
 exemple, je veux utiliser 

@@ -25,7 +25,7 @@ cat /etc/puppetlabs/r10k/r10k.yaml
 git:
     private_key: '/etc/puppetlabs/r10k/id-rsa.pub'
 ```
-Pensez à générer la clef ssh : **/etc/puppetlabs/r10k/id-rsa.pub** uis copiez-là sur github.
+Pensez à générer la clef ssh : **/etc/puppetlabs/r10k/id-rsa.pub** puis copiez-là sur github.
 
 ### Les modules
 

@@ -45,7 +45,15 @@ Exit code: 128
 
 Le dépôt n'existe plus, vérifier qu'il n'y a plus de référence sur le *Puppetfile* de **TOUTES** les branches !!
 
- 
+### Error: Found  dependency cycle
+
+Exemple 
+
+```bash
+(File[/etc/postfix/main.cf] => File[/etc/postfix/main.cf])\nTry the '--graph' option and opening the resulting '.dot' file in OmniGraffle or GraphViz
+```
+
+La ressource avait une dépendance "auto-référente", elle surveillait le fichier que la fonction copiait.
 
 
 
