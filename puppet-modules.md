@@ -1,6 +1,6 @@
 # Modules
 
-## Hiera dans les modules
+## Hiera dans les modules
 
 1. créer un fichier hiera.yaml pour définir la hierachie
 2. créer un dossier data
@@ -9,7 +9,7 @@
 
 ### hiera, les variables  et modules
 
-#### retirer l'espace de nom du module 
+#### retirer l'espace de nom du module 
 
 avant
 
@@ -27,7 +27,7 @@ Pour déclarer des clés dans hiera sans espace de nom spécfique, il faut défi
 
 N'oubliez pas de mettre des inherits dans les autres classes.. 
 
-### comment appeler les classes d'un module
+### comment appeler les classes d'un module
 
 avec *include*
 
