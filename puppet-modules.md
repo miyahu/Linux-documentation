@@ -1,11 +1,11 @@
 # Modules
 
-## Hiera dans les modules
+### Hiera dans les modules
 
-1. créer un fichier hiera.yaml pour définir la hierachie
-2. créer un dossier data
-3. dans ce dossier créer les entrées de hiera
-4. modifier le fichier metadata.json  
+1. créer un fichier *hiera.yaml* pour définir la hierachie
+2. créer un dossier *data/*
+3. dans ce dossier créer les entrées de *hiera*
+4. modifier le fichier *metadata.json*  
 
 ### hiera, les variables  et modules
 
