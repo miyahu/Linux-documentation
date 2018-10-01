@@ -75,19 +75,19 @@ awk '$10 ~ 50 && $5 ~ "14/Aug/2017" {print}'  other_vhosts_access.log
 
 ### l'état des sockets pour un port donné
 
-```
+```bash
 netstat -an|grep ":443"|awk '/tcp/ {print $6}'|sort -nr| uniq -c
 ```
 
 ### exclure un répertoire des copies
 
-```
+```bash
 cp -av /opt/sshgate/!(logs) /var/backups/
 ```
 
 ### strace de multiples PID
 
-```
+```bash
 pgrep  php-fpm |sed 's/\([0-9]*\)/\-p \1/g' | sed ':a;N;$!ba;s/\n/ /g'
 ```
 
@@ -134,3 +134,10 @@ themes/light-hugo/
 
 6 directories, 16 files
 ```
+
+### afficher directement les attributs d'un utilisateur ou groupe
+
+```bash
+getent passwd ronron
+```
+
