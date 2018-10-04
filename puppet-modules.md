@@ -50,3 +50,13 @@ ou de changer l'ordre d'execution des classes, par exemple
   class { '::postfix::service': } ->
   anchor { 'postfix::end': }
 ```
+
+### paramètres optionnels
+
+```puppet
+Optional[String] $tagada = undef,
+```
+
+Si $tagada est défini (dans le common.yaml par exemple), il est positionné, sinon rien.
+
+Voir le *= undef* comme une valeur par défaut.
