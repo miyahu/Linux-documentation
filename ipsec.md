@@ -22,8 +22,8 @@ conn lenet-scal
  type=tunnel
 
 
-include /var/lib/strongswan/ipsec.conf.inc
-37.16.21.7 212.47.22.4  PSK  "tag"
+include /var/lib/strongswan/ipsec.secrets.inc
+37.16.21.7 212.47.22.4 : PSK  "passphrase"
 
 testing
 
