@@ -128,3 +128,17 @@ conn tructruc
         keyexchange=ikev2
         esp=3des-md5
 ```
+
+###
+
+Pour activer le routage dans le VPN, il faut, une fois celui-ci monté, lancer précisement les commandes suivantes
+
+iptables -t nat -D POSTROUTING -s 192.168.0.0/24  -m policy --dir out --pol ipsec -j ACCEPT
+iptables -t nat -A POSTROUTING -s 192.168.0.0/24 -o enp9s0 -m policy --dir out --pol ipsec -j ACCEPT
+
+Puis
+
+sysctl net.ipv4.conf.all.send_redirects=0
+puis 
+sysctl net.ipv4.conf.all.forwarding = 1
+rejouer
