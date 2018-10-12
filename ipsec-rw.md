@@ -233,7 +233,7 @@ src 192.168.0.0/16 dst 0.0.0.0/0
 
 ### avec curl
 
-Faite un curl ifconfig.io pour valider que l'ip de sortie ai changée
+Faite un *curl ifconfig.io* pour valider que l'ip de sortie ai changée
 
 #### Sans tunnel
 
