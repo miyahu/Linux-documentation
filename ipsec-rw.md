@@ -154,10 +154,10 @@ conn ikev2-vpn
 cat /var/lib/strongswan/ipsec.secrets.inc 
 192.168.11.5 163.172.21.190 : PSK  "cumulonimbus"
 ```
-J'ai mis l'ip du *leftside*, il y a moyen de ne pas le faire, chercher la syntaxe peut-être
+J'ai mis l'ip du *leftside*, il y a moyen de ne pas le faire, chercher la syntaxe peut-être un truc comme :
 
 ```bash
-: 163.172.21.190 : PSK  "cumulonimbus"
+: 163.172.21.190 PSK  "cumulonimbus"
 ```
 
 ### iptables 
