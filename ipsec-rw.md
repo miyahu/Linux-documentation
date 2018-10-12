@@ -1,5 +1,9 @@
 # Strongswan for routing all trafic transparently for road warrior clients
 
+## limitations
+
+...
+
 ## pour commencer
 
 Il s'agit d'un simili *split tunneling* sans ip virtuel.
@@ -121,32 +125,47 @@ Ajout du nat qui permettra la navigation des clients VPN (sinon pas d'internet a
 ## config client road warrior
 
 ```bash
-cat /etc/ipsec.conf
+~# cat /etc/ipsec.conf
 config setup
   charondebug="ike 1, knl 1, cfg 0"
   uniqueids=no
 
-conn ikev2-vpn
-    authby=secret
-    auto=start
-    compress=no
-    type=tunnel
-    keyexchange=ikev2
-    fragmentation=yes
-    forceencaps=yes
-    ike=aes256-sha1-modp1024,3des-sha1-modp1024!
-    esp=aes256-sha1,3des-sha1!
-    dpdaction=clear
-    dpddelay=300s
-    rekey=no
+conn ns7
+  authby=secret
+  auto=start
+  compress=no
+  type=tunnel
+  keyexchange=ikev2
+  fragmentation=yes
+  forceencaps=yes
+  ike=aes256-sha1-modp1024,3des-sha1-modp1024!
+  esp=aes256-sha1,3des-sha1!
+  dpdaction=clear
+  dpddelay=300s
+  rekey=no
 
-    left=%defaultroute
-    # à changer dans ipsec.secrets.inc
-    leftsubnet=0.0.0.0/0
+  left=%defaultroute
+  # à changer dans ipsec.secrets.inc
+  leftsubnet=0.0.0.0/0
 
-    right=163.172.21.190
-	  rightsubnet=0.0.0.0/0
+  right=163.172.21.190
+  rightsubnet=0.0.0.0/0
+
+conn local-net
+  leftsubnet=192.168.0.0/16
+  rightsubnet=163.172.21.190
+  authby=never
+  type=pass
+  auto=route
 ```
+
+#### Qu'est que la phase local-net
+
+Cette phase sert à accéder aux ip normalement non-accessibles que sont les ip locales de la passerelle.
+Il s'agit d'un *by-pass*
+
+* https://wiki.strongswan.org/projects/strongswan/wiki/Bypass-lan
+* https://serverfault.com/questions/709979/allow-strongswan-roadwarrior-to-access-local-lan
 
 ### le secret
 
@@ -154,6 +173,7 @@ conn ikev2-vpn
 cat /var/lib/strongswan/ipsec.secrets.inc 
 192.168.11.5 163.172.21.190 : PSK  "cumulonimbus"
 ```
+
 J'ai mis l'ip du *leftside*, il y a moyen de ne pas le faire, chercher la syntaxe peut-être un truc comme :
 
 ```bash
