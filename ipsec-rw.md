@@ -1,8 +1,19 @@
 # Strongswan for routing all trafic transparently for road warrior clients
 
+> auteur : ronron  
+> mail : rien@nullepart.com  
+
 ## limitations
 
 ...
+
+## rédaction et généreration de ce fichier
+
+et toc.. (oh oh oh)
+
+```bash
+pandoc -f markdown -t html5 --toc -s -o ~/ipsec.html ipsec-rw.md 
+```
 
 ## pour commencer
 
@@ -50,30 +61,31 @@ PORT     STATE         SERVICE
 ## config gateway (passerelle)
 
 ```bash
-cat /etc/ipsec.conf
+~# cat /etc/ipsec.conf
 config setup
   charondebug="ike 1, knl 1, cfg 0"
   uniqueids=no
 
 conn ikev2-vpn
-    authby=secret
-    auto=start
-    compress=no
-    type=tunnel
-    keyexchange=ikev2
-    fragmentation=yes
-    forceencaps=yes
-    ike=aes256-sha1-modp1024,3des-sha1-modp1024!
-    esp=aes256-sha1,3des-sha1!
-    dpdaction=clear
-    dpddelay=300s
-    rekey=no
-    left=163.172.21.190
-	  # ne pas spécifier les réseaux utilisables en phase 2, c'est autoriser l'accès vers tous.
-    leftsubnet=%dynamic,0.0.0.0/0
-    leftfirewall=yes
-    right=%any
-    rightsubnet=192.168.0.0/16
+  authby=secret
+  auto=start
+  compress=no
+  type=tunnel
+  keyexchange=ikev2
+  fragmentation=yes
+  forceencaps=yes
+  ike=aes256-sha1-modp1024,3des-sha1-modp1024!
+  esp=aes256-sha1,3des-sha1!
+  dpdaction=clear
+  dpddelay=300s
+  rekey=no
+
+  left=163.172.21.190
+  # ne pas spécifier les réseaux utilisables en phase 2, c'est autoriser l'accès vers tous.
+  leftsubnet=%dynamic,0.0.0.0/0
+  leftfirewall=yes
+  right=%any
+  rightsubnet=192.168.0.0/16
 ```
 
 ### le secret
@@ -89,9 +101,11 @@ Attention à bien garder un espace entre l'adresse ip et le **:**
 
 ### iptables première partie
 
-Deux règles, une d'entrée, une autre forward ont été automatiquement ajoutées (ne pas le faire manuellement):
+Deux règles, une d'entrée, une de forward ont été automatiquement ajoutées (**ne pas le faire manuellement, le système s'en occupe**):
 
 ```bash
+~# iptables-save
+...
 -A FORWARD -s 192.168.0.0/16 -i eth0 -m policy --dir in --pol ipsec --reqid 7 --proto esp -j ACCEPT
 # pourquoi reqid 2 ??
 -A INPUT -s 192.168.0.0/16 -d 163.172.21.190/32 -i eth0 -m policy --dir in --pol ipsec --reqid 2 --proto esp -j ACCEPT
@@ -108,18 +122,18 @@ sysctl net.ipv4.conf.all.forwarding=1
 La table de routage ipsec est vide sur la gateway
 
 ```bash
-root@ns7:~# ip route show table 220
-root@ns7:~#
+~# ip route show table 220
+~#
 ```
 
 ### iptables - seconde partie
 
 Ajout du nat qui permettra la navigation des clients VPN (sinon pas d'internet avec une ip privée).
 
-*Strongswan* ne NAT pas de base, donc les paquets des clients viendront de l'adresse définie dans la rightsubnet (192.168.0.0/16).
+*Strongswan* ne NAT pas de base, donc les paquets clients viendront de l'adresse définie dans le *rightsubnet* (192.168.0.0/16).
 
 ```bash
--A POSTROUTING -s 192.168.0.0/16 -j MASQUERADE
+~# iptables -t nat -A POSTROUTING -s 192.168.0.0/16 -j MASQUERADE
 ```
 
 ## config client road warrior
@@ -159,7 +173,7 @@ conn local-net
   auto=route
 ```
 
-#### Qu'est que la phase local-net
+### Qu'est-ce que la phase local-net ?
 
 Cette phase sert à accéder aux ip normalement non-accessibles que sont les ip locales de la passerelle.
 Il s'agit d'un *by-pass*
@@ -170,7 +184,7 @@ Il s'agit d'un *by-pass*
 ### le secret
 
 ```bash
-cat /var/lib/strongswan/ipsec.secrets.inc 
+~# cat /var/lib/strongswan/ipsec.secrets.inc 
 192.168.11.5 163.172.21.190 : PSK  "cumulonimbus"
 ```
 
@@ -187,46 +201,69 @@ On ajoute les règles permettant de router le trafic vers le tunnel.
 Le faire manuellement en l'ajoutant à */etc/iptables/rules.v4* puis en rechargeant avec *service netfilter-persistent restart*
 
 ```bash
--A POSTROUTING -s 192.168.0.0/16 -m policy --dir out --pol ipsec -j ACCEPT
--A POSTROUTING -s 192.168.0.0/16 -j MASQUERADE
+~# iptables -t nat -A POSTROUTING -s 192.168.0.0/16 -m policy --dir out --pol ipsec -j ACCEPT
+~# iptables -t nat -A POSTROUTING -s 192.168.0.0/16 -j MASQUERADE
 ```
 
 ### le routage
 
+Je pense que la seconde ligne correspond à la phase de *by-pass*
+
 ```bash
 ~# ip route show table 220
-default via 192.168.11.1 dev wlx3476c5b50cd3 proto static src 192.168.11.5
+default via 192.168.11.1 dev wlx3476c5b50cd3 proto static src 192.168.11.5 
+163.172.21.190 via 192.168.11.1 dev wlx3476c5b50cd3 proto static src 192.168.11.5
 ```
+
+Vérifions qu'une adresse donnée soit bien routée :
+
+#### sans tunnel 
+
+```bash
+~# ip route get 163.172.21.190
+163.172.21.190 via 192.168.11.1 dev wlx3476c5b50cd3 src 192.168.11.5 
+    cache 
+```
+
+#### avec tunnel 
+
+```bash
+~# ip route get 163.172.21.190
+163.172.21.190 via 192.168.11.1 dev wlx3476c5b50cd3 table 220 src 192.168.11.5 
+    cache
+```
+
+remarquez la présence de la route dans la table ipsec (220)
 
 ## status du tunnel
 
 ```bash
-~# ipsec statusall
-Status of IKE charon daemon (strongSwan 5.5.1, Linux 4.8, x86_64):
-  uptime: 6 minutes, since Oct 12 15:39:01 2018
-  malloc: sbrk 2433024, mmap 0, used 415152, free 2017872
+~# ipsec  statusall
+Status of IKE charon daemon (strongSwan 5.5.1, Linux 4.9.0-8-amd64, x86_64):
+  uptime: 5 seconds, since Oct 12 21:56:03 2018
+  malloc: sbrk 2433024, mmap 0, used 425984, free 2007040
   worker threads: 11 of 16 idle, 5/0/0/0 working, job queue: 0/0/0/0, scheduled: 2
   loaded plugins: charon aes rc2 sha2 sha1 md5 random nonce x509 revocation constraints pubkey pkcs1 pkcs7 pkcs8 pkcs12 pgp dnskey sshkey pem openssl fips-prf gmp agent xcbc hmac gcm attr kernel-netlink resolve socket-default connmark stroke updown
 Listening IP addresses:
   192.168.11.5
 Connections:
-   ikev2-vpn:  %any...163.172.21.190  IKEv2, dpddelay=300s
-   ikev2-vpn:   local:  uses pre-shared key authentication
-   ikev2-vpn:   remote: [163.172.21.190] uses pre-shared key authentication
-   ikev2-vpn:   child:  0.0.0.0/0 === 0.0.0.0/0 TUNNEL, dpdaction=clear
+         ns7:  %any...163.172.21.190  IKEv2, dpddelay=300s
+         ns7:   local:  uses pre-shared key authentication
+         ns7:   remote: [163.172.21.190] uses pre-shared key authentication
+         ns7:   child:  0.0.0.0/0 === 0.0.0.0/0 TUNNEL, dpdaction=clear
+   local-net:  %any...%any  IKEv1/2
+   local-net:   local:  uses public key authentication
+   local-net:   remote: uses public key authentication
+   local-net:   child:  192.168.0.0/16 === 163.172.21.190/32 PASS
+Shunted Connections:
+   local-net:  192.168.0.0/16 === 163.172.21.190/32 PASS
 Security Associations (1 up, 0 connecting):
-   ikev2-vpn[1]: ESTABLISHED 5 minutes ago, 192.168.11.5[192.168.11.5]...163.172.21.190[163.172.21.190]
-   ikev2-vpn[1]: IKEv2 SPIs: 0e57d24a4593df13_i* 6d1ead2b739c3d9d_r, rekeying disabled
-   ikev2-vpn[1]: IKE proposal: AES_CBC_256/HMAC_SHA1_96/PRF_HMAC_SHA1/MODP_1024
-   ikev2-vpn{1}:  INSTALLED, TUNNEL, reqid 1, ESP in UDP SPIs: c47269eb_i c8e29858_o
-   ikev2-vpn{1}:  AES_CBC_256/HMAC_SHA1_96, 21508 bytes_i (196 pkts, 4s ago), 80987 bytes_o (281 pkts, 9s ago), rekeying disabled
-   ikev2-vpn{1}:   192.168.0.0/16 === 0.0.0.0/0
-```
-
-On peut voir que côté client, la phase 2 est conforme (gauche restreint, droite ouverte)
-
-```bash
-192.168.0.0/16 === 0.0.0.0/0
+         ns7[1]: ESTABLISHED 4 seconds ago, 192.168.11.5[192.168.11.5]...163.172.21.190[163.172.21.190]
+         ns7[1]: IKEv2 SPIs: e0aa78603ac62590_i* d87a3e016b47835f_r, rekeying disabled
+         ns7[1]: IKE proposal: AES_CBC_256/HMAC_SHA1_96/PRF_HMAC_SHA1/MODP_1024
+         ns7{1}:  INSTALLED, TUNNEL, reqid 1, ESP in UDP SPIs: cf7090fa_i c1a3a640_o
+         ns7{1}:  AES_CBC_256/HMAC_SHA1_96, 112 bytes_i (2 pkts, 0s ago), 733 bytes_o (4 pkts, 1s ago), rekeying disabled
+         ns7{1}:   192.168.0.0/16 === 0.0.0.0/0
 ```
 
 ### côté xfrm 
