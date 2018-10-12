@@ -29,8 +29,6 @@ Vérifier que les ports *ipsec* soient bien accessibles côté serveur.
 * udp/4500
 * udp/500
 
-Testez avec *nmap -sU -P0 "n° de port" "adresse"*
-
 Si le status est *open/filtered*, c'est bon, c'est normal, c'est udp ^^
 
 ### exemple
