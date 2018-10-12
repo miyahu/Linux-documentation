@@ -74,7 +74,7 @@ conn ikev2-vpn
     rightsubnet=192.168.0.0/16
 ```
 
-### le secret
+### le secret
 
 ```bash
 ~# cat /var/lib/strongswan/ipsec.secrets.inc
@@ -85,7 +85,7 @@ On ne spécifie pas de *right side* car on attends des *road warriors*.
 
 Attention à bien garder un espace entre l'adresse ip et le **:** 
 
-### iptables première partie
+### iptables première partie
 
 Deux règles, une d'entrée, une autre forward ont été automatiquement ajoutées (ne pas le faire manuellement):
 
@@ -95,7 +95,7 @@ Deux règles, une d'entrée, une autre forward ont été automatiquement ajouté
 -A INPUT -s 192.168.0.0/16 -d 163.172.21.190/32 -i eth0 -m policy --dir in --pol ipsec --reqid 2 --proto esp -j ACCEPT
 ```
 
-### Le routage
+### Le routage
 
 Pensez à activer le transfert entre interface 
 
@@ -162,7 +162,7 @@ J'ai mis l'ip du *leftside*, il y a moyen de ne pas le faire, chercher la syntax
 : 163.172.21.190 : PSK  "cumulonimbus"
 ```
 
-### iptables 
+### iptables 
 
 On ajoute les règles permettant de router le trafic vers le tunnel.
 
