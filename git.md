@@ -158,6 +158,3 @@ git rm --cached
 ```bash
 git pull . master 
 ```
-
-
-

@@ -16,7 +16,7 @@ Avec elasticsearch
 
 On vérifie avec un
 
-```
+```bash
 dpkg --get-selections elasticsearch
 elasticsearch                                   hold
 ```
@@ -36,3 +36,12 @@ https://linuxprograms.wordpress.com/2010/05/12/remove-packages-marked-rc/
 ### figer des paquets
 
 apt-mark hold "nom du paquet"
+
+### récupérer les fichiers de conf d'un paquet
+
+https://askubuntu.com/questions/66533/how-can-i-restore-configuration-files
+
+```bash
+dpkg-deb --fsys-tarfile rspamd_1.8.1-1~stretch_amd64.deb | sudo tar x  -C /tmp/
+```
+puis fouiller dans /tmp/etc pour y trouver son bonheur. 

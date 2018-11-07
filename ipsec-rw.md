@@ -1,13 +1,42 @@
 # Strongswan for routing all trafic transparently for road warrior clients
 
-> auteur : ronron  
-> mail : rien@nullepart.com  
+ou **Router l'ensemble du trafic dans un tunnel ipsec strongswan en mode client mobile.**
 
-## limitations
+auteur : ronron  
+contact : '.@.\.'
 
-...
+## blabla
 
-## rédaction et généreration de ce fichier
+### pourquoi ce tuto et pourquoi un vpn
+
+1. si tu recherche l'anonymat pour quelque raison que ce soit ;
+2. si ta connexion Internet n'est pas de confiance ;
+3. ben le reste..
+
+> Il est simpliste (donc réducteur) d'associer l'anonymat sur Internet aux pervers et terroristes de tous poils, il s'agit là d'une grossière erreur, pourquoi accepterai-t-on d' être traqué par les sites web ? accepte-t-on nous d'être suivi ou surveillé dans la rue lorsque nous faisons des achats ? 
+
+> La balance confort/liberté ne doit pas trop pencher sur le premier plateau. 
+
+#### Avantage du vpn sur le proxy socks ou httpeu :
+
+1. l'ensemble des flux sont routés ;
+2. pas de réglages et de difficultés de prise en charge du proxy (fonction man in the middle toujours limite) ;
+3. accès sécurisé obligatoire (secret partagé ou certificat), non ouvert par défaut.
+
+
+### terminologie
+
+> **road warrior** : normalement un cadre en déplacement, le plus souvent un ado pervers et boutonneux mattant des poneys en rut à longueur de soirée  
+> **vpn** : outil pour matter des poneys en rut en loucedé  
+> **ipsec** : système compliqué mais facile à prononcer  
+> **strongswan** : un Cygne fort ?  
+> **by-pass** : truc pour maigrir    
+> **Internet** : endroit pleins de criminels et de **faique niouz**  
+> **pandoc et markdown** : transformateur et format de document  
+> **nat** : truc dans les cheveux des filles ~~ou des fiottes~~  
+> **phases ipsec** : éléments du tunnel (phase 1, le tunnel de connexion - phase 2, **Le** ou **LES** tunnel(s) de transport)  
+
+### rédaction et génération de ce document
 
 et toc.. (oh oh oh)
 
@@ -15,9 +44,17 @@ et toc.. (oh oh oh)
 pandoc -f markdown -t html5 --toc -s -o ~/ipsec.html ipsec-rw.md 
 ```
 
-## pour commencer
+Document *css stylesheet less*.. 
 
-Il s'agit d'un simili *split tunneling* sans ip virtuel.
+### ingrédients
+
+* un serveur *Linux* qui servira de passerelle *ipsec* (*apt install strongswan*) ; 
+* un client ipsec sous Linux (ba encore *strongswan*..) ;
+* de la patience.
+
+## commençont
+
+Il s'agit d'un *split tunneling* avec ip virtuel.
 
 Nous utiliserons ikev2 (pourquoi pas ?)
 
@@ -27,26 +64,42 @@ Ressources :
 * https://wiki.strongswan.org/projects/strongswan/wiki/RouteBasedVPN
 * https://wiki.strongswan.org/issues/2355
 
-### quelques bases
+Vérifiez déjà que l'ip de sortie de votre VPN soit bien dans le ou la pays ou région désiré(e)  
+
+* https://www.hostip.fr
+
+### installons les programmes
+
+compliqué..
+
+```bash
+~# apt install -y strongswan
+```
+
+sur la machine cliente et la passerelle.
+
+#### quelques bases
 
 ```bash
 ~# ipsec start 
 ~# ipsec stop
 ~# ipsec reload 
+~# ipsec restart
 ~# ipsec status
 ~# ipsec statusall
+~# ipsec up "nom du tunnel"  # pour ceux qui sont en *auto=add*
 ```
 
-## regardons les porcs..
+### regardons les porcs..
 
 Vérifier que les ports *ipsec* soient bien accessibles côté serveur.
 
 * udp/4500
 * udp/500
 
-Si le status est *open/filtered*, c'est bon, c'est normal, c'est udp ^^
+Si le status est *open/filtered*, c'est bon, c'est normal, c'est udp ^^ (voir la doc de nmap).
 
-### exemple
+#### exemple
 
 ```bash
 ~# nmap -P0 -sU -p 500,4500   212.4.2.4
@@ -63,29 +116,44 @@ PORT     STATE         SERVICE
 ```bash
 ~# cat /etc/ipsec.conf
 config setup
+  # le debug
   charondebug="ike 1, knl 1, cfg 0"
+  # limite le nombre de connexion je crois..
   uniqueids=no
 
 conn ikev2-vpn
+  # authentification par secret partagé
   authby=secret
+  # démmarage auto
   auto=start
+  # je désactive car les autres le font (beee..)
   compress=no
+  # parcequ'on veut un tunnel.. 
   type=tunnel
   keyexchange=ikev2
+  # en cas de problème de mtu
   fragmentation=yes
+  # la flemme de regarder la doc
   forceencaps=yes
+  # les algo..toussa
   ike=aes256-sha1-modp1024,3des-sha1-modp1024!
   esp=aes256-sha1,3des-sha1!
+  # je crois que ce sont les période de scrutation du peer 
   dpdaction=clear
   dpddelay=300s
+  # la flemme de regarder la doc
   rekey=no
 
+  # notre patte *locale*
   left=163.172.21.190
   # ne pas spécifier les réseaux utilisables en phase 2, c'est autoriser l'accès vers tous.
   leftsubnet=%dynamic,0.0.0.0/0
+  # gère les règles firewall de forward
   leftfirewall=yes
-  right=%any
-  rightsubnet=192.168.0.0/16
+  # tente de pousser les serveur dns spécifiés ?
+  rightdns=8.8.8.8,163.172.2.110
+  # l'ip du client viendra de ce scope (ip virtuelle)
+  rightsourceip=10.1.1.0/24
 ```
 
 ### le secret
@@ -95,7 +163,7 @@ conn ikev2-vpn
 163.172.21.190 : PSK "cumulonimbus"
 ```
 
-On ne spécifie pas de *right side* car on attends des *road warriors*.
+On ne spécifie pas de *right* car on attends des *road warriors* .
 
 Attention à bien garder un espace entre l'adresse ip et le **:** 
 
@@ -107,7 +175,7 @@ Deux règles, une d'entrée, une de forward ont été automatiquement ajoutées 
 ~# iptables-save
 ...
 -A FORWARD -s 192.168.0.0/16 -i eth0 -m policy --dir in --pol ipsec --reqid 7 --proto esp -j ACCEPT
-# pourquoi reqid 2 ??
+-A FORWARD -s 10.1.1.1/32 -i eth0 -m policy --dir in --pol ipsec --reqid 1 --proto esp -j ACCEPT
 -A INPUT -s 192.168.0.0/16 -d 163.172.21.190/32 -i eth0 -m policy --dir in --pol ipsec --reqid 2 --proto esp -j ACCEPT
 ```
 
@@ -128,12 +196,20 @@ La table de routage ipsec est vide sur la gateway
 
 ### iptables - seconde partie
 
-Ajout du nat qui permettra la navigation des clients VPN (sinon pas d'internet avec une ip privée).
+Ajout du *nat* qui permettra la navigation des clients *vpn* (sinon pas d'internet avec une ip privée).
 
-*Strongswan* ne NAT pas de base, donc les paquets clients viendront de l'adresse définie dans le *rightsubnet* (192.168.0.0/16).
+*Strongswan* ne *nat* pas de base, donc les paquets clients viendront de l'adresse définie dans le *rightsubnet* (192.168.0.0/16).
 
 ```bash
-~# iptables -t nat -A POSTROUTING -s 192.168.0.0/16 -j MASQUERADE
+~# iptables -t nat -A POSTROUTING -s 10.1.0.0/16 -j MASQUERADE
+```
+
+### démarrage
+
+Cette commande permet de rendre verbeux le démarrage du tunnel, n'oubliez pas qu'il est en démarrage automatique *auto=start*
+
+```bash
+ipsec up ikev2-vpn
 ```
 
 ## config client road warrior
@@ -146,7 +222,7 @@ config setup
 
 conn ns7
   authby=secret
-  auto=start
+  auto=add
   compress=no
   type=tunnel
   keyexchange=ikev2
@@ -166,8 +242,8 @@ conn ns7
   rightsubnet=0.0.0.0/0
 
 conn local-net
-  leftsubnet=192.168.0.0/16
-  rightsubnet=163.172.21.190
+  # les ips ci-dessous ne sont "traités" par le routage vpn classique 
+  rightsubnet=163.172.21.190,212.129.2.222
   authby=never
   type=pass
   auto=route
@@ -175,13 +251,14 @@ conn local-net
 
 ### Qu'est-ce que la phase local-net ?
 
-Cette phase sert à accéder aux ip normalement non-accessibles que sont les ip locales de la passerelle.
-Il s'agit d'un *by-pass*
+Cette phase sert à accéder aux ip normalement non-accessibles que sont les ip locales de la passerelle.  
+Il s'agit d'un *by-pass*, les flux vers ces ips ne transitent pas dans le tunnel.
 
 * https://wiki.strongswan.org/projects/strongswan/wiki/Bypass-lan
 * https://serverfault.com/questions/709979/allow-strongswan-roadwarrior-to-access-local-lan
 
 ### le secret
+
 
 ```bash
 ~# cat /var/lib/strongswan/ipsec.secrets.inc 
@@ -194,6 +271,8 @@ J'ai mis l'ip du *leftside*, il y a moyen de ne pas le faire, chercher la syntax
 : 163.172.21.190 PSK  "cumulonimbus"
 ```
 
+J'ai l'impression que même avec les ip virtuelles, le *rightside* est nécessaire.
+
 ### iptables 
 
 On ajoute les règles permettant de router le trafic vers le tunnel.
@@ -201,8 +280,8 @@ On ajoute les règles permettant de router le trafic vers le tunnel.
 Le faire manuellement en l'ajoutant à */etc/iptables/rules.v4* puis en rechargeant avec *service netfilter-persistent restart*
 
 ```bash
-~# iptables -t nat -A POSTROUTING -s 192.168.0.0/16 -m policy --dir out --pol ipsec -j ACCEPT
-~# iptables -t nat -A POSTROUTING -s 192.168.0.0/16 -j MASQUERADE
+~# iptables -t nat -A POSTROUTING -s 10.1.0.0/16 -m policy --dir out --pol ipsec -j ACCEPT
+~# iptables -t nat -A POSTROUTING -s 10.1.0.0/16 -j MASQUERADE
 ```
 
 ### le routage
@@ -211,8 +290,9 @@ Je pense que la seconde ligne correspond à la phase de *by-pass*
 
 ```bash
 ~# ip route show table 220
-default via 192.168.11.1 dev wlx3476c5b50cd3 proto static src 192.168.11.5 
-163.172.21.190 via 192.168.11.1 dev wlx3476c5b50cd3 proto static src 192.168.11.5
+default via 192.168.11.1 dev wlx3476c5b50cd3 proto static src 10.1.1.1 
+163.172.21.190 via 192.168.11.1 dev wlx3476c5b50cd3 proto static
+...
 ```
 
 Vérifions qu'une adresse donnée soit bien routée :
@@ -220,20 +300,35 @@ Vérifions qu'une adresse donnée soit bien routée :
 #### sans tunnel 
 
 ```bash
-~# ip route get 163.172.21.190
-163.172.21.190 via 192.168.11.1 dev wlx3476c5b50cd3 src 192.168.11.5 
-    cache 
+~# ip route get 8.8.8.8
+8.8.8.8 via 192.168.11.1 dev wlx3476c5b50cd3 src 192.168.11.5 cache 
+```
+
+### ou by-passée
+
+car présente dans le *rightsubnet* de tunnel *local-net*
+
+```bash
+~# ip route get 163.172.2.110
+163.172.2.110 via 192.168.11.1 dev wlx3476c5b50cd3 table 220 src 192.168.11.5 cache 
 ```
 
 #### avec tunnel 
 
 ```bash
-~# ip route get 163.172.21.190
-163.172.21.190 via 192.168.11.1 dev wlx3476c5b50cd3 table 220 src 192.168.11.5 
-    cache
+~# ip route get 8.8.8.8
+8.8.8.8 via 192.168.11.1 dev wlx3476c5b50cd3 table 220 src 10.1.1.1 cache 
 ```
 
 remarquez la présence de la route dans la table ipsec (220)
+
+### démarrage
+
+Cette commande permet de rendre verbeux le démarrage du tunnel, n'oubliez pas qu'il est en démarrage manuel *auto=add*
+
+```bash
+ipsec up ns7
+```
 
 ## status du tunnel
 
@@ -243,27 +338,30 @@ Status of IKE charon daemon (strongSwan 5.5.1, Linux 4.9.0-8-amd64, x86_64):
   uptime: 5 seconds, since Oct 12 21:56:03 2018
   malloc: sbrk 2433024, mmap 0, used 425984, free 2007040
   worker threads: 11 of 16 idle, 5/0/0/0 working, job queue: 0/0/0/0, scheduled: 2
-  loaded plugins: charon aes rc2 sha2 sha1 md5 random nonce x509 revocation constraints pubkey pkcs1 pkcs7 pkcs8 pkcs12 pgp dnskey sshkey pem openssl fips-prf gmp agent xcbc hmac gcm attr kernel-netlink resolve socket-default connmark stroke updown
+  loaded plugins: charon aes rc2 sha2 sha1 md5 random nonce x509 revocation constraints pubkey 
+pkcs1 pkcs7 pkcs8 pkcs12 pgp dnskey sshkey pem openssl fips-prf gmp agent xcbc hmac gcm attr 
+kernel-netlink resolve socket-default connmark stroke updown
 Listening IP addresses:
   192.168.11.5
 Connections:
-         ns7:  %any...163.172.21.190  IKEv2, dpddelay=300s
+         ns7:  %any...163.172.21.190  IKEv2, dpddelay=1s
          ns7:   local:  uses pre-shared key authentication
          ns7:   remote: [163.172.21.190] uses pre-shared key authentication
-         ns7:   child:  0.0.0.0/0 === 0.0.0.0/0 TUNNEL, dpdaction=clear
+         ns7:   child:  dynamic === 0.0.0.0/0 TUNNEL, dpdaction=restart
    local-net:  %any...%any  IKEv1/2
    local-net:   local:  uses public key authentication
    local-net:   remote: uses public key authentication
-   local-net:   child:  192.168.0.0/16 === 163.172.21.190/32 PASS
+   local-net:   child:  dynamic === 163.172.21.190/32 212.129.2.222/32 PASS
 Shunted Connections:
-   local-net:  192.168.0.0/16 === 163.172.21.190/32 PASS
+   local-net:  dynamic === 163.172.21.190/32 212.129.2.222/32 PASS
 Security Associations (1 up, 0 connecting):
-         ns7[1]: ESTABLISHED 4 seconds ago, 192.168.11.5[192.168.11.5]...163.172.21.190[163.172.21.190]
-         ns7[1]: IKEv2 SPIs: e0aa78603ac62590_i* d87a3e016b47835f_r, rekeying disabled
+         ns7[1]: ESTABLISHED 28 minutes ago, 192.168.11.5[192.168.11.5]...163.172.21.190[163.172.21.190]
+         ns7[1]: IKEv2 SPIs: d8df57adec4c9268_i* 87ad9729dad1afd5_r, rekeying disabled
          ns7[1]: IKE proposal: AES_CBC_256/HMAC_SHA1_96/PRF_HMAC_SHA1/MODP_1024
-         ns7{1}:  INSTALLED, TUNNEL, reqid 1, ESP in UDP SPIs: cf7090fa_i c1a3a640_o
-         ns7{1}:  AES_CBC_256/HMAC_SHA1_96, 112 bytes_i (2 pkts, 0s ago), 733 bytes_o (4 pkts, 1s ago), rekeying disabled
-         ns7{1}:   192.168.0.0/16 === 0.0.0.0/0
+         ns7[1]: Tasks active: IKE_MOBIKE 
+         ns7{1}:  INSTALLED, TUNNEL, reqid 1, ESP in UDP SPIs: c42c9612_i ca13571d_o
+         ns7{1}:  AES_CBC_256/HMAC_SHA1_96, 6117287 bytes_i (6680 pkts, 33s ago), 676695 bytes_o (6100 pkts, 0s ago), rekeying disabled
+         ns7{1}:   10.1.1.1/32 === 0.0.0.0/0
 ```
 
 ### côté xfrm 
@@ -272,21 +370,35 @@ Vérifiez que les *policy* soient chargées
 
 ```bash
 ~# ip xfrm policy
-src 0.0.0.0/0 dst 192.168.0.0/16 
-	dir fwd priority 195904 ptype main 
+src 0.0.0.0/0 dst 10.1.1.1/32 
+	dir fwd priority 191808 ptype main 
 	tmpl src 163.172.21.190 dst 192.168.11.5
 		proto esp reqid 1 mode tunnel
-src 0.0.0.0/0 dst 192.168.0.0/16 
-	dir in priority 195904 ptype main 
+src 0.0.0.0/0 dst 10.1.1.1/32 
+	dir in priority 191808 ptype main 
 	tmpl src 163.172.21.190 dst 192.168.11.5
 		proto esp reqid 1 mode tunnel
-src 192.168.0.0/16 dst 0.0.0.0/0 
-	dir out priority 195904 ptype main 
+src 10.1.1.1/32 dst 0.0.0.0/0 
+	dir out priority 191808 ptype main 
 	tmpl src 192.168.11.5 dst 163.172.21.190
 		proto esp reqid 1 mode tunnel
+src 163.172.2.110/32 dst 0.0.0.0/0 
+	dir fwd priority 91808 ptype main 
+src 163.172.2.110/32 dst 0.0.0.0/0 
+	dir in priority 91808 ptype main
+src 0.0.0.0/0 dst 163.172.2.110/32 
+	dir fwd priority 91808 ptype main 
+src 0.0.0.0/0 dst 163.172.2.110/32 
+	dir out priority 91808 ptype main
 ```
 
+### Les logs
+
+Sur Debian, les évenements ipsec sont journalisés dans */var/log/daemon* 
+
 ## vérification
+
+Toujours valider que le tunnel fasse bien sont job !!!
 
 ### avec curl
 
@@ -357,4 +469,15 @@ traceroute to free.fr (212.27.48.10), 30 hops max, 60 byte packets
  9  bzn-9k-2-sys-be2000.intf.routers.proxad.net (194.149.161.242)  310.008 ms  310.828 ms  310.009 ms
 10  bzn-9k-2.sys.routers.proxad.net (212.27.32.146)  310.081 ms  312.142 ms  313.356 ms
 11  www.free.fr (212.27.48.10)  313.270 ms  312.277 ms  311.733 ms
+```
+
+#### avec tcpdump
+
+Notre amie *tcpdump* nous permet de constater que le client arrive bien avec l'ip 10.1.1.1
+
+```bash
+~# timeout 5 tcpdump -vni any host linuxfr.org
+tcpdump: listening on any, link-type LINUX_SLL (Linux cooked), capture size 262144 bytes
+12:50:27.971895 IP (tos 0x0, ttl 64, id 48588, offset 0, flags [none], proto ICMP (1), length 84)
+    10.1.1.1 > 88.191.250.176: ICMP echo request, id 11692, seq 6, length 64
 ```

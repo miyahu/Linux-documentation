@@ -141,3 +141,10 @@ themes/light-hugo/
 getent passwd ronron
 ```
 
+### connaître l'heure qui est au Japon
+
+De unix.stackexchange
+
+```bash
+TZ=Asia/Tokyo date
+```

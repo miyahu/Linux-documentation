@@ -25,3 +25,12 @@ https://puppet.com/docs/puppet/5.3/modules_documentation.html
 ```bash
 puppet strings generate
 ```
+
+Générer la doc html
+
+```bash
+apt install ruby-dev ruby-all-dev
+bundle exec puppet strings generate ./manifests/*.pp
+```
+
+Un nouveau répertoire, doc, est apparut.

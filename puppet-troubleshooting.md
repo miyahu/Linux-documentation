@@ -1,5 +1,11 @@
 # Troubleshooting
 
+### vérifier la syntaxe
+
+```bash
+bundle exec rake syntax lint metadata_lint check:symlinks check:git_ignore check:dot_underscore check:test_file rubocop
+```
+
 ## DSL
 
 ### duplicate declaration dans une iteration **each**
@@ -55,6 +61,17 @@ Exemple
 
 La ressource avait une dépendance "auto-référente", elle surveillait le fichier que la fonction copiait.
 
+### top-scope variable being used without an explicit namespace
 
+http://puppet-lint.com/checks/variable_scope/
+
+Il faut associer les variables à l'espace de nom du module :
+
+$postfix::myvar <-- ok
+$myvar <-- nok
+
+La seconde définition fonctionne mais emet un warning avec puppet-lint
+
+$::myvar <-- nok : cette syntaxe passe le lint mais génère une erreur lors de l'executation réel de la classe. 
 
 
